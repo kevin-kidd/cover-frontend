@@ -121,7 +121,7 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
           >
             <div className="fixed inset-0 w-sidebar bg-[#1A2128] bg-opacity-75" />
               <div className="fixed inset-0 flex z-40">
-                <div className="grid grid-rows-8 gap-4 max-w-xs w-full bg-[#1A2128]" ref={mobileMenuRef}>
+                <div className="flex flex-col overflow-x-hidden overflow-y-auto gap-4 max-w-xs pb-6 w-full bg-[#1A2128]" ref={mobileMenuRef}>
                   <div onClick={() => toggleMenu()} className="flex row-span-1 justify-end pr-5 pt-5">
                     <button type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Close sidebar</span>
@@ -130,24 +130,24 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
                       </svg>
                     </button>
                   </div>
-                  <div className="justify-center row-span-2 -mt-10 max-h-16 h-auto w-auto relative flex">
+                  <div className="w-full flex justify-center pt-4">
                     <Image
-                      priority={true}
-                      src={logo}
-                      layout="fill"
-                      alt="Cover"
-                    />
+                        className="hover:cursor-pointer"
+                        height="42"
+                        width="123"
+                        src={logo}
+                        alt="Cover" />
                   </div>
-                  <div className="overflow-y-auto flex justify-center row-span-2">
-                    <nav className="px-2 space-y-4">
+                  <div className="h-full flex flex-col justify-between">
+                    <nav className="m-auto w-fit">
                       {
                         menuItems.map((item) => (
-                            <Item key={`mobile-menu-item-${item.title}`} item={item} active={activeTitle === item.title} />
+                            <Item key={`menu-item-${item.title}`} item={item} active={activeTitle === item.title} />
                         ))
                       }
                     </nav>
+                    <MenuFooter />
                   </div>
-                  <MenuFooter />
                 </div>
               </div>
             <div className="flex-shrink-0 w-14" aria-hidden="true" />
@@ -157,11 +157,11 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
         {/* Desktop */}
 
         <div className="hidden lg:flex lg:flex-col fixed w-sidebar bg-[#1A2128] p-6 pb-3 h-full overflow-x-hidden overflow-y-auto">
-            <div className="w-sidebar mx-auto">
+            <div className="w-full flex justify-center pt-4">
               <Image
                   className="hover:cursor-pointer"
-                  height="50"
-                  width="150"
+                  height="42"
+                  width="123"
                   src={logo}
                   alt="Cover" />
             </div>
@@ -238,10 +238,10 @@ const MenuFooter: FunctionComponent = () => {
 
   const disconnectButton: ReactElement = (
       <button onClick={() => setWalletConnected(false)}
-          className="p-3 group w-fit flex rounded-lg text-tiny border border-[#5596DC]
+          className="p-3 group w-fit flex items-center rounded-lg text-tiny border border-[#5596DC]
             text-[#cccccc] hover:text-white transition duration-500 hover:border-[#66a0df]"
       >
-        <FontAwesomeIcon icon={faSignOutAlt} className="p-1 mr-1 w-6 h-6 transition duration-500 text-[#cecece] group-hover:text-white" />
+        <FontAwesomeIcon icon={faSignOutAlt} className="p-1 mr-1 w-5 h-5 transition duration-500 text-[#cecece] group-hover:text-white" />
         Disconnect
       </button>
   );
