@@ -86,3 +86,32 @@ body:before {
 .progress-bar-track {
     background: rgba(217, 217, 217, 0.66);
 }
+
+.collateralized-by {
+    background: linear-gradient(90deg, #6CF6FF -0.71%, #DA70FF 100.46%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.search-box {
+    position: relative;
+    display:inline-block;
+    background-image: linear-gradient(90deg, #59BFCA 0%, #D773FF 100%);
+    color: #485564;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index:0;
+  }
+
+.search-box:before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    background-color: #0E1E2C;
+    border-radius: 6px;
+    box-sizing: border-box;
+    z-index: -1;
+  }

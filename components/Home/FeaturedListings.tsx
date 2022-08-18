@@ -90,7 +90,7 @@ export const FeaturedListings: FunctionComponent = () => {
           gap-8 md:gap-y-10 desktop:gap-x-20 tablet:gap-x-12 laptop:gap-x-6 xl:gap-x-12">
             <>
               {
-                exampleListings.map((listing, index) => (
+                exampleListings.map((ele, index) => (
                   <LendCard key={'listing-' + index} listing={exampleListings[index]} />
                 ))
               }

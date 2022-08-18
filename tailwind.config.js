@@ -31,6 +31,7 @@ module.exports = {
         'laptop': '1150px',
         'tablet': '1320px',
         'desktop': '1400px',
+        'big': '1921px'
       },
       borderWidth: {
         '3': '3px'
