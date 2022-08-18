@@ -66,7 +66,7 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
     };
 
     const loanCard: ReactElement = (
-        <div className="flex flex-col items-center w-full max-w-xxs h-full mx-auto bg-[#1A2128] px-5 py-3 rounded-lg items-center shadow-sm">
+        <div className="flex flex-col items-center w-full max-w-xxs h-full mx-auto bg-[#1A2128] px-5 py-3 rounded-lg shadow-sm">
             <h1 className="card-title text-tiny lg:text-xl font-medium text-white px-7 pb-2">
                 { listing.listingType === "borrow" ? "Asking to Borrow" : "Offering to Lend" }
             </h1>
@@ -145,8 +145,8 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
 
     const collateralDetails: ReactElement = (
         <div className="flex flex-col w-full pt-2 mx-4">
-            <div className="w-full grid grid-cols-2">
-                <div className="w-full">
+            <div className="w-full grid grid-cols-5">
+                <div className="w-full col-span-2">
                     <div className="flex items-center gap-x-4">
                         <h1 className="card-title text-lg lg:text-2xl font-medium">Collateralized by</h1>
                         <h1 className="text-white text-lg lg:text-2xl font-medium">1 Anon</h1>
@@ -170,17 +170,17 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
                     </div>
                 </div>
 
-
-                <Swiper
-                    direction={"horizontal"}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    grabCursor={true}
-                    effect={"cards"}
-                    modules={[Pagination, EffectCards]}
-                    className="rounded"
-                >
+                <div className="w-full flex mx-auto col-span-3">
+                    <Swiper
+                        direction={"horizontal"}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        grabCursor={true}
+                        effect={"cards"}
+                        modules={[Pagination, EffectCards]}
+                        className="rounded max-w-xs"
+                    >
                         { images.map((image) => (
                             <SwiperSlide key={`slider-${image}`}>
                                 <Img priority={true} placeholder="empty" className="aspect-square rounded w-full h-full"
@@ -188,7 +188,9 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
                                 />
                             </SwiperSlide>
                         ))}
-                </Swiper>
+                    </Swiper>
+                </div>
+
 
             </div>
         </div>
@@ -203,13 +205,13 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
                 <Menu activeTitle={"Explore"} />
                 <div className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
                     <Header items={items} />
-                    <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-20">
-                        <div className="border-t w-full grid sm:grid-cols-3 border-black mb-4 lg:mb-8 w-full px-2 sm:px-2 md:px-3 xl:px-6 pt-12">
-                            <div className="w-full flex flex-col col-span-1 gap-y-4">
+                    <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-10">
+                        <div className="border-t w-full grid sm:grid-cols-7 border-black mb-4 lg:mb-8 w-full pt-12">
+                            <div className="w-full flex flex-col col-span-1 sm:col-span-2 gap-y-4">
                                 { loanCard }
                                 { myPositions }
                             </div>
-                            <div className="col-span-1 sm:col-span-2">
+                            <div className="col-span-1 sm:col-span-5">
                                 { collateralDetails }
                             </div>
                         </div>
