@@ -21,8 +21,8 @@ const CreateListing: FunctionComponent = () => {
         else activeState = createListingState.borrowing;  // TODO
 
         if(
-            activeState.principal.amount === 0 || activeState.duration.days === 0 || activeState.collateral.amount === 0 ||
-            activeState.collateral.amount === -1 || activeState.principal.amount === -1 || activeState.duration.days === -1
+            activeState.principal.amount === 0 || activeState.duration.days === 0 ||
+            activeState.principal.amount === -1 || activeState.duration.days === -1 // TODO -- add check for collateral amount
         ) {
             misc.setIsFilled(false);
         } else {
