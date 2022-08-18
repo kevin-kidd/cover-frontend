@@ -18,7 +18,7 @@ export const PrincipalDenomBox: FunctionComponent = () => {
           <Typed
             typedRef={(typed) => { typedInstance = typed }}
             strings={['Here is an example tooltip.', 'Principal denomination']}
-            className="text-[#c1ccd7] text-tiny sm:text-kindasmaller lg:text-kindasmall 4k:text-2xl w-full px-3"
+            className="text-[#B2BFCD] group-hover:text-[#c1ccd7] text-tiny sm:text-kindasmaller lg:text-kindasmall 4k:text-2xl w-full px-3"
             onComplete={() => setTooltipOpen(false)}
             typeSpeed={20}
             backSpeed={30}
