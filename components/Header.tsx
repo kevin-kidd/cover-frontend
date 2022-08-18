@@ -28,7 +28,7 @@ const Header: FunctionComponent<{ items: ReactElement[] }> = ({ items }) => {
         "px-2 top-0 z-20 py-2 sm:py-4 w-full sticky flex flex-row transition duration-300 bg-[#1A2128]",
         darkHeader ? "lg:bg-transparent" : null
     )}>
-        <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none lg:hidden ml-2 sm:ml-6">
+        <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none md:hidden ml-2 sm:ml-6">
             <span className="sr-only">Open sidebar</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />

@@ -108,7 +108,7 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
     return (
       <>
       {/* Mobile */}
-        <div className="relative z-40 lg:hidden w-0" role="dialog" aria-modal="true">
+        <div className="relative z-40 md:hidden w-0" role="dialog" aria-modal="true">
           <Transition
             show={isOpen}
             as="div"
@@ -156,7 +156,7 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
 
         {/* Desktop */}
 
-        <div className="hidden lg:flex lg:flex-col fixed w-sidebar bg-[#1A2128] p-6 pb-3 h-full overflow-x-hidden overflow-y-auto">
+        <div className="hidden md:flex md:flex-col fixed w-sidebar bg-[#1A2128] p-6 pb-3 h-full overflow-x-hidden overflow-y-auto">
             <div className="w-full flex justify-center pt-4">
               <Image
                   className="hover:cursor-pointer"

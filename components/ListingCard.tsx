@@ -323,7 +323,7 @@ export const ListingCard: FunctionComponent<{ listing: Listing, index: number }>
   const [loading, setLoading] = useState(true);
 
   let hiddenClass: string = "flex";
-  if(index === 2) hiddenClass = "hidden sm:flex";
+  if(index === 2) hiddenClass = "hidden md:flex";
   if(index === 3) hiddenClass = "hidden xl:flex";
 
   return (

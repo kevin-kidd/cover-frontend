@@ -30,7 +30,7 @@ const HomePage: NextPage = () => {
           </Head>
           <main className="relative h-screen">
               <Menu activeTitle={"Home"} />
-              <div className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
+              <div className="md:ml-sidebar w-full md:w-auto overflow-x-auto h-screen flex flex-col">
                   <Header items={[ToggleButton({ type: "token" }), ToggleButton({ type: "listing-type" }), SettingsButton({ page: "test" })]} />
                   <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-20">
                       <ListingsSection listings={featuredListings} title={"Featured Listings (All)"} displayToggles={false} />

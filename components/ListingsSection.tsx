@@ -94,8 +94,8 @@ const SectionHeader: FunctionComponent<{displayToggles: boolean}> = ({ displayTo
     return (
       <>
         {/* Mobile */}
-          <div className="sm:hidden flex justify-evenly justify-center items-center mt-4 gap-x-3">
-              <div className="flex flex-col sm:flex-row items-center flex w-full gap-2">
+          <div className="lg:hidden flex justify-evenly justify-center items-center mt-4 gap-x-3">
+              <div className="flex flex-col max-w-xs flex-row items-center flex w-full gap-2">
                   <DenomSearchBox type={"principal"} />
                   <DenomSearchBox type={"collateral"} />
               </div>
@@ -105,7 +105,7 @@ const SectionHeader: FunctionComponent<{displayToggles: boolean}> = ({ displayTo
           </div>
 
         {/* Desktop */}
-        <div className="hidden sm:grid sm:grid-cols-5 justify-center gap-x-2 items-center w-full mt-6">
+        <div className="hidden lg:grid lg:grid-cols-5 justify-center gap-x-2 items-center w-full mt-6">
             <div className="w-full col-span-2 flex justify-self-center xl:w-5/6">
               <DenomSearchBox type={"principal"} />
             </div>
@@ -128,7 +128,7 @@ export const ListingsSection: FunctionComponent<{ listings: Listing[], title?: s
       <SectionHeader displayToggles={displayToggles} />
         <div className="
             justify-center items-center w-full my-4 lg:my-6
-            grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-2 sm:gap-x-4 xl:gap-x-8
+            grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 md:gap-x-4 xl:gap-x-8
         ">
         {
           listings.map((ele, index) => (
