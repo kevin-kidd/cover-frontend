@@ -3,11 +3,13 @@ import {useModalStore} from "../../stores/ModalStore";
 import Image from "next/image";
 
 // assets
-import wrapArrow from "../../public/static/arrows/wrap.svg";
-import unwrapArrow from "../../public/static/arrows/unwrap.svg";
-import unwrapArrow2 from "../../public/static/arrows/unwrap2.svg";
-import transferDownArrow from "../../public/static/arrows/transferDown.svg";
-import transferUpArrow from "../../public/static/arrows/transferUp.svg";
+const arrows = {
+    wrap: "/static/arrows/wrap.svg",
+    unwrapUp: "/static/arrows/unwrapUp.svg",
+    unwrapDown: "/static/arrows/unwrapDown.svg",
+    transferDown: "/static/arrows/transferDown.svg",
+    transferUp: "/static/arrows/transferUp.svg"
+};
 
 export const WithdrawModal: FunctionComponent = () => {
 
@@ -75,7 +77,7 @@ export const WithdrawModal: FunctionComponent = () => {
                 </div>
             </div>
             <div className="flex justify-center py-2">
-                <Image src={transferUpArrow} height="25" width="77" alt="Transfer ↑" />
+                <Image src={arrows.transferUp} height="25" width="77" alt="Transfer ↑" />
             </div>
 
 
@@ -94,7 +96,7 @@ export const WithdrawModal: FunctionComponent = () => {
             </div>
 
             <div className="flex justify-center py-2">
-                <Image src={unwrapArrow2} height="25" width="58" alt="Unwrap ↑" />
+                <Image src={arrows.unwrapDown} height="25" width="58" alt="Unwrap ↑" />
             </div>
 
             <div className="grid grid-cols-5 items-center">
@@ -191,7 +193,7 @@ export const DepositModal: FunctionComponent = () => {
                 </div>
             </div>
             <div className="flex justify-center py-2">
-                <Image src={transferDownArrow} height="25" width="77" alt="Transfer ↑" />
+                <Image src={arrows.transferDown} height="25" width="77" alt="Transfer ↑" />
             </div>
 
 
@@ -210,7 +212,7 @@ export const DepositModal: FunctionComponent = () => {
             </div>
 
             <div className="flex justify-center py-2">
-                <Image src={wrapArrow} height="25" width="43" alt="Wrap ↑" />
+                <Image src={arrows.wrap} height="25" width="43" alt="Wrap ↑" />
             </div>
 
             <div className="grid grid-cols-5 items-center">
@@ -294,8 +296,8 @@ export const WrapModal: FunctionComponent = () => {
             </div>
 
             <div className="flex justify-between mx-auto w-9/12 py-2">
-                <Image src={wrapArrow} height="25" width="43" alt="Wrap ↑" />
-                <Image src={unwrapArrow} height="25" width="58" alt="Unwrap ↑" />
+                <Image src={arrows.wrap} height="25" width="43" alt="Wrap ↑" />
+                <Image src={arrows.unwrapUp} height="25" width="58" alt="Unwrap ↑" />
             </div>
 
             <div className="grid grid-flow-col auto-cols-max h-10 popup-asset-textbox flex items-center">
