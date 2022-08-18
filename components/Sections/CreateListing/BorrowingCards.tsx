@@ -24,7 +24,7 @@ export const BorrowingCard: FunctionComponent = () => {
                        onChange={(e) => setAmount(Number(e.target.value))}
                 />
                 <p className="mx-auto">for</p>
-                <input type="number" value={duration.days === -1 ? "" : duration.days}
+                <input type="number" value={duration.days === -1 || duration.days === 0 ? "" : duration.days}
                        className="w-16 h-7 text-tiny bg-transparent rounded-lg border border-accent focus:ring-0 focus:border-accent"
                        onChange={(e) => {
                            if(Number(e.target.value) >= 1000) {
