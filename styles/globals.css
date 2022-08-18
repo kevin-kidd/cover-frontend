@@ -33,3 +33,9 @@ html {
     box-shadow: 0px 84.0708px 67.2566px rgba(0, 0, 0, 0.03), 0px 54.4903px 39.3887px rgba(0, 0, 0, 0.0227778), 0px 32.3828px 21.4225px rgba(0, 0, 0, 0.0182222), 0px 16.8142px 10.9292px rgba(0, 0, 0, 0.015), 0px 6.85021px 5.48017px rgba(0, 0, 0, 0.0117778), 0px 1.55687px 2.64667px rgba(0, 0, 0, 0.00722222);
     border-radius: 13px;
 }
+
+@media(max-width: 320px) {
+    html {
+        font-size: 8px!important;
+    }
+}
