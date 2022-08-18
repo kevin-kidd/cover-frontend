@@ -78,6 +78,7 @@ export const NFTLendingListings: FunctionComponent = () => {
             All Listings
           </a>
         </div>
+        {/* Mobile */}
         <div className="sm:hidden grid grid-rows-2 grid-cols-3 grid-flow-col justify-center items-center w-full mt-4">
           <div className="row-span-1 col-span-2">
             <PrincipalDenomBox />
@@ -89,14 +90,15 @@ export const NFTLendingListings: FunctionComponent = () => {
             <AdvancedButton />
           </div>
         </div>
-        <div className="hidden sm:grid grid-cols-5 justify-center items-center w-full gap-x-4 mt-4">
-          <div className="col-span-2 flex justify-end">
+        {/* Desktop */}
+        <div className="hidden sm:grid grid-cols-5 justify-center items-center w-full md:gap-x-12 mt-4">
+          <div className="col-span-2 justify-center flex">
             <PrincipalDenomBox />
           </div>
-          <div className="col-span-2 flex justify-center">
+          <div className="col-span-2 flex">
             <CollateralDenomBox />
           </div>
-          <div className="col-span-1">
+          <div className="col-span-1 flex">
             <AdvancedButton />
           </div>
         </div>
