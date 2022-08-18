@@ -97,7 +97,7 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
     return (
         <>
             {/* Mobile */}
-            <div className="lg:hidden absolute h-screen z-40 w-0" role="dialog" aria-modal="true">
+            <div className="absolute h-screen z-40 lg:hidden w-0" role="dialog" aria-modal="true">
                 <Transition
                     show={isOpen}
                     as="div"
