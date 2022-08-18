@@ -70,6 +70,7 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
 
     return (
       <>
+      {/* Mobile */}
         <div className="relative z-40 md:hidden" role="dialog" aria-modal="true">
           <Transition
             show={isOpen}
@@ -83,8 +84,8 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
           >
             <div className="fixed inset-0 bg-[#1A2128] bg-opacity-75"></div>
               <div className="fixed inset-0 flex z-40">
-                <div className="flex-1 flex flex-col max-w-xs w-full bg-[#1A2128]" ref={mobileMenuRef}>
-                  <div className="flex justify-end pr-5 pt-5">
+                <div className="grid grid-rows-8 gap-4 max-w-xs w-full bg-[#1A2128]" ref={mobileMenuRef}>
+                  <div className="flex row-span-1 justify-end pr-5 pt-5">
                     <button onClick={() => toggleMenu()} type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Close sidebar</span>
                       <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
@@ -92,7 +93,7 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
                       </svg>
                     </button>
                   </div>
-                  <div className="flex justify-center -mt-5">
+                  <div className="flex justify-center row-span-1 -mt-10">
                     <Image
                       src={logo}
                       priority={true}
@@ -103,7 +104,7 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
                       // placeholder="blur" // Optional blur-up while loading
                     />
                   </div>
-                  <div className="flex-1 h-0 overflow-y-auto flex justify-center mt-12">
+                  <div className="overflow-y-auto flex justify-center row-span-4">
                     <nav className="px-2 space-y-4">
                       {
                         menuItems.map((item) => (
@@ -126,9 +127,12 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
             <div className="flex-shrink-0 w-14" aria-hidden="true"></div>
           </Transition>
         </div>
+
+        {/* Desktop */}
+
         <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-            <div className="flex-1 flex flex-col min-h-0 bg-[#1A2128]">
-                <div className="flex items-center justify-center h-20 flex-shrink-0 px-4 bg-[#1A2128] mt-6">
+            <div className="flex-1 grid grid-rows-10 min-h-0 bg-[#1A2128]">
+                <div className="row-span-2 row-start-2 flex items-center justify-center h-20 flex-shrink-0 px-4 bg-[#1A2128]">
                   <Image
                         priority={true}
                         src={logo}
@@ -139,7 +143,7 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
                         // placeholder="blur" // Optional blur-up while loading
                   />
                 </div>
-                <div className="flex-1 flex flex-col overflow-y-auto mt-16">
+                <div className="row-span-5 row-start-4 flex-1 flex flex-col overflow-y-auto">
                     <nav className="flex-1 px-10 space-y-4">
                         {
                         menuItems.map((item) => (

@@ -48,14 +48,28 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
   }
 
   return (
-    <div className="col-span-1 lg:row-span-1 hover:cursor-pointer">
+    <div className={`col-span-1 lg:row-span-1 ${loading ? null : "hover:cursor-pointer"}`}>
       <div className="flex flex-col bg-[#1A2128] rounded-lg items-center px-4 min-w-52 h-80 shadow-sm hover:shadow-2xl transition duration-300">
         <div className="border-b border-[#8B98FF] pt-3 pb-2 w-full flex justify-center">
           <p className="card-title text-sm">Offering to Lend</p>
         </div>
         <>
         {
-          !loading ?
+          loading ?
+            <>
+                <div className="animate-pulse flex space-x-4 w-full pt-5">
+                  <div className="flex-1 py-1 px-4">
+                    <div className="h-2 bg-slate-700 mt-2 rounded"></div>
+                    <div className="grid grid-cols-5 gap-4 mt-4">
+                      <div className="h-2 bg-slate-700 rounded col-span-3 mt-2"></div>
+                      <div className="h-2 bg-slate-700 rounded col-span-2 mt-2"></div>
+                    </div>
+                    <div className="h-2 bg-slate-700 rounded mt-2"></div>
+                    <div className="rounded-full bg-slate-700 h-28 w-28 mt-10 mx-auto"></div>
+                  </div>
+                </div>
+            </>
+            :
             <>
               { listing.isPartiallyFunded ? 
                 <>
@@ -123,20 +137,6 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                     <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full w-full h-full" alt={listing.collateral.name} />
                   </div>
                   <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full h-24 w-24 bg-white" alt={listing.lending.name} />
-                </div>
-            </>
-            :
-            <>
-                <div className="animate-pulse flex space-x-4 w-full pt-5">
-                  <div className="flex-1 py-1 px-4">
-                    <div className="h-2 bg-slate-700 mt-2 rounded"></div>
-                    <div className="grid grid-cols-5 gap-4 mt-4">
-                      <div className="h-2 bg-slate-700 rounded col-span-3 mt-2"></div>
-                      <div className="h-2 bg-slate-700 rounded col-span-2 mt-2"></div>
-                    </div>
-                    <div className="h-2 bg-slate-700 rounded mt-2"></div>
-                    <div className="rounded-full bg-slate-700 h-28 w-28 mt-10 mx-auto"></div>
-                  </div>
                 </div>
             </>
           }
