@@ -30,6 +30,7 @@ module.exports = {
         'chromebook': '920px',
         'laptop': '1150px',
         'tablet': '1320px',
+        'desktop': '1400px',
       },
       borderWidth: {
         '3': '3px'

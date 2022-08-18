@@ -79,15 +79,15 @@ export const FeaturedListings: FunctionComponent = () => {
     <>
       <div className="py-5 sm:py-6">
         <div className="flex justify-between">
-          <h1 className="font-medium text-md sm:text-lg text-white ml-5 sm:ml-20 md:ml-10 laptop:ml-0 xl:ml-14">Featured Listings (All)</h1>
-          <div className="items-center mr-5 sm:mr-20 md:mr-10 laptop:mr-0 xl:mr-16 mt-1">
+          <h1 className="font-medium text-md sm:text-lg text-white ml-5 sm:ml-20 md:ml-10 lg:ml-0 laptop:ml-0 tablet:ml-12">Featured Listings (All)</h1>
+          <div className="items-center mr-5 sm:mr-20 md:mr-10 laptop:mr-0 tablet:mr-16 mt-1">
             <a href="#" className="font-medium text-tiny sm:text-kindasmall text-red-500 hover:text-red-400 transition duration-150">All Listings</a>
           </div>
         </div>
         <div className="pt-4 sm:pt-4">
           <div className="border-b border-black mx-2 pb-10 justify-center items-center
           grid laptop:grid-rows-1 grid-rows-2 grid-flow-col
-          gap-5 md:gap-y-10 tablet:gap-x-20 laptop:gap-x-6 lg:gap-x-10 chromebook:gap-x-10 md:gap-x-6">
+          gap-8 md:gap-y-10 desktop:gap-x-20 tablet:gap-x-12 laptop:gap-x-6 xl:gap-x-12">
             <>
               {
                 exampleListings.map((listing, index) => (
