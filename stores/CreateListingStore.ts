@@ -59,7 +59,7 @@ export const useCreateListingStore = create<CREATE_LISTING_STATE>()(
                     }),
             },
             duration: {
-                days: -1,
+                days: 3,
                 setDuration: (by: number) =>
                     set((state) => {
                     state.borrowing.duration.days = by
@@ -80,7 +80,7 @@ export const useCreateListingStore = create<CREATE_LISTING_STATE>()(
                     set((state) => {
                         state.borrowing.principal.amount = -1;
                         state.borrowing.collateral.amount = -1;
-                        state.borrowing.duration.days = -1;
+                        state.borrowing.duration.days = 3;
                         state.borrowing.misc.isFilled = false;
                         state.borrowing.misc.signedTerms = false;
                     }),

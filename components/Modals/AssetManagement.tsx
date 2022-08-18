@@ -5,8 +5,9 @@ import Image from "next/image";
 // assets
 const arrows = {
     wrap: "/static/arrows/wrap.svg",
-    unwrapUp: "/static/arrows/unwrapUp.svg",
-    unwrapDown: "/static/arrows/unwrapDown.svg",
+    wrapLarge: "/static/arrows/wrapLarge.svg",
+    unwrapRight: "/static/arrows/unwrapRight.svg",
+    unwrapLeft: "/static/arrows/unwrapLeft.svg",
     transferDown: "/static/arrows/transferDown.svg",
     transferUp: "/static/arrows/transferUp.svg"
 };
@@ -96,7 +97,7 @@ export const WithdrawModal: FunctionComponent = () => {
             </div>
 
             <div className="flex justify-center py-2">
-                <Image src={arrows.unwrapDown} height="25" width="58" alt="Unwrap ↑" />
+                <Image src={arrows.unwrapRight} height="25" width="77" alt="Unwrap ↑" />
             </div>
 
             <div className="grid grid-cols-5 items-center">
@@ -114,10 +115,10 @@ export const WithdrawModal: FunctionComponent = () => {
             </div>
 
             <div className="flex justify-between mx-auto w-2/3 pt-6 pb-2">
-                <button className="py-2 px-4 bg-black border-[#D673FE] border rounded-lg hover:text-white duration-200 transition">
+                <button className="py-2 px-4 w-24 bg-black border-[#D673FE] border rounded-lg hover:text-white duration-200 transition">
                     Unwrap
                 </button>
-                <button className="py-2 px-4 bg-black border-[#F2DC68] border rounded-lg hover:text-white duration-200 transition">
+                <button className="py-2 px-4 w-24 bg-black border-[#F2DC68] border rounded-lg hover:text-white duration-200 transition">
                     Transfer
                 </button>
             </div>
@@ -212,7 +213,7 @@ export const DepositModal: FunctionComponent = () => {
             </div>
 
             <div className="flex justify-center py-2">
-                <Image src={arrows.wrap} height="25" width="43" alt="Wrap ↑" />
+                <Image src={arrows.wrapLarge} height="25" width="77" alt="Wrap ↑" />
             </div>
 
             <div className="grid grid-cols-5 items-center">
@@ -230,10 +231,10 @@ export const DepositModal: FunctionComponent = () => {
             </div>
 
             <div className="flex justify-between mx-auto w-2/3 pt-6 pb-2">
-                <button className="py-2 px-4 bg-black border-[#68E6F2] border rounded-lg hover:text-white duration-200 transition">
+                <button className="py-2 px-4 w-24 bg-black border-[#68E6F2] border rounded-lg hover:text-white duration-200 transition">
                     Wrap
                 </button>
-                <button className="py-2 px-4 bg-black border-[#F2DC68] border rounded-lg hover:text-white duration-200 transition">
+                <button className="py-2 px-4 w-24 bg-black border-[#F2DC68] border rounded-lg hover:text-white duration-200 transition">
                     Transfer
                 </button>
             </div>
@@ -297,7 +298,7 @@ export const WrapModal: FunctionComponent = () => {
 
             <div className="flex justify-between mx-auto w-9/12 py-2">
                 <Image src={arrows.wrap} height="25" width="43" alt="Wrap ↑" />
-                <Image src={arrows.unwrapUp} height="25" width="58" alt="Unwrap ↑" />
+                <Image src={arrows.unwrapRight} height="25" width="58" alt="Unwrap ↑" />
             </div>
 
             <div className="grid grid-flow-col auto-cols-max h-10 popup-asset-textbox flex items-center">
@@ -312,10 +313,10 @@ export const WrapModal: FunctionComponent = () => {
             </div>
 
             <div className="flex justify-between mx-auto w-2/3 pt-6 pb-2">
-                <button className="py-2 px-4 bg-black border-[#68E6F2] border rounded-lg hover:text-white duration-200 transition">
+                <button className="py-2 px-4 w-24 bg-black border-[#68E6F2] border rounded-lg hover:text-white duration-200 transition">
                     Wrap
                 </button>
-                <button className="py-2 px-4 bg-black border-[#D673FE] border rounded-lg hover:text-white duration-200 transition">
+                <button className="py-2 px-4 w-24 bg-black border-[#D673FE] border rounded-lg hover:text-white duration-200 transition">
                     Unwrap
                 </button>
             </div>

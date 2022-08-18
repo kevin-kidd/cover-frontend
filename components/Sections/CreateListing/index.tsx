@@ -32,7 +32,7 @@ const CreateListing: FunctionComponent = () => {
 
     if(createListingToggle === "Lending") {
         return (
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-y-6">
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                 <LendingCard />
                 {/*<LendingCollateralCard />*/}
                 {/*<LendingTerms />*/}
@@ -42,7 +42,7 @@ const CreateListing: FunctionComponent = () => {
     }
 
     return (
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-y-6">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
             <BorrowingCard />
             <BorrowingCollateralCard />
             <TermsCard type={"Borrowing"} />

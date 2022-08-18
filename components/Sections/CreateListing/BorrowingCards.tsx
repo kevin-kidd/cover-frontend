@@ -8,6 +8,16 @@ export const BorrowingCard: FunctionComponent = () => {
     const setAmount = useCreateListingStore((state) => state.borrowing.principal.setAmount);
     const duration = useCreateListingStore((state) => state.borrowing.duration);
 
+    const handleDurationChange = (e) => {
+        if(!e.target.value) {
+            duration.setDuration(-1);
+            return
+        }
+        let { value, min, max } = e.target;
+        value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+        duration.setDuration(value);
+    };
+
     return (
         <div className="bg-[#1A2128] w-full max-w-md mx-auto rounded-lg px-10 py-6 flex flex-col items-center">
             <h2 className="card-title pb-7">Asking to Borrow</h2>
@@ -24,15 +34,9 @@ export const BorrowingCard: FunctionComponent = () => {
                        onChange={(e) => setAmount(Number(e.target.value))}
                 />
                 <p className="mx-auto">for</p>
-                <input type="number" value={duration.days === -1 || duration.days === 0 ? "" : duration.days}
+                <input type="number" min="3" max="999" value={duration.days === -1 ? "" : duration.days}
                        className="w-16 h-7 text-tiny bg-transparent rounded-lg border border-accent focus:ring-0 focus:border-accent"
-                       onChange={(e) => {
-                           if(Number(e.target.value) >= 1000) {
-                               duration.setDuration(999);
-                           } else {
-                               duration.setDuration(Number(e.target.value))
-                           }
-                       }}
+                       onChange={handleDurationChange}
                 />
                 <p>days.</p>
             </div>
