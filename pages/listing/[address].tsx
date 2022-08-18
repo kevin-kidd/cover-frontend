@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import Img from "next/future/image";
 import { NextPage } from "next";
 import {SettingsWidget} from "../../components/Header/Widgets";
@@ -13,7 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper";
 
 function round(value, precision) {
-    var multiplier = Math.pow(10, precision || 0);
+    let multiplier = Math.pow(10, precision || 0);
     return Math.round(value * multiplier) / multiplier;
 }
 
@@ -66,7 +65,7 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
     };
 
     const loanCard: ReactElement = (
-        <div className="flex flex-col items-center w-full max-w-xxs h-full mx-auto bg-[#1A2128] px-5 py-3 rounded-lg shadow-sm">
+        <div className="flex flex-col items-center w-full max-w-xxs h-fit mx-auto bg-[#1A2128] px-5 py-3 rounded-lg shadow-sm">
             <h1 className="card-title text-tiny lg:text-xl font-medium text-white px-7 pb-2">
                 { listing.listingType === "borrow" ? "Asking to Borrow" : "Offering to Lend" }
             </h1>
@@ -116,7 +115,7 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
     );
 
     const myPositions: ReactElement = (
-        <div className="col-span-1 flex flex-col items-center w-full max-w-xxs h-full mx-auto bg-[#1A2128] px-5 py-3 rounded-lg items-center shadow-sm">
+        <div className="col-span-1 flex flex-col items-center w-full max-w-xxs h-fit mx-auto bg-[#1A2128] px-5 py-3 rounded-lg items-center shadow-sm">
             <h1 className="card-title text-tiny lg:text-xl font-medium text-white w-full justify-center pb-2 border-b border-[#8B98FF]">
                 My Positions
             </h1>
@@ -143,55 +142,86 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
         </div>
     );
 
+    const warning: ReactElement = (
+        <div className="mt-10 my-auto flex justify-center items-center">
+            <div className="flex bg-yellow-100 rounded-md border-l-4 border-yellow-500 text-yellow-700 p-2" role="alert">
+                <div className="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+                         stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round"
+                              d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"/>
+                    </svg>
+                </div>
+                <div className="flex flex-col ml-3">
+                    <p className="font-bold text-sm">Warning</p>
+                    <p className="text-xs">This collection is not verified. We will put some official warning text here in the future.</p>
+                </div>
+            </div>
+        </div>
+    );
+
+    const imageDisplay: ReactElement = (
+        <div className="my-auto flex mt-5 xl:mt-0 xl:mx-auto max-w-xs h-full">
+            <Swiper
+                direction={"horizontal"}
+                pagination={{
+                    clickable: true,
+                }}
+                grabCursor={true}
+                effect={"cards"}
+                modules={[Pagination, EffectCards]}
+                className="rounded w-fit"
+                onSlideChange={(slide) => console.log(slide.activeIndex)}
+            >
+                { images.map((image) => (
+                    <SwiperSlide key={`slider-${image}`}>
+                        <Img priority={true} placeholder="empty" className="rounded"
+                             src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + image}
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
+    );
+
     const collateralDetails: ReactElement = (
-        <div className="flex flex-col w-full pt-2 mx-4">
-            <div className="w-full grid grid-cols-5">
-                <div className="w-full col-span-2">
-                    <div className="flex items-center gap-x-4">
+        <div className="flex flex-col w-full pt-6 mx-4">
+            <div className="w-full flex flex-col xl:flex-row">
+                <div className="max-w-xs">
+                    <div className="flex items-center gap-x-4 mb-2">
                         <h1 className="card-title text-lg lg:text-2xl font-medium">Collateralized by</h1>
                         <h1 className="text-white text-lg lg:text-2xl font-medium">1 Anon</h1>
                     </div>
-                    <a href="#" className="mt-1.5 text-[#5596DC] after:content-['_↗'] font-semibold text-tiny lg:text-base hover:text-[#77abe3] transition duration-300">
+                    <a href="#" className="text-[#5596DC] after:content-['_↗'] font-semibold text-tiny lg:text-base hover:text-[#77abe3] transition duration-300">
                         Learn more about Anons
                     </a>
-                    <h4 className="mt-7 text-white text-lg lg:text-2xl font-medium">Anon #345</h4>
-                    <p className="mt-1 text-white w-10/12 text-tiny">
+                    <div className="flex xl:hidden">
+                        { imageDisplay }
+                    </div>
+                    <div className="flex xl:hidden">
+                        { warning }
+                    </div>
+                    <h4 className="mt-10 text-white text-lg lg:text-2xl font-medium">Anon #345</h4>
+                    <p className="mt-1 text-white text-tiny">
                         Put some specific info about the NFT here.
                         Perhaps rarety info and etc. Maybe we can also
                         get these from Stashh API.
                     </p>
-                    <div className="mt-10 w-10/12 flex justify-center items-center flex-col">
+                    <div className="mt-10 flex justify-center items-center flex-col">
                         <h5 className="text-white">Description of the listing creator:</h5>
-                        <div className="mt-1 rounded-lg bg-[#1A2128] w-full p-4">
+                        <div className="mt-1 rounded-lg bg-[#1A2128] w-fit p-4">
                             <p className="text-[#B2BFCD] text-sm">
                                 This NFT can be used to gain access to the Anons telegram group.
                             </p>
                         </div>
                     </div>
+                    <div className="hidden xl:flex">
+                        { warning }
+                    </div>
                 </div>
-
-                <div className="w-full flex mx-auto col-span-3">
-                    <Swiper
-                        direction={"horizontal"}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        grabCursor={true}
-                        effect={"cards"}
-                        modules={[Pagination, EffectCards]}
-                        className="rounded max-w-xs"
-                    >
-                        { images.map((image) => (
-                            <SwiperSlide key={`slider-${image}`}>
-                                <Img priority={true} placeholder="empty" className="aspect-square rounded w-full h-full"
-                                     src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + image}
-                                />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                <div className="hidden xl:flex w-full">
+                    { imageDisplay }
                 </div>
-
-
             </div>
         </div>
     );
@@ -206,12 +236,12 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
                 <div className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
                     <Header items={items} />
                     <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-10">
-                        <div className="border-t w-full grid sm:grid-cols-7 border-black mb-4 lg:mb-8 w-full pt-12">
-                            <div className="w-full flex flex-col col-span-1 sm:col-span-2 gap-y-4">
+                        <div className="border-t w-full grid sm:grid-cols-2 xl:grid-cols-7 border-black mb-4 lg:mb-8 w-full pt-12">
+                            <div className="w-full flex flex-col col-span-1 xl:col-span-2 gap-y-4">
                                 { loanCard }
                                 { myPositions }
                             </div>
-                            <div className="col-span-1 sm:col-span-5">
+                            <div className="col-span-1 flex flex-col col-span-1 xl:col-span-5 mx-auto sm:mx-0">
                                 { collateralDetails }
                             </div>
                         </div>

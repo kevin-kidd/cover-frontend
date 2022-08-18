@@ -3,7 +3,7 @@ import {useMenuStore} from "../../stores/Menu";
 import {useOnClickOutside} from "../../functions/helper";
 import {Transition} from "@headlessui/react";
 import Image from "next/image";
-import logo from "../../assets/logo.svg";
+import logo from "../../static/logo.svg";
 import MenuFooter from "./Footer";
 import Item from "./Item";
 

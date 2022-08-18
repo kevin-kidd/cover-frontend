@@ -84,6 +84,14 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     }
 }
 
+.modal-title {
+    background: linear-gradient(90deg, #5ECDD9 0%, #8FFEA7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
 .card-title {
     background: linear-gradient(90deg, #6CF6FF -0.74%, #DA70FF 101.57%);
     -webkit-background-clip: text;

@@ -1,18 +1,23 @@
-import {FunctionComponent, ReactElement, useState} from "react";
+import {Fragment, FunctionComponent, ReactElement, useState} from "react";
 import {usePersistentStore} from "../../stores/Persistent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+import {useModalStore} from "../../stores/modalStore";
+import {Modal} from "../Modals";
 
 const MenuFooter: FunctionComponent = ()  => {
 
     const wallet = usePersistentStore((state) => state.wallet);
     const updateWallet = usePersistentStore((state) => state.updateWallet);
 
-    const connect = () => {
-        updateWallet({
-            connected: true,
-            address: "secret1k0jntykt7e4g3y88ltc60czgjuqdy4c9e8fzek"
-        })
+    const setIsOpen = useModalStore((state) => state.setIsOpen);
+    const setModalTitle = useModalStore((state) => state.setTitle);
+    const setModalName = useModalStore((state) => state.setName);
+
+    const openWalletPopup = () => {
+        setModalName("select-wallet");
+        setModalTitle("Connect a wallet");
+        setIsOpen(true);
     };
 
     const [isCopied, setIsCopied] = useState(false);
@@ -106,14 +111,14 @@ const MenuFooter: FunctionComponent = ()  => {
             }
             {
                 !wallet.connected && (
-                    <button onClick={connect}
-                            className="p-3 rounded-lg w-fit text-tiny text-[#eeeeee] hover:text-[#ffffff] transition duration-150 bg-[#5596DC]/95  hover:bg-[#5596DC]"
-                    >
+                    <button onClick={openWalletPopup} className="hover:cursor-pointer p-3 rounded-lg w-fit text-tiny text-[#eeeeee] hover:text-[#ffffff] transition duration-150 bg-[#5596DC]/95  hover:bg-[#5596DC]">
                         Connect Wallet
                     </button>
+
                 )
             }
             { footerLinks }
+            <Modal />
         </div>
     );
 };
