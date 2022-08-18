@@ -254,7 +254,7 @@ const CardFooter: FunctionComponent<{ listing: Listing, setLoading: Dispatch<Set
             }
         }
         return (
-            <div className="flex w-90% h-fit">
+            <div className="flex w-90% p-1 lg:p-2 2xl:p-3 h-fit">
                 { imageDisplay }
             </div>
         )
@@ -264,9 +264,9 @@ const CardFooter: FunctionComponent<{ listing: Listing, setLoading: Dispatch<Set
     if(listing.collateral.images.length === 0) return (<></>);
     return (
         <div className="h-full w-full flex items-end">
-            <div className="my-2 p-1 w-3/4 aspect-square mx-auto relative">
+            <div className="my-2 p-1 lg:p-2 2xl:p-3 w-3/4 aspect-square mx-auto relative">
                 <div
-                    className="rounded-full z-10 bg-white absolute border big:border-2 4k:border-4 border-white border-double w-2/5 h-auto">
+                    className="rounded-full z-10 bg-white absolute border 2xl:border-2 border-white border-double w-2/5 h-auto">
                     <Image
                         src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + listing.collateral.images[0]}
                         width="100" height="100" alt={listing.collateral.name} priority={true}
@@ -274,7 +274,7 @@ const CardFooter: FunctionComponent<{ listing: Listing, setLoading: Dispatch<Set
                     />
                 </div>
                 <div
-                    className="rounded-full block w-full w-full border-double border-white border-4 default:border-6 big:border-8 4k:border-12">
+                    className="rounded-full block w-full w-full border-double border-white border-4 2xl:border-6">
                     <Image
                         layout="responsive" width="500" height="500" priority={true}
                         className="rounded-full"
