@@ -52,7 +52,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
 }
 
 #__next {
-    position: absolute;
+    position: sticky;
     width: 100%;
 }
 

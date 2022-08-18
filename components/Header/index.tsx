@@ -7,16 +7,15 @@ const Header: FunctionComponent<{ items: { left: ReactElement[], right: ReactEle
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(true);
 
+    const handleScroll = () => {
+        if(window.scrollY === 0) {
+            setDarkHeader(true);
+        } else if(window.scrollY !== 0) {
+            setDarkHeader(false);
+        }
+    };
+
     useEffect(() => {
-
-        const handleScroll = () => {
-            if(window.scrollY === 0) {
-                setDarkHeader(true);
-            } else if(window.scrollY !== 0) {
-                setDarkHeader(false);
-            }
-        };
-
         window.addEventListener('scroll', handleScroll);
 
         return () => {
