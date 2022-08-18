@@ -145,16 +145,15 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
 
     const collateralDetails: ReactElement = (
         <div className="flex flex-col w-full pt-2 mx-4">
-            <div className="flex items-center gap-x-4">
-                <h1 className="card-title text-lg lg:text-2xl font-medium">Collateralized by</h1>
-                <h1 className="text-white text-lg lg:text-2xl font-medium">1 Anon</h1>
-            </div>
-            <a href="#" className="mt-1.5 text-[#5596DC] after:content-['_↗'] font-semibold text-tiny lg:text-base hover:text-[#77abe3] transition duration-300">
-                Learn more about Anons
-            </a>
             <div className="w-full grid grid-cols-2">
-
-                <div className="w-full mt-4">
+                <div className="w-full">
+                    <div className="flex items-center gap-x-4">
+                        <h1 className="card-title text-lg lg:text-2xl font-medium">Collateralized by</h1>
+                        <h1 className="text-white text-lg lg:text-2xl font-medium">1 Anon</h1>
+                    </div>
+                    <a href="#" className="mt-1.5 text-[#5596DC] after:content-['_↗'] font-semibold text-tiny lg:text-base hover:text-[#77abe3] transition duration-300">
+                        Learn more about Anons
+                    </a>
                     <h4 className="mt-7 text-white text-lg lg:text-2xl font-medium">Anon #345</h4>
                     <p className="mt-1 text-white w-10/12 text-tiny">
                         Put some specific info about the NFT here.
