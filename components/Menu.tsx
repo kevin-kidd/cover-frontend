@@ -69,14 +69,16 @@ const menuItems = [
 const MenuItem: FunctionComponent<{ item: MenuItem, active: boolean }> = ({ item, active }) => {
 
   const isConnected = useMenuStore((state) => state.walletConnected);
+  let disabled: boolean = false;
+  if(!isConnected && item.walletRequired) disabled = true;
 
   return (
-      <Link href={item.href}>
+      <Link href={disabled ? "" : item.href}>
         <button
             className={`
               font-medium rounded-2xl flex items-center group text-white text-kindasmall 2xl:text-base w-full p-3 2xl:p-5 group
               ${ active ? "bg-[#7BBD75]" : "hover:bg-gray-700 transition duration-150" }
-              ${ !isConnected && item.walletRequired ? "hover:cursor-default hover:bg-transparent text-gray-400" : null}
+              ${ disabled ? "hover:cursor-default hover:bg-transparent text-gray-400" : null}
             `}
         >
           <svg
@@ -84,7 +86,7 @@ const MenuItem: FunctionComponent<{ item: MenuItem, active: boolean }> = ({ item
               className={`
                 flex-shrink-0 mr-4 h-7 w-5 2xl:h-8 2xl:w-6
                 ${ active ? "fill-[#303C4A]" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] transition duration-150" }
-                ${ !isConnected && item.walletRequired ? "fill-gray-400" : null }
+                ${ disabled ? "fill-gray-400" : null }
               `}
           >
             { item.icon.path }
@@ -195,7 +197,7 @@ const MenuFooter: FunctionComponent = () => {
   if(walletConnected) {
     return (
         <div className="flex items-end">
-          <div className="bg-gray-700 p-4 border-r-2 border-b-2 border-gray-800 w-full">
+          <div className="bg-[#28333e] p-4 border-r-2 border-b-2 border-gray-800 w-full">
             <div className="grid grid-cols-4 flex items-center">
               <div
                   className="col-span-1 mx-auto bg-gray-900 flex rounded-full hover:cursor-pointer w-2/3 h-auto"
