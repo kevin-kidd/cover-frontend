@@ -39,7 +39,7 @@ const HomePage: NextPage = () => {
           <Head>
               <title>Home - Cover</title>
           </Head>
-          <main className="relative h-screen">
+          <main className="w-screen">
               <Menu activeTitle={"Explore"} />
               <div ref={containerRef} className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
                   <Header items={items} />
