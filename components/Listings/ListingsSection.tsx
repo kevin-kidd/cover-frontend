@@ -120,11 +120,11 @@ const SectionHeader: FunctionComponent<{displayToggles: boolean}> = ({ displayTo
 };
 
 
-export const ListingsSection: FunctionComponent<{ listings: Listing[], title?: string, displayToggles: boolean }> = ({ listings, title, displayToggles}) => {
+export const ListingsSection: FunctionComponent<{ listings: Listing[], title?: string, displayFilters: boolean }> = ({ listings, title, displayFilters}) => {
   return (
     <div className="border-t border-black mb-4 lg:mb-8 w-full px-3">
       <SectionTitle title={title} />
-      <SectionHeader displayToggles={displayToggles} />
+      <SectionHeader displayToggles={displayFilters} />
         <div className="
             justify-center items-center w-full my-4 lg:my-6
             grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 md:gap-x-4 xl:gap-x-8

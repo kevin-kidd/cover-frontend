@@ -42,8 +42,8 @@ const MyPage: NextPage = () => {
               <div className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
                   <Header items={items} />
                   <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-20">
-                      <ListingsSection listings={listings} title={"My Listings (All)"} displayToggles={true} />
-                      <ListingsSection listings={listings} title={"Listings With My Positions"} displayToggles={false} />
+                      <ListingsSection listings={listings} title={"My Listings (All)"} displayFilters={false} />
+                      <ListingsSection listings={listings} title={"Listings With My Positions"} displayFilters={false} />
                   </div>
               </div>
           </main>

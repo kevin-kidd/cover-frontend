@@ -8,7 +8,7 @@ import exampleListings from "../exampleListings.json";
 // Components
 import Menu from "../components/Menu";
 import { ToggleButton } from "../components/Header/ToggleButton";
-import { SettingsWidget, PriceWidget } from "../components/Header/Widgets";
+import { SettingsWidget } from "../components/Header/Widgets";
 import Header from "../components/Header";
 import {ListingsSection} from "../components/Listings/ListingsSection";
 
@@ -45,8 +45,8 @@ const HomePage: NextPage = () => {
               <div ref={containerRef} className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
                   <Header items={items} />
                   <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-20">
-                      <ListingsSection listings={featuredListings} title={"Featured Listings (All)"} displayToggles={false} />
-                      <ListingsSection listings={selectedListings} displayToggles={true} />
+                      <ListingsSection listings={featuredListings} title={"Featured Listings (All)"} displayFilters={false} />
+                      <ListingsSection listings={selectedListings} displayFilters={true} />
                   </div>
               </div>
           </main>

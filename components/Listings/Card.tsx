@@ -26,7 +26,7 @@ type Snip721DisplayProps = {
 const CardTitle: FunctionComponent<{cardType: string}> = ({cardType}) => {
   return (
       <div className="border-b border-[#8B98FF] w-full pt-1.5 pb-1 flex justify-center">
-        <p className="card-title text-sm sm:text-tiny xl:text-base font-semibold">
+        <p className="card-title text-sm sm:text-tiny xl:text-base font-medium">
           { cardType === "borrow" ? "Asking to Borrow" : "Offering to Lend" }
         </p>
       </div>
