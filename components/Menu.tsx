@@ -1,10 +1,11 @@
-import { FunctionComponent, useRef } from "react"
-import Image from 'next/image'
-import { Transition } from '@headlessui/react'
-import { useMenuStore } from "../states/MenuState";
-import { MenuFooter } from "./MenuFooter"
+import {FunctionComponent, useRef, useState} from "react";
+import Image from "next/image"
+import { Transition } from "@headlessui/react";
+import { useMenuStore } from "../stores/Menu";
 import { useOnClickOutside } from "../functions/helper";
-import logo from "../assets/logo.svg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logo from "../assets/logo.svg";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const menuItems = [
   {
@@ -61,16 +62,16 @@ const menuItems = [
       path: <path d="M464 96h-192l-64-64h-160C21.5 32 0 53.5 0 80v352C0 458.5 21.5 480 48 480h416c26.5 0 48-21.5 48-48v-288C512 117.5 490.5 96 464 96zM336 311.1h-56v56C279.1 381.3 269.3 392 256 392c-13.27 0-23.1-10.74-23.1-23.1V311.1H175.1C162.7 311.1 152 301.3 152 288c0-13.26 10.74-23.1 23.1-23.1h56V207.1C232 194.7 242.7 184 256 184s23.1 10.74 23.1 23.1V264h56C349.3 264 360 274.7 360 288S349.3 311.1 336 311.1z" />
     }
   }
-]
+];
 
 const Menu: FunctionComponent = () => {
 
-  const setOpen = useMenuStore((state) => state.setOpen)
-  const mobileMenuRef = useRef<HTMLDivElement>()
-  useOnClickOutside(mobileMenuRef, () => setOpen(false))
+  const setOpen = useMenuStore((state) => state.setOpen);
+  const mobileMenuRef = useRef<HTMLDivElement>();
+  useOnClickOutside(mobileMenuRef, () => setOpen(false));
 
-  const isOpen = useMenuStore((state) => state.isOpen)
-  const toggleMenu = useMenuStore((state) => state.toggleMenu)
+  const isOpen = useMenuStore((state) => state.isOpen);
+  const toggleMenu = useMenuStore((state) => state.toggleMenu);
 
     return (
       <>
@@ -86,7 +87,7 @@ const Menu: FunctionComponent = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-[#1A2128] bg-opacity-75"></div>
+            <div className="fixed inset-0 bg-[#1A2128] bg-opacity-75" />
               <div className="fixed inset-0 flex z-40">
                 <div className="grid grid-rows-8 gap-4 max-w-xs w-full bg-[#1A2128]" ref={mobileMenuRef}>
                   <div onClick={() => toggleMenu()} className="flex row-span-1 justify-end pr-5 pt-5">
@@ -125,13 +126,13 @@ const Menu: FunctionComponent = () => {
                   <MenuFooter />
                 </div>
               </div>
-            <div className="flex-shrink-0 w-14" aria-hidden="true"></div>
+            <div className="flex-shrink-0 w-14" aria-hidden="true" />
           </Transition>
         </div>
 
         {/* Desktop */}
 
-        <div className="hidden sticky left-0 top-0 lg:flex lg:flex-col lg:h-screen">
+        <div className="hidden bottom-0 top-0 sticky lg:flex lg:flex-col h-screen">
             <div className="flex-1 grid grid-rows-6 min-h-0 bg-[#1A2128]">
                 <div className="row-span-1 flex items-center justify-center min-h-20 flex-shrink-0 bg-[#1A2128] w-1/2 mx-auto relative">
                   <Image
@@ -139,8 +140,7 @@ const Menu: FunctionComponent = () => {
                     layout="fill"
                     src={logo}
                     className="h-fit w-auto"
-                    alt="Cover"
-                  />
+                    alt="Cover" />
                 </div>
                 <div className="row-span-4 flex flex-col justify-center items-center overflow-y-auto">
                     <nav className="space-y-2 xl:space-y-4 default:space-y-5 4k:space-y-10 w-fit big:w-3/4">
@@ -177,6 +177,75 @@ const Menu: FunctionComponent = () => {
         </div>
       </>
     )
-}
+};
+
+const MenuFooter: FunctionComponent = () => {
+
+  const [hoverExit, setHoverExit] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const walletConnected = useMenuStore((state) => state.walletConnected);
+  const setWalletConnected = useMenuStore((state) => state.setWalletConnected);
+
+  const secretAddress = "secret18ld7zwzkgsfv9z6phqhlsft9prjysulpdq950z";
+
+  if(walletConnected) {
+    return (
+        <div className="row-span-1 flex items-end">
+          <div className="bg-gray-700 p-4 border-r-2 border-b-2 border-gray-800 w-full">
+            <div className="grid grid-cols-4 flex items-center">
+              <div
+                  className="col-span-1 mx-auto bg-gray-900 flex justify-center rounded-full hover:cursor-pointer w-2/3 h-full"
+                  onClick={() => setWalletConnected(false)}
+                  onMouseEnter={() => setHoverExit(true)} onMouseLeave={() => setHoverExit(false)}
+              >
+                <FontAwesomeIcon icon={faSignOutAlt} className={`mx-auto p-2 default:p-4 big:p-6 4k:p-8 h-auto w-auto transition duration-150 ${hoverExit ? "text-gray-400" : "text-gray-500"}`} />
+              </div>
+              <div className="col-span-3 mr-3 lg:mr-5 4k:mr-12">
+                <div className="has-tooltip hover:cursor-pointer w-full flex justify-center"
+                     onClick={() => {
+                       document.addEventListener('copy', function(e) {
+                         e.clipboardData.setData('text/plain', secretAddress);
+                         e.preventDefault();
+                       }, true);
+
+                       document.execCommand('copy');
+                       setIsCopied(true);
+                     }}
+                     onMouseLeave={() => setIsCopied(false)}>
+                  <span className={`tooltip rounded shadow-lg p-1 px-2 bg-gray-200 text-black -mt-9 default:-mt-10 big:-mt-14 4k:-mt-20 text-kindasmall default:text-base big:text-2xl 4k:text-4xl`}>{isCopied ? "Copied!" : "Copy to clipboard"}</span>
+                  <p className="text-kindasmaller xl:text-kindasmall default:text-lg big:text-2xl 4k:text-4xl font-medium text-white truncate">{ secretAddress }</p>
+                </div>
+                <p
+                    className={`text-tiny default:text-kindasmall big:text-lg 4k:text-2xl font-medium hover:cursor-pointer  transition duration-150 ${hoverExit ? "text-gray-300" : "text-gray-400"}`}
+                    onClick={() => setWalletConnected(false)}
+                    onMouseEnter={() => setHoverExit(true)}
+                    onMouseLeave={() => setHoverExit(false)}
+                >
+                  Disconnect wallet
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    )
+  }
+  return (
+      <div className="row-span-1 flex justify-center mb-5 px-8 mx-2 md:px-6">
+        <div className="flex items-center justify-center">
+          <button
+              onClick={() => setWalletConnected(true)}
+              className="
+                  p-4 desktop:p-5 big:p-7 4k:p-10
+                  rounded-lg desktop:rounded-xl big:rounded-2xl 4k:rounded-2xl
+                  text-kindasmall desktop:text-base default:text-xl big:text-3xl 4k:text-5xl
+                  bg-[#5596DC] text-white font-medium transition duration-150 hover:bg-[#66a0df]"
+          >
+            Connect Wallet
+          </button>
+        </div>
+      </div>
+  )
+};
 
 export default Menu

@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect } from "react";
-import { useHomeStore } from "../../states/HomeState";
+import { useHomeStore } from "../../stores/Home";
 import { AdvancedButton } from "./AdvancedButton";
 import { BorrowCard } from "./BorrowCard"
 import { CollateralDenomBox } from "./CollateralDenomBox";
@@ -8,8 +8,8 @@ import { PrincipalDenomBox } from "./PrincipalDenomBox"
 
 export const NFTLendingListings: FunctionComponent = () => {
 
-  const listings = useHomeStore((state) => state.selectedListings)
-  const setSelectedListings = useHomeStore((state) => state.setSelectedListings)
+  const listings = useHomeStore((state) => state.selectedListings);
+  const setSelectedListings = useHomeStore((state) => state.setSelectedListings);
 
   useEffect(() => {
     setTimeout(() => {
@@ -86,16 +86,16 @@ export const NFTLendingListings: FunctionComponent = () => {
         ]
       )
     }, 5000)
-  }, [])
+  }, [setSelectedListings]);
 
   return (
     <>
-      <div className="w-11/12 2xl:w-4/5 py-5 sm:pt-6 sm:pb-8 border-b border-black w-full mx-auto">
+      <div className="w-11/12 2xl:w-4/5 py-5 sm:pt-6 sm:pb-8 w-full mx-auto">
         <div className="flex justify-between items-center">
           <h1 className="text-md sm:text-lg default:text-xl big:text-2xl 4k:text-4xl font-medium text-white ml-6">
             NFT Lending Listings
           </h1>
-          <a href="#" className="items-center mr-6 mt-1 font-medium text-red-500 hover:text-[#f16060] transition duration-150 text-tiny sm:text-kindasmall default:text-base big:text-xl 4k:text-2xl">
+          <a href="#" className="items-center mr-6 mt-1 font-medium text-red-500 transition duration-150 text-tiny sm:text-kindasmall default:text-base big:text-xl 4k:text-2xl">
             All Listings
           </a>
         </div>
@@ -113,11 +113,15 @@ export const NFTLendingListings: FunctionComponent = () => {
         </div>
         {/* Desktop */}
         <div className="hidden sm:grid grid-cols-5 justify-center items-center w-full md:gap-x-12 mt-4">
-          <div className="col-span-2 justify-center flex">
-            <PrincipalDenomBox />
+          <div className="col-span-2 flex justify-center">
+            <div className="w-full sm:w-5/6 sm:h-10 big:h-12 4k:h-16 h-8">
+              <PrincipalDenomBox />
+            </div>
           </div>
           <div className="col-span-2 flex">
-            <CollateralDenomBox />
+            <div className="w-full sm:w-5/6 sm:h-10 big:h-12 4k:h-16 h-8">
+              <CollateralDenomBox />
+            </div>
           </div>
           <div className="col-span-1 flex">
             <AdvancedButton />
@@ -141,4 +145,4 @@ export const NFTLendingListings: FunctionComponent = () => {
       </div>
     </>
   )
-}
+};

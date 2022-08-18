@@ -1,13 +1,13 @@
-import { FunctionComponent, useState, useRef } from "react";
-import { useMenuStore } from "../../states/MenuState";
+import { FunctionComponent } from "react";
+import { useMenuStore } from "../../stores/Menu";
 import { ListingTypeToggle } from "./ListingTypeToggle";
 import { TokenTypeToggle } from "./TokenTypeToggle";
 import { CogIcon } from '@heroicons/react/solid'
 
 const DashboardHeader: FunctionComponent = () => {
-  const toggleMenu = useMenuStore((state) => state.toggleMenu)
+  const toggleMenu = useMenuStore((state) => state.toggleMenu);
 
-  const darkHeader = true
+  const darkHeader = true;
 
 
   return (
@@ -33,6 +33,6 @@ const DashboardHeader: FunctionComponent = () => {
         </div>
       </div>
   )
-}
+};
 
 export default DashboardHeader

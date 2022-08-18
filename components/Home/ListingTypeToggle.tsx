@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
-import { useHomeStore } from "../../states/HomeState";
+import { useHomeStore } from "../../stores/Home";
 
 export const ListingTypeToggle: FunctionComponent = () => {
 
-    const listingToggleActive = useHomeStore((state) => state.listingToggleActive)
-    const listingToggle = useHomeStore((state) => state.listingToggle)
+    const listingToggleActive = useHomeStore((state) => state.listingToggleActive);
+    const listingToggle = useHomeStore((state) => state.listingToggle);
 
     return (
       <>
@@ -26,4 +26,4 @@ export const ListingTypeToggle: FunctionComponent = () => {
         </div>
       </>
     )
-}
+};

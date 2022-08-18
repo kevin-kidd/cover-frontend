@@ -1,5 +1,4 @@
 import create from 'zustand'
-import { FeaturedListings } from '../components/Home/FeaturedListings'
 
 export interface Listing {
   isPartiallyFunded?: boolean,
@@ -48,11 +47,11 @@ export const useHomeStore = create<HomeState>()((set) => ({
   listingToggleActive: true,
   tokenToggleActive: true,
   loading: true,
-  setLoading: (by) => set((state) => ({ loading: by })),
+  setLoading: (by) => set(() => ({ loading: by })),
   listingToggle: () => set((state) => ({ listingToggleActive: !state.listingToggleActive })),
   tokenToggle: () => set((state) => ({ tokenToggleActive: !state.tokenToggleActive })),
-  setFeaturedListings: (by: Listing[]) => set((state) => ({ featuredListings: by })),
-  setSelectedListings: (by: Listing[]) => set((state) => ({ selectedListings: by })),
+  setFeaturedListings: (by: Listing[]) => set(() => ({ featuredListings: by })),
+  setSelectedListings: (by: Listing[]) => set(() => ({ selectedListings: by })),
   featuredListings: [
     {
       isPartiallyFunded: false,
@@ -185,4 +184,4 @@ export const useHomeStore = create<HomeState>()((set) => ({
       returnPercentage: 0
     }
   ]
-}))
+}));

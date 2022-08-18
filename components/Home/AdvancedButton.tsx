@@ -10,4 +10,4 @@ export const AdvancedButton: FunctionComponent = () => {
       Advanced
     </button>
   )
-}
+};

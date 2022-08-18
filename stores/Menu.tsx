@@ -14,5 +14,5 @@ export const useMenuStore = create<MenuState>()((set) => ({
     toggleMenu: () => set((state) => ({ isOpen: !state.isOpen })),
     setOpen: (by) => set(() => ({ isOpen: by })),
     setWalletConnected: (by) => set(() => ({ walletConnected: by }))
-}))
+}));
 

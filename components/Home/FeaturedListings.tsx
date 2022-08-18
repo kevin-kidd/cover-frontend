@@ -1,11 +1,11 @@
 import { FunctionComponent, useEffect } from "react";
-import { useHomeStore } from "../../states/HomeState";
+import { useHomeStore } from "../../stores/Home";
 import { LendCard } from "./LendCard";
 
 export const FeaturedListings: FunctionComponent = () => {
 
-  const listings = useHomeStore((state) => state.featuredListings)
-  const setFeaturedListings = useHomeStore((state) => state.setFeaturedListings)
+  const listings = useHomeStore((state) => state.featuredListings);
+  const setFeaturedListings = useHomeStore((state) => state.setFeaturedListings);
 
   useEffect(() => {
     setTimeout(() => {
@@ -84,7 +84,7 @@ export const FeaturedListings: FunctionComponent = () => {
         }
       ])
     }, 5000)
-  }, [])
+  }, [setFeaturedListings]);
 
   return (
     <>
@@ -93,7 +93,7 @@ export const FeaturedListings: FunctionComponent = () => {
           <h1 className="text-md sm:text-lg default:text-xl big:text-2xl 4k:text-4xl font-medium text-white ml-6">
             Featured Listings (All)
           </h1>
-          <a href="#" className="items-center mr-6 mt-1 font-medium text-red-500 hover:text-[#f16060] transition duration-150 text-tiny sm:text-kindasmall default:text-base big:text-xl 4k:text-2xl">
+          <a href="#" className="items-center mr-6 mt-1 font-medium text-red-500 transition duration-150 text-tiny sm:text-kindasmall default:text-base big:text-xl 4k:text-2xl">
             All Listings
           </a>
         </div>
@@ -115,4 +115,4 @@ export const FeaturedListings: FunctionComponent = () => {
       </div>
     </>
   )
-}
+};

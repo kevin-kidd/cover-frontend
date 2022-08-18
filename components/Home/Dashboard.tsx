@@ -4,7 +4,7 @@ import { FeaturedListings } from "./FeaturedListings"
 import { NFTLendingListings } from "./NFTLendingListings"
 
 const Dashboard: FunctionComponent = () => {
-  const [darkHeader, setDarkHeader] = useState(false)
+  const [darkHeader, setDarkHeader] = useState(false);
   
     return (
       <div className="flex flex-col justify-center w-full">
@@ -13,6 +13,6 @@ const Dashboard: FunctionComponent = () => {
         <NFTLendingListings />
       </div>
     )
-}
+};
 
 export default Dashboard

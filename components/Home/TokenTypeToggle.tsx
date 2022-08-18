@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
-import { useHomeStore } from "../../states/HomeState";
+import { useHomeStore } from "../../stores/Home";
 
 export const TokenTypeToggle: FunctionComponent = () => {
 
-  const tokenToggleActive = useHomeStore((state) => state.tokenToggleActive)
-  const tokenToggle = useHomeStore((state) => state.tokenToggle)
+  const tokenToggleActive = useHomeStore((state) => state.tokenToggleActive);
+  const tokenToggle = useHomeStore((state) => state.tokenToggle);
 
     return (
       <>
@@ -26,4 +26,4 @@ export const TokenTypeToggle: FunctionComponent = () => {
         </div>
       </>
     )
-}
+};
