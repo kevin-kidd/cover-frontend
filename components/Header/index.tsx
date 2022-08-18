@@ -9,19 +9,6 @@ type Items = {
     }
 }
 
-const throttle = (callbackFn, limit) => {
-    let wait = false;
-    return function () {
-        if (!wait) {
-            callbackFn.call();
-            wait = true;
-            setTimeout(function () {
-                wait = false;
-            }, limit);
-        }
-    }
-};
-
 const Header: FunctionComponent<Items> = ({ items }) => {
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(true);
@@ -35,16 +22,16 @@ const Header: FunctionComponent<Items> = ({ items }) => {
     };
 
     useEffect(() => {
-        document.addEventListener('scroll', throttle(handleScroll, 100), { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => {
-            document.removeEventListener('scroll', throttle(handleScroll, 100));
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
     return (
         <div className={classNames(
             "top-0 px-4 z-20 py-2 sm:py-4 w-full sticky flex flex-row lg:transition lg:duration-300",
-            darkHeader ? "lg:bg-transparent lg:backdrop-blur-none" : "bg-[#1A2128]/75 backdrop-blur"
+            darkHeader ? "bg-transparent backdrop-blur-none" : "bg-[#1A2128]/75 backdrop-blur"
         )}>
             <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none lg:hidden ml-2 sm:ml-6">
                 <span className="sr-only">Open sidebar</span>
