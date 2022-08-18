@@ -3,16 +3,52 @@
 @tailwind utilities;
 
 * {
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
     width: 100%;
     height: 100%;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+/* target the active bullet */
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: white;
+    opacity: 1;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 body:before {
@@ -44,8 +80,8 @@ body:before {
 
 .toggle-active {
     background: #FFFFFF;
-    border: 0.872092px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 84.0708px 67.2566px rgba(0, 0, 0, 0.03), 0px 54.4903px 39.3887px rgba(0, 0, 0, 0.0227778), 0px 32.3828px 21.4225px rgba(0, 0, 0, 0.0182222), 0px 16.8142px 10.9292px rgba(0, 0, 0, 0.015), 0px 6.85021px 5.48017px rgba(0, 0, 0, 0.0117778), 0px 1.55687px 2.64667px rgba(0, 0, 0, 0.00722222);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 84px 67px rgba(0, 0, 0, 0.03), 0 54px 39px rgba(0, 0, 0, 0.0227778), 0 32px 21px rgba(0, 0, 0, 0.0182222), 0 17px 11px rgba(0, 0, 0, 0.015), 0 7px 5px rgba(0, 0, 0, 0.0117778), 0 2px 3px rgba(0, 0, 0, 0.00722222);
     border-radius: 13px;
 }
 
@@ -81,7 +117,7 @@ body:before {
     -webkit-text-fill-color: transparent;
 }
 .progress-bar {
-    background: linear-gradient(90deg, rgba(125, 255, 216, 0.66) 0%, rgba(64, 152, 255, 0.66) 338.51%)
+    background: linear-gradient(90deg, rgba(125, 255, 216, 0.66) 0%, rgba(64, 152, 255, 0.66) 338.51%);
 }
 
 .progress-bar-track {
@@ -102,7 +138,7 @@ body:before {
     border-radius: 6px;
     overflow: hidden;
     z-index:0;
-  }
+}
 
 .search-box:before {
     content: '';
@@ -115,26 +151,24 @@ body:before {
     border-radius: 6px;
     box-sizing: border-box;
     z-index: -1;
-  }
+}
 
-  .search-tooltip h1 {
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid #626fb4; /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    letter-spacing: .05em; /* Adjust as needed */
-    animation: 
-      typing 2.25s steps(40, end),
-      blink-caret .75s step-end infinite;
-  }
-  
-  /* The typing effect */
-  @keyframes typing {
+.search-tooltip h1 {
+overflow: hidden; /* Ensures the content is not revealed until the animation */
+border-right: .15em solid #626fb4; /* The typwriter cursor */
+white-space: nowrap; /* Keeps the content on a single line */
+letter-spacing: .05em; /* Adjust as needed */
+animation:
+  typing 2.25s steps(40, end),
+  blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
     from { width: 0 }
     to { width: 100% }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
+}
+
+@keyframes blink-caret {
     from, to { border-color: transparent }
     50% { border-color: #626fb4; }
-  }
+}

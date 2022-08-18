@@ -1,32 +1,32 @@
 import create from 'zustand'
 
-export interface Listing {
-  isPartiallyFunded?: boolean,
+export type Listing = {
+  isPartiallyFunded?: boolean
   borrowing?: {
-    type: string,
-    amount: number,
-    image?: string,
-    icon?: string,
-    name: string,
+    type: string
+    amount: number
+    image?: string
+    icon?: string
+    name: string
     estimatedValue?: number
   },
   lending?: {
-    type: string,
-    estimatedValue?: number,
-    amount: number,
-    image: string,
-    icon?: string,
-    total?: number,
+    type: string
+    estimatedValue?: number
+    amount: number
+    image: string
+    icon?: string
+    total?: number
     name: string
   },
   collateral: {
-    type: string,
-    name: string,
-    image: string,
-    icon?: string,
+    type: string
+    name: string
+    images: string[]
+    icon?: string
     amount: number
   },
-  duration: string,
+  duration: string
   returnPercentage: number
 }
 
@@ -43,6 +43,41 @@ interface HomeState {
   tokenToggle: () => void
 }
 
+const emptyLoanListing = {
+  isPartiallyFunded: false,
+  lending: {
+    type: "",
+    image: "",
+    amount: 0,
+    name: ""
+  },
+  collateral: {
+    type: "",
+    images: [],
+    name: "",
+    amount: 0
+  },
+  duration: "",
+  returnPercentage: 0
+};
+const emptyBorrowListing = {
+  borrowing: {
+    type: "",
+    amount: 0,
+    name: "",
+  },
+  collateral: {
+    type: "",
+    name: "",
+    images: [],
+    amount: 0
+  },
+  duration: "",
+  returnPercentage: 0
+};
+let emptyLoans: Listing[] = [emptyLoanListing, emptyLoanListing, emptyLoanListing, emptyLoanListing];
+let emptyBorrows: Listing[] = [emptyBorrowListing, emptyBorrowListing, emptyBorrowListing, emptyBorrowListing];
+
 export const useHomeStore = create<HomeState>()((set) => ({
   listingToggleActive: true,
   tokenToggleActive: true,
@@ -52,136 +87,6 @@ export const useHomeStore = create<HomeState>()((set) => ({
   tokenToggle: () => set((state) => ({ tokenToggleActive: !state.tokenToggleActive })),
   setFeaturedListings: (by: Listing[]) => set(() => ({ featuredListings: by })),
   setSelectedListings: (by: Listing[]) => set(() => ({ selectedListings: by })),
-  featuredListings: [
-    {
-      isPartiallyFunded: false,
-      lending: {
-        type: "",
-        image: "",
-        amount: 0,
-        name: ""
-      },
-      collateral: {
-        type: "",
-        image: "",
-        name: "",
-        amount: 0
-      },
-      duration: "",
-      returnPercentage: 0
-    },
-    {
-      isPartiallyFunded: false,
-      lending: {
-        type: "",
-        image: "",
-        amount: 0,
-        name: ""
-      },
-      collateral: {
-        type: "",
-        image: "",
-        name: "",
-        amount: 0
-      },
-      duration: "",
-      returnPercentage: 0
-    },
-    {
-      isPartiallyFunded: false,
-      lending: {
-        type: "",
-        image: "",
-        amount: 0,
-        name: ""
-      },
-      collateral: {
-        type: "",
-        image: "",
-        name: "",
-        amount: 0
-      },
-      duration: "",
-      returnPercentage: 0
-    },
-    {
-      isPartiallyFunded: false,
-      lending: {
-        type: "",
-        image: "",
-        amount: 0,
-        name: ""
-      },
-      collateral: {
-        type: "",
-        name: "",
-        image: "",
-        amount: 0
-      },
-      duration: "",
-      returnPercentage: 0
-    }
-  ],
-  selectedListings: [
-    {
-      borrowing: {
-        type: "",
-        amount: 0,
-        name: "",
-      },
-      collateral: {
-        type: "",
-        name: "",
-        image: "",
-        amount: 0
-      },
-      duration: "",
-      returnPercentage: 0
-    },
-    {
-      borrowing: {
-        type: "",
-        amount: 0,
-        name: "",
-      },
-      collateral: {
-        type: "",
-        name: "",
-        image: "",
-        amount: 0
-      },
-      duration: "",
-      returnPercentage: 0
-    },
-    {
-      borrowing: {
-        type: "",
-        amount: 0,
-        name: "",
-      },
-      collateral: {
-        type: "",
-        name: "",
-        image: "",
-        amount: 0
-      },
-      duration: "",
-      returnPercentage: 0
-    },
-    {
-      borrowing: {
-        type: "",
-        amount: 0,
-        name: "",
-      },
-      collateral: {
-        type: "",
-        name: "",
-        image: "",
-        amount: 0
-      },
-      duration: "",
-      returnPercentage: 0
-    }
-  ]
+  featuredListings: emptyLoans,
+  selectedListings: emptyBorrows
 }));

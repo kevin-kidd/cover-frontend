@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect } from "react";
 import { useHomeStore } from "../../stores/Home";
 import { LendCard } from "./LendCard";
+import exampleListings from "../../exampleListings.json";
 
 export const FeaturedListings: FunctionComponent = () => {
 
@@ -9,80 +10,7 @@ export const FeaturedListings: FunctionComponent = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setFeaturedListings([
-        {
-          isPartiallyFunded: true,
-          lending: {
-            type: "snip20",
-            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sATOM.svg",
-            amount: 3600,
-            total: 10000,
-            name: "sATOM"
-          },
-          collateral: {
-            type: "snip20",
-            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sSCRT.svg",
-            name: "sSCRT",
-            amount: 18
-          },
-          duration: "1 month, and 3 weeks",
-          returnPercentage: 5
-        },
-        {
-          isPartiallyFunded: false,
-          lending: {
-            type: "snip20",
-            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sSCRT.svg",
-            amount: 4500,
-            estimatedValue: 4500,
-            name: "sSCRT"
-          },
-          collateral: {
-            type: "snip721",
-            image: "https://stashhappstorage.blob.core.windows.net/collection-assets/secret1hu0nwzzxlrwks7pn0rslmgsk7kcx0s0kgztq22_icon_1639929050903.jpg",
-            name: "Anons",
-            amount: 2
-          },
-          duration: "3 months",
-          returnPercentage: 6
-        },
-        {
-          isPartiallyFunded: false,
-          lending: {
-            type: "snip20",
-            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sSCRT.svg",
-            amount: 3500,
-            estimatedValue: 3600,
-            name: "sSCRT"
-          },
-          collateral: {
-            type: "snip20",
-            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sXMR.svg",
-            name: "sXMR",
-            amount: 21.432
-          },
-          duration: "1 month, and 3 days",
-          returnPercentage: 7
-        },
-        {
-          isPartiallyFunded: true,
-          lending: {
-            type: "snip20",
-            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sUSDT.svg",
-            amount: 2100,
-            total: 4000,
-            name: "sUSDT"
-          },
-          collateral: {
-            type: "snip20",
-            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sATOM.svg",
-            name: "sATOM",
-            amount: 0.05
-          },
-          duration: "2 weeks",
-          returnPercentage: 5
-        }
-      ])
+      setFeaturedListings(exampleListings.featured);
     }, 5000)
   }, [setFeaturedListings]);
 
@@ -97,11 +25,11 @@ export const FeaturedListings: FunctionComponent = () => {
             All Listings
           </a>
         </div>
-        <div className="pt-4 4k:pt-10 sm:pt-4 sm:px-8">
+        <div className="py-4 4k:pt-10 sm:pt-4 sm:px-8">
           <div className="
             justify-center items-center grid
-            grid-cols-2 sm:grid-cols-4 gap-4 w-full
-            sm:gap-x-1 md:gap-x-2 lg:gap-x-4 desktop:gap-x-14 big:gap-x-20
+            grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full
+            gap-x-10 sm:gap-x-16 md:gap-x-2 lg:gap-x-4 desktop:gap-x-14 big:gap-x-20
           ">
             <>
               {

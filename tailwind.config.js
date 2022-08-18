@@ -3,7 +3,8 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./public/**/*.{svg,png,webp}"
+    "./public/**/*.{svg,png,webp}",
+    "./node_modules/flowbite-react/**/*.js"
   ],
   theme: {
     fontSize: {
@@ -52,6 +53,7 @@ module.exports = {
     },
   },
   plugins: [
-     require('@tailwindcss/forms')
+    require('@tailwindcss/forms'),
+    require('flowbite/plugin')
   ],
-}
+};

@@ -132,7 +132,7 @@ const Menu: FunctionComponent = () => {
 
         {/* Desktop */}
 
-        <div className="hidden bottom-0 top-0 sticky lg:flex lg:flex-col h-screen">
+        <div className="hidden sticky top-0 left-0 col-span-1 lg:flex lg:flex-col h-screen">
             <div className="flex-1 grid grid-rows-6 min-h-0 bg-[#1A2128]">
                 <div className="row-span-1 flex items-center justify-center min-h-20 flex-shrink-0 bg-[#1A2128] w-1/2 mx-auto relative">
                   <Image
