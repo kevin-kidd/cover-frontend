@@ -1,17 +1,25 @@
 import create from 'zustand'
 import {Listing} from "../types/general";
 
+export type HomeConfig = {
+  id: number;
+  tokenToggle: string;
+  listingToggle: string;
+}
+
 type HomeState = {
-  listingToggleActive: boolean
-  tokenToggleActive: boolean
   loading: boolean
   featuredListings: Listing[]
   selectedListings: Listing[]
   setSelectedListings: (by: Listing[]) => void
   setFeaturedListings: (by: Listing[]) => void
   setLoading: (by: boolean) => void
-  toggleListing: () => void
-  toggleToken: () => void
+  toggles: {
+    tokenType: string
+    listingType: string
+  }
+  toggleListing: (by: string) => void
+  toggleToken: (by: string) => void
 }
 
 const emptyLoanListing = {
@@ -53,13 +61,16 @@ const emptyBorrowListing = {
 let emptyLoans: Listing[] = [emptyLoanListing, emptyLoanListing, emptyLoanListing, emptyLoanListing];
 let emptyBorrows: Listing[] = [emptyBorrowListing, emptyBorrowListing, emptyBorrowListing, emptyBorrowListing];
 
+
 export const useHomeStore = create<HomeState>()((set) => ({
-  listingToggleActive: true,
-  tokenToggleActive: true,
+  toggles: {
+    tokenType: "NFTs",
+    listingType: "Lend"
+  },
   loading: true,
   setLoading: (by) => set(() => ({ loading: by })),
-  toggleListing: () => set((state) => ({ listingToggleActive: !state.listingToggleActive })),
-  toggleToken: () => set((state) => ({ tokenToggleActive: !state.tokenToggleActive })),
+  toggleListing: (by: string) => set((state) => ({ toggles: { ...state.toggles, listingType: by } })),
+  toggleToken: (by: string) => set((state) => ({ toggles: { ...state.toggles, tokenType: by } })),
   setFeaturedListings: (by: Listing[]) => set(() => ({ featuredListings: by })),
   setSelectedListings: (by: Listing[]) => set(() => ({ selectedListings: by })),
   featuredListings: emptyLoans,

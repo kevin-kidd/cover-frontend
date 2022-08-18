@@ -119,9 +119,9 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 w-sidebar bg-[#1A2128] bg-opacity-75" />
+            <div className="fixed inset-0 w-full bg-[#1A2128] bg-opacity-75" />
               <div className="fixed inset-0 flex z-40">
-                <div className="flex flex-col overflow-x-hidden overflow-y-auto gap-4 max-w-xs pb-6 w-full bg-[#1A2128]" ref={mobileMenuRef}>
+                <div className="flex flex-col overflow-x-hidden overflow-y-auto gap-4 max-w-sidebar pb-6 w-full bg-[#1A2128]" ref={mobileMenuRef}>
                   <div onClick={() => toggleMenu()} className="flex row-span-1 justify-end pr-5 pt-5">
                     <button type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Close sidebar</span>
@@ -251,7 +251,7 @@ const MenuFooter: FunctionComponent = () => {
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="flex-shrink-0 fill-white w-6 h-6">
         <path d="M461.2 128H80c-8.84 0-16-7.16-16-16s7.16-16 16-16h384c8.84 0 16-7.16 16-16 0-26.51-21.49-48-48-48H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h397.2c28.02 0 50.8-21.53 50.8-48V176c0-26.47-22.78-48-50.8-48zM416 336c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/>
       </svg>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-fit lg:w-full">
         <div className="hover:cursor-pointer has-tooltip flex justify-center" onMouseLeave={() => setIsCopied(false)}
             onClick={() => {
               document.addEventListener('copy', function(e) {

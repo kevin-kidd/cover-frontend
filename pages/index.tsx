@@ -20,7 +20,7 @@ const HomePage: NextPage = () => {
         setTimeout(() => {
             setSelectedListings(exampleListings.lend.nft);
             setFeaturedListings(exampleListings.featured);
-        }, 5000)
+        }, 5000);
     }, [setSelectedListings, setFeaturedListings]);
 
     return (

@@ -27,7 +27,8 @@ module.exports = {
         "sidebar": "13rem"
       },
       maxWidth: {
-        '3/4': '75%'
+        '3/4': '75%',
+        "sidebar": "13rem"
       }
     },
   },

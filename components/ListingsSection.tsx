@@ -69,14 +69,14 @@ const AdvancedButton: FunctionComponent = () => {
 };
 
 const SectionTitle: FunctionComponent<{title?: string}> = ({ title }) => {
-  const loanType = useHomeStore((state) => state.listingToggleActive);
-  const tokenType = useHomeStore((state) => state.tokenToggleActive);
+  const listingType = useHomeStore((state) => state.toggles.listingType);
+  const tokenType = useHomeStore((state) => state.toggles.tokenType);
 
   if(title === undefined) {
-      if(loanType && tokenType) title = "NFT Lending Listings";
-      else if(!loanType && tokenType) title = "NFT Borrowing Listings";
-      else if(loanType && !tokenType) title = "Token Lending Listings";
-      else if(!loanType && !tokenType) title = "Token Borrowing Listings";
+      if(listingType === "Lend" && tokenType === "NFTs") title = "NFT Lending Listings";
+      else if(listingType === "Lend" && tokenType === "Tokens") title = "Token Lending Listings";
+      if(listingType === "Borrow" && tokenType === "NFTs") title = "NFT Borrowing Listings";
+      else if(listingType === "Borrow" && tokenType === "Tokens") title = "Token Borrowing Listings";
   }
 
   return (
