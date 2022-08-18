@@ -263,8 +263,8 @@ const CardFooter: FunctionComponent<{ listing: Listing, setLoading: Dispatch<Set
     {/* Lending Card */}
     if(listing.collateral.images.length === 0) return (<></>);
     return (
-        <div className="h-full w-full flex items-end">
-            <div className="my-2 p-1 lg:p-2 2xl:p-3 w-3/4 aspect-square mx-auto relative">
+        <div className="h-full w-full p-2 lg:p-3 2xl:p-4 flex items-end">
+            <div className="my-2 w-3/4 aspect-square mx-auto relative">
                 <div
                     className="rounded-full z-10 bg-white absolute border 2xl:border-2 border-white border-double w-2/5 h-auto">
                     <Image
