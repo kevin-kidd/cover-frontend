@@ -3,6 +3,7 @@ import { useHomeStore } from "../../stores/Home";
 import { Card } from "./Card";
 import Typed from "react-typed";
 import {Listing} from "../../types/general";
+import {usePersistentStore} from "../../stores/Persistent";
 
 const DenomSearchBox: FunctionComponent<{type: string}> = ({ type }) => {
 
@@ -28,15 +29,14 @@ const DenomSearchBox: FunctionComponent<{type: string}> = ({ type }) => {
                     <Typed
                         typedRef={(typed) => { typedInstance = typed }}
                         strings={[tooltip, placeholder]}
-                        className="text-[#B2BFCD] group-hover:text-[#c1ccd7] text-xs sm:text-sm w-full px-3"
+                        className="text-[#B2BFCD] text-xs sm:text-sm w-full px-3"
                         onComplete={() => setTooltipOpen(!tooltipOpen)}
                         typeSpeed={25}
                         backSpeed={20}
                     />
                     :
                     <input type="text" maxLength={12} placeholder={placeholder}
-                       className="placeholder-[#B2BFCD] text-[#c1ccd7] text-xs sm:text-sm
-                        group-hover:placeholder-[#c1ccd7] focus:ring-0 border-0 w-full bg-transparent"
+                       className="placeholder-[#B2BFCD] text-[#c1ccd7] text-xs sm:text-sm focus:ring-0 border-0 w-full bg-transparent"
                     />
                 }
                 <svg
@@ -69,19 +69,18 @@ const AdvancedButton: FunctionComponent = () => {
 };
 
 const SectionTitle: FunctionComponent<{title?: string}> = ({ title }) => {
-  const listingType = useHomeStore((state) => state.toggles.listingType);
-  const tokenType = useHomeStore((state) => state.toggles.tokenType);
+  const tokenToggle = usePersistentStore((state) => state.config.toggles.tokenToggle);
+  const listingToggle = usePersistentStore((state) => state.config.toggles.listingToggle);
 
   if(title === undefined) {
-      if(listingType === "Lend" && tokenType === "NFTs") title = "NFT Lending Listings";
-      else if(listingType === "Lend" && tokenType === "Tokens") title = "Token Lending Listings";
-      if(listingType === "Borrow" && tokenType === "NFTs") title = "NFT Borrowing Listings";
-      else if(listingType === "Borrow" && tokenType === "Tokens") title = "Token Borrowing Listings";
+      title = `${tokenToggle === "Tokens" ? "Token" : "NFT"} ${listingToggle}ing Listings`
   }
 
   return (
       <div className="flex justify-between items-end pt-4 px-1 sm:px-2 md:px-3 xl:px-6">
-          <h1 className="text-tiny md:text-base xl:text-lg font-medium text-white">{ title }</h1>
+          <h1 className="text-tiny md:text-base xl:text-lg font-medium text-white">
+              { title }
+          </h1>
           <a href="#" className="mt-1 font-medium text-red-500 transition duration-150 text-sm lg:text-tiny 2xl:text-base">
               All Listings
           </a>

@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 import {useEffect, useState} from "react";
 
 type Config = {
-    home: {
+    toggles: {
         tokenToggle: string;
         listingToggle: string;
     }
@@ -18,10 +18,11 @@ type PersistentState = {
     config: Config
     wallet: Wallet
     updateWallet: (payload: Wallet) => void
+    updateConfig: (payload: Object) => void
 };
 
 const initialConfig = {
-    home: {
+    toggles: {
         tokenToggle: "NFTs",
         listingToggle: "Lend"
     }
@@ -38,7 +39,13 @@ const store = (set) => ({
             connected: payload.connected,
             address: payload.address
         }
-    })
+    }),
+    updateConfig: (payload: Object) => set((state) => ({
+        config: {
+            ...state.config,
+            ...payload
+        }
+    }))
 });
 
 const usePersistedStore = create((
@@ -52,15 +59,16 @@ const usePersistedStore = create((
 
 const emptyState: PersistentState = {
     config: {
-        home: {
-            tokenToggle: undefined,
-            listingToggle: undefined
+        toggles: {
+            tokenToggle: "NFTs",
+            listingToggle: "Lend"
         }
     },
     wallet: {
         connected: true,
         address: undefined
     },
+    updateConfig: () => { return },
     updateWallet: () => { return }
 };
 

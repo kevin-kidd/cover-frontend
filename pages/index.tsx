@@ -29,7 +29,7 @@ const HomePage: NextPage = () => {
 
     const items = {
         left: [PriceWidget({ coin: "SCRT" })],
-        right: [ToggleButton({ type: "token" }), ToggleButton({ type: "listing-type" }), SettingsWidget({ page: "test" })]
+        right: [ToggleButton({ type: "tokenToggle" }), ToggleButton({ type: "listingToggle" }), SettingsWidget({ page: "test" })]
     };
 
     const containerRef = useRef(null);
