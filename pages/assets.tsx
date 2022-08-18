@@ -4,7 +4,7 @@ import Menu from "../components/Menu";
 import Header from "../components/Header";
 import {SettingsWidget} from "../components/Header/Widgets";
 import {ToggleButton} from "../components/Header/ToggleButton";
-import {usePersistentStore} from "../stores/Persistent";
+import {usePersistentStore} from "../stores/PersistentStore";
 import {AssetsFilters, ImportButton} from "../components/Assets/Filters";
 import {TokensTable} from "../components/Assets/TokensTable";
 

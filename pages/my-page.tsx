@@ -3,12 +3,12 @@ import Head from "next/head";
 import Menu from "../components/Menu";
 import Header from "../components/Header";
 import {ListingsSection} from "../components/Listings/ListingsSection";
-import {useHomeStore} from "../stores/Home";
+import {useHomeStore} from "../stores/HomeStore";
 import {useEffect} from "react";
 import exampleListings from "../exampleListings.json";
 import { useRouter } from "next/router";
 import {SettingsWidget} from "../components/Header/Widgets";
-import {usePersistentStore} from "../stores/Persistent";
+import {usePersistentStore} from "../stores/PersistentStore";
 
 
 const MyPage: NextPage = () => {

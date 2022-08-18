@@ -1,6 +1,6 @@
 import {FunctionComponent, useEffect, useState} from "react";
 import classNames from "classnames";
-import {usePersistentStore} from "../../stores/Persistent";
+import {usePersistentStore} from "../../stores/PersistentStore";
 
 const toggleData = {
     tokenToggle: {
@@ -11,6 +11,9 @@ const toggleData = {
     },
     myTokensToggle: {
         names: ["NFTs", "Tokens"]
+    },
+    createListingToggle: {
+        names: ["Lending", "Borrow"]
     }
 };
 
@@ -32,10 +35,10 @@ export const ToggleButton: FunctionComponent<{type: string}> = ({ type }) => {
     useEffect(() => {
         for(const toggleType of Object.keys(toggles)) {
             if(toggleType === type) {
-                const data = toggleData[toggleType];
+                const names = toggleData[toggleType].names;
                 const state = toggles[toggleType];
-                const index = data.names.findIndex((element) => element === state);
-                setSelectedToggle({ activeId: index >= 0 ? index : 0, toggleNames: data.names, type: toggleType });
+                const index = names.findIndex((element) => element === state);
+                setSelectedToggle({ activeId: index >= 0 ? index : 0, toggleNames: names, type: toggleType });
             }
         }
     }, [toggles, type]);

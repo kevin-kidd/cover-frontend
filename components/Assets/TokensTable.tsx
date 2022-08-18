@@ -2,6 +2,7 @@ import {FunctionComponent, ReactElement} from "react";
 import Image from "next/image";
 import {Asset} from "../../types/general";
 import { ExternalLinkIcon, XIcon } from "@heroicons/react/solid";
+import {useModalStore} from "../../stores/ModalStore";
 
 const tableHeader: ReactElement = (
     <div className="w-full bg-black/75 rounded-xl py-2">
@@ -27,6 +28,47 @@ const tableHeader: ReactElement = (
 
 const TableItem: FunctionComponent<Asset> = ({ assetData, isImported })  => {
 
+    const setIsOpen = useModalStore((state) => state.setIsOpen);
+    const setModalTitle = useModalStore((state) => state.setTitle);
+    const setModalName = useModalStore((state) => state.setName);
+    const setAsset = useModalStore((state) => state.setAsset);
+
+    const openPopup = (type: string) => {
+        if(type === "wrap") {
+            setModalName("wrap-asset");
+            setModalTitle("Wrap/Unwrap " + assetData.name);
+            setAsset({
+                name: {
+                    wrapped: assetData.name,
+                    unwrapped: assetData.name.slice(1)
+                },
+                address: "secrettest123"
+            });
+        } else if(type === "deposit") {
+            setModalName("deposit-asset");
+            setModalTitle("Deposit and Wrap IBC Asset");
+            setAsset({
+                name: {
+                    wrapped: assetData.name,
+                    unwrapped: assetData.name.slice(1)
+                },
+                address: "secrettest123"
+            });
+        } else if(type === "withdraw") {
+            setModalName("withdraw-asset");
+            setModalTitle("Withdraw and Unwrap IBC Asset");
+            setAsset({
+                name: {
+                    wrapped: assetData.name,
+                    unwrapped: assetData.name.slice(1)
+                },
+                address: "secrettest123"
+            });
+        }
+
+        setIsOpen(true);
+    };
+
     const assetName: ReactElement = (
         <>
             { assetData.icon && (
@@ -50,13 +92,13 @@ const TableItem: FunctionComponent<Asset> = ({ assetData, isImported })  => {
         <>
             { assetData.type === "token" && (
                 <>
-                    <p className="text-[#7BBD75] text-sm hidden md:block cursor-pointer">
+                    <p className="text-[#7BBD75] text-sm hidden md:block cursor-pointer" onClick={() => { openPopup("wrap") }}>
                         Wrap to { assetData.name }
                     </p>
-                    <p className="text-[#7BBD75] text-sm hidden md:block cursor-pointer">
+                    <p className="text-[#7BBD75] text-sm hidden md:block cursor-pointer" onClick={() => { openPopup("wrap") }}>
                         Unwrap { assetData.name }
                     </p>
-                    <p className="text-[#7BBD75] text-xs md:hidden cursor-pointer">
+                    <p className="text-[#7BBD75] text-xs md:hidden cursor-pointer" onClick={() => { openPopup("wrap") }}>
                         Wrap / Unwrap
                     </p>
                 </>
@@ -64,13 +106,13 @@ const TableItem: FunctionComponent<Asset> = ({ assetData, isImported })  => {
 
             { assetData.type === "coin" && (
                 <>
-                    <p className="text-[#7BBD75] text-sm hidden md:block cursor-pointer">
+                    <p className="text-[#7BBD75] text-sm hidden md:block cursor-pointer" onClick={() => { openPopup("deposit") }}>
                         Deposit via IBC
                     </p>
-                    <p className="text-[#7BBD75] text-sm hidden md:block cursor-pointer">
+                    <p className="text-[#7BBD75] text-sm hidden md:block cursor-pointer" onClick={() => { openPopup("withdraw") }}>
                         Withdraw via IBC
                     </p>
-                    <p className="text-[#7BBD75] text-xs md:hidden cursor-pointer">
+                    <p className="text-[#7BBD75] text-xs md:hidden cursor-pointer" onClick={() => { openPopup("deposit") }}>
                         Deposit / Withdraw
                     </p>
                 </>

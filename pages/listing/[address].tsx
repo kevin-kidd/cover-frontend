@@ -10,11 +10,7 @@ import exampleListings from "../../exampleListings.json";
 import {Listing} from "../../types/general";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper";
-
-function round(value, precision) {
-    let multiplier = Math.pow(10, precision || 0);
-    return Math.round(value * multiplier) / multiplier;
-}
+import {round} from "../../functions/helper";
 
 const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
 
@@ -100,12 +96,16 @@ const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
                 <br />
                 The interest is applied incrementally
             </p>
-            <div className="tooltip tooltip-right flex justify-center tooltip-info w-full my-2 w-10/12" data-tip={loanAmount}>
-                <input type="range" min="10" max="100" value={loanPercent} step="10"
-                       onChange={updateAmount}
-                       className="range range-primary range-sm"
-                />
+            <div className="flex w-10/12 gap-x-2 items-center">
+                <p>Total:</p>
+                <div className="tooltip tooltip-right flex justify-center tooltip-info w-full my-2 w-10/12" data-tip={loanAmount}>
+                    <input type="range" min="10" max="100" value={loanPercent} step="10"
+                           onChange={updateAmount}
+                           className="range range-primary range-sm"
+                    />
+                </div>
             </div>
+
             <button className="my-3 p-4 w-fit flex items-center rounded-lg text-tiny border border-[#68E6F2]
             text-[#cccccc] hover:text-[#eeeeee] transition duration-500 hover:border-[#8eecf5]"
             >

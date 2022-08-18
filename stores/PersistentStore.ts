@@ -7,6 +7,7 @@ type Config = {
         tokenToggle: string;
         listingToggle: string;
         myTokensToggle: string;
+        createListingToggle: string;
         hideZeroBalances: boolean;
     }
 };
@@ -28,6 +29,7 @@ const initialConfig = {
         tokenToggle: "NFTs",
         listingToggle: "Lend",
         myTokensToggle: "Tokens",
+        createListingToggle: "Lending",
         hideZeroBalances: true
     }
 };
@@ -67,6 +69,7 @@ const emptyState: PersistentState = {
             tokenToggle: "NFTs",
             listingToggle: "Lend",
             myTokensToggle: "My NFTs",
+            createListingToggle: "Lending",
             hideZeroBalances: true
         }
     },

@@ -1,5 +1,5 @@
 import {FunctionComponent, ReactElement, useEffect, useState, useMemo } from "react";
-import { useMenuStore} from "../../stores/Menu";
+import { useMenuStore} from "../../stores/MenuStore";
 import classNames from "classnames";
 import {useScroll} from "framer-motion";
 

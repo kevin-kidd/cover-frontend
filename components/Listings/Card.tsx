@@ -326,7 +326,7 @@ export const Card: FunctionComponent<{ listing: Listing, index: number }> = ({ l
   if(index === 3) hiddenClass = "hidden xl:flex";
 
   return (
-      <Link href={`/listing/${listing.address}`}>
+      <Link href={loading ? "#" : `/listing/${listing.address}`}>
           <div className={`w-44 sm:w-52 h-full mx-auto ${hiddenClass} ${loading ? null : "hover:cursor-pointer"}`}>
               <div className="flex flex-col bg-[#1A2128] px-3 rounded-lg items-center shadow-sm hover:shadow-lg transition duration-300 w-full h-full">
                   <CardTitle cardType={listing.listingType} />

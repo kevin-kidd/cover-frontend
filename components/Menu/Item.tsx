@@ -1,6 +1,6 @@
 import {FunctionComponent} from "react";
 import {MenuItem} from "../../types/general";
-import {usePersistentStore} from "../../stores/Persistent";
+import {usePersistentStore} from "../../stores/PersistentStore";
 import Link from "next/link";
 import classNames from "classnames";
 

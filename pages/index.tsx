@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import {useEffect, useRef} from "react";
 
-import {useHomeStore} from "../stores/Home";
+import {useHomeStore} from "../stores/HomeStore";
 import exampleListings from "../exampleListings.json";
 
 // Components

@@ -1,9 +1,9 @@
 import { FunctionComponent, useState } from "react";
-import { useHomeStore } from "../../stores/Home";
+import { useHomeStore } from "../../stores/HomeStore";
 import { Card } from "./Card";
 import Typed from "react-typed";
 import {Listing} from "../../types/general";
-import {usePersistentStore} from "../../stores/Persistent";
+import {usePersistentStore} from "../../stores/PersistentStore";
 
 const DenomSearchBox: FunctionComponent<{type: string}> = ({ type }) => {
 
@@ -35,7 +35,7 @@ const DenomSearchBox: FunctionComponent<{type: string}> = ({ type }) => {
                         backSpeed={20}
                     />
                     :
-                    <input type="text" maxLength={12} placeholder={placeholder}
+                    <input type="text" maxLength={12} placeholder={placeholder} tabIndex={-1}
                        className="placeholder-[#B2BFCD] text-[#c1ccd7] text-xs sm:text-sm focus:ring-0 border-0 w-full bg-transparent"
                     />
                 }

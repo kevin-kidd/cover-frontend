@@ -1,5 +1,5 @@
 import {FunctionComponent} from "react";
-import {usePersistentStore} from "../../stores/Persistent";
+import {usePersistentStore} from "../../stores/PersistentStore";
 import {FolderDownloadIcon} from "@heroicons/react/solid";
 
 const SearchBox: FunctionComponent<{ tokenType: string }> = ({ tokenType }) => {

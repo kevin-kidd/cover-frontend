@@ -32,6 +32,16 @@ html {
     radial-gradient(58.06% 58.06% at 59.83% 101.66%, rgba(208, 74, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%) #303C4A;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 /* target the active bullet */
 span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     background-color: white;
@@ -90,6 +100,13 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+}
+
+.popup-asset-textbox {
+    background: radial-gradient(circle at 100% 100%, #0d1822 0, #0d1822 7px, transparent 7px) 0% 0%/8px 8px no-repeat,            radial-gradient(circle at 0 100%, #0d1822 0, #0d1822 7px, transparent 7px) 100% 0%/8px 8px no-repeat,            radial-gradient(circle at 100% 0, #0d1822 0, #0d1822 7px, transparent 7px) 0% 100%/8px 8px no-repeat,            radial-gradient(circle at 0 0, #0d1822 0, #0d1822 7px, transparent 7px) 100% 100%/8px 8px no-repeat,            linear-gradient(#0d1822, #0d1822) 50% 50%/calc(100% - 2px) calc(100% - 16px) no-repeat,            linear-gradient(#0d1822, #0d1822) 50% 50%/calc(100% - 16px) calc(100% - 2px) no-repeat,            linear-gradient(286deg, rgba(94,205,217,1) 0%, rgba(214,115,254,1) 100%);
+    border-radius: 8px;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .card-title {

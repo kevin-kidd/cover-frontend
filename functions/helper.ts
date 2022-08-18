@@ -23,3 +23,9 @@ export const useOnClickOutside = (ref: RefObject<HTMLDivElement>, handler) => {
 export const truncateAddress = (address: string) => {
   return address.replace(address.substring(11,address.length - 8), ".....")
 };
+
+
+export const round = (value, precision) => {
+    let multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+};

@@ -1,9 +1,9 @@
 import {FunctionComponent, ReactElement, useRef} from "react";
-import {useMenuStore} from "../../stores/Menu";
+import {useMenuStore} from "../../stores/MenuStore";
 import {useOnClickOutside} from "../../functions/helper";
 import {Transition} from "@headlessui/react";
 import Image from "next/image";
-import logo from "../../static/logo.svg";
+import logo from "../../public/static/logo.svg";
 import MenuFooter from "./Footer";
 import Item from "./Item";
 
@@ -55,7 +55,7 @@ const menuItems = [
     },
     {
         title: "Create",
-        href: "#",
+        href: "/create",
         walletRequired: true,
         icon: {
             viewBox: "0 0 512 512",
