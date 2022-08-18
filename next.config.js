@@ -5,4 +5,4 @@ module.exports = {
     domains: ["res.cloudinary.com", "stashhappstorage.blob.core.windows.net"]
   },
   experimental: { images: { allowFutureImage: true } }
-}
+};

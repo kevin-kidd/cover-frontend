@@ -1,0 +1,14 @@
+{
+  "secret": {
+    "mainnet": {
+      "grpc_web": "https://secret-4.api.trivium.network:9091",
+      "chain_id": "secret-4"
+    },
+    "testnet": {
+      "grpc_web": "https://grpc.testnet.secretsaturn.net",
+      "chain_id": "pulsar-2",
+      "rpc": "https://pulsar-2.api.trivium.network:26657",
+      "rest": "https://pulsar-2.api.trivium.network:1317"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import Img from "next/future/image";
 import Image from "next/image";
-import { Dispatch, FunctionComponent, SetStateAction, useState } from "react";
+import {Dispatch, FunctionComponent, ReactElement, SetStateAction, useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper";
 import { Listing } from "../../types/general";
@@ -223,7 +223,7 @@ const MultiImage: FunctionComponent<Snip721DisplayProps> = ({ images, setLoading
     );
 };
 
-const CardFooter: FunctionComponent<{ listing: Listing, setLoading: Dispatch<SetStateAction<boolean>> }> = ({ listing, setLoading }) => {
+export const CardFooter: FunctionComponent<{ listing: Listing, setLoading: Dispatch<SetStateAction<boolean>> }> = ({ listing, setLoading }) => {
     {/* Borrow Card */}
     let imageDisplay;
     if(listing.listingType === "borrow") {
@@ -275,47 +275,23 @@ const CardFooter: FunctionComponent<{ listing: Listing, setLoading: Dispatch<Set
     )
 };
 
-const CardSkeleton: FunctionComponent<{ listingType: string }> = ({ listingType }) => {
-    {/* Borrowing Card */}
-    if(listingType === "borrow") {
-        return (
-            <div className="animate-pulse flex justify-center space-x-4 w-full h-fit pt-1">
-                <div className="py-2 w-full">
-                    <div className="px-4 w-full">
-                        <div className="h-2 bg-slate-700 mt-2 sm:mt-4 rounded" />
-                        <div className="grid grid-cols-5 gap-4 mt-4">
-                            <div className="h-2 bg-slate-700 rounded col-span-3 mt-2" />
-                            <div className="h-2 bg-slate-700 rounded col-span-2 mt-2" />
-                        </div>
-                        <div className="h-2 rounded bg-slate-700 mt-4 sm:mt-6" />
-                        <div className="py-3 w-full h-full">
-                            <div className="rounded-2xl bg-slate-700 aspect-square mt-2 w-full" />
-                        </div>
-                    </div>
+const CardSkeleton: ReactElement = (
+    <div className="animate-pulse flex justify-center space-x-4 w-full pt-1">
+        <div className="pt-4 pb-2 w-full">
+            <div className="px-4 pb-1 w-full">
+                <div className="h-3 bg-slate-700 mt-1 px-4 rounded" />
+                <div className="grid grid-cols-5 gap-4 mt-4">
+                    <div className="h-2 bg-slate-700 rounded col-span-3 mt-2" />
+                    <div className="h-2 bg-slate-700 rounded col-span-2 mt-2" />
                 </div>
-            </div>
-        );
-    }
-
-    {/* Lending Card */}
-    return (
-        <div className="animate-pulse flex justify-center space-x-4 w-full pt-1">
-            <div className="py-2 w-full">
-                <div className="px-4 w-full">
-                    <div className="h-2 bg-slate-700 mt-2 sm:mt-4 rounded" />
-                    <div className="grid grid-cols-5 gap-4 mt-4">
-                        <div className="h-2 bg-slate-700 rounded col-span-3 mt-2" />
-                        <div className="h-2 bg-slate-700 rounded col-span-2 mt-2" />
-                    </div>
-                    <div className="h-2 rounded bg-slate-700 mt-4 sm:mt-6" />
-                    <div className="p-3 pb-1 w-full h-full">
-                        <div className="rounded-full bg-slate-700 aspect-square mt-2 w-full" />
-                    </div>
+                <div className="h-2 rounded bg-slate-700 mt-4 sm:mt-6 mb-3" />
+                <div className="p-3 pb-1 w-full h-full">
+                    <div className="rounded-full bg-slate-700 aspect-square mt-2 w-full" />
                 </div>
             </div>
         </div>
-    );
-};
+    </div>
+);
 
 export const Card: FunctionComponent<{ listing: Listing, index: number }> = ({ listing, index }) => {
 
@@ -329,12 +305,14 @@ export const Card: FunctionComponent<{ listing: Listing, index: number }> = ({ l
       <Link href={loading ? "#" : `/listing/${listing.address}`}>
           <div className={`w-44 sm:w-52 h-full mx-auto ${hiddenClass} ${loading ? null : "hover:cursor-pointer"}`}>
               <div className="flex flex-col bg-[#1A2128] px-3 rounded-lg items-center shadow-sm hover:shadow-lg transition duration-300 w-full h-full">
-                  <CardTitle cardType={listing.listingType} />
                   {
                       loading ?
-                          <CardSkeleton listingType={listing.listingType} />
+                          <>
+                              { CardSkeleton }
+                          </>
                           :
                           <>
+                              <CardTitle cardType={listing.listingType} />
                               <CardHeader listing={listing} />
                               <CardBody listing={listing} />
                           </>

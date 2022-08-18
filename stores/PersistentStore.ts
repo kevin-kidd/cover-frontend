@@ -15,6 +15,7 @@ type Config = {
 type Wallet = {
     connected: boolean
     address?: string
+    provider?: string
 };
 
 type PersistentState = {
@@ -34,7 +35,7 @@ const initialConfig = {
     }
 };
 
-const store = (set) => ({
+const persistentStore = (set) => ({
     config: initialConfig,
     wallet: {
         connected: false,
@@ -43,7 +44,8 @@ const store = (set) => ({
     updateWallet: (payload: Wallet) => set({
         wallet: {
             connected: payload.connected,
-            address: payload.address
+            address: payload.address,
+            provider: payload.provider
         }
     }),
     updateConfig: (payload: Object) => set((state) => ({
@@ -56,14 +58,14 @@ const store = (set) => ({
 
 const usePersistedStore = create((
     persist<PersistentState>(
-        store,
+        persistentStore,
         {
             name: "persistent-state"
         }
     )
 ));
 
-const emptyState: PersistentState = {
+const emptyPersistentState: PersistentState = {
     config: {
         toggles: {
             tokenToggle: "NFTs",
@@ -74,7 +76,7 @@ const emptyState: PersistentState = {
         }
     },
     wallet: {
-        connected: true,
+        connected: false,
         address: undefined
     },
     updateConfig: () => { return },
@@ -85,5 +87,5 @@ export const usePersistentStore = ((selector, compare) => {
     const store = usePersistedStore(selector, compare);
     const [hydrated, setHydrated] = useState(false);
     useEffect(() => setHydrated(true), []);
-    return hydrated ? store : selector(emptyState);
+    return hydrated ? store : selector(emptyPersistentState);
 }) as typeof usePersistedStore;

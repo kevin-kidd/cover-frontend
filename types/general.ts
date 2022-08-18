@@ -10,16 +10,6 @@ export type MenuItem = {
     }
 }
 
-export type Asset = {
-    assetData: {
-        name: string
-        network?: string
-        icon?: string
-        type?: string
-    }
-    isImported: boolean
-}
-
 export type Listing = {
     listingType: string
     address: string

@@ -4,18 +4,35 @@ import {useModalStore} from "../../stores/ModalStore";
 import Image from "next/image";
 import metamaskIcon from "../../public/static/metamaskIcon.svg";
 import keplrIcon from "../../public/static/keplrIcon.svg";
+import {setupWebKeplr} from "../../func/secret";
+import {useWalletStore} from "../../stores/WalletStore";
 
 export const WalletModalContent: FunctionComponent = () => {
 
-    const updateWallet = usePersistentStore((state) => state.updateWallet);
     const setIsOpen = useModalStore((state) => state.setIsOpen);
+    const updateWallet = usePersistentStore((state) => state.updateWallet);
 
-    const connect = () => {
-        updateWallet({
-            connected: true,
-            address: "secret1k0jntykt7e4g3y88ltc60czgjuqdy4c9e8fzek"
-        });
-        setIsOpen(false);
+    const setBalance = useWalletStore((state) => state.setBalance);
+    const setClient = useWalletStore((state) => state.setClient);
+
+    const connect = async (provider: string) => {
+        if(provider === "keplr") {
+            const wallet = await setupWebKeplr();
+            if(wallet.error) {
+                // TODO -- show error
+            } else {
+                setClient(wallet.client);
+                setBalance(wallet.balance);
+                updateWallet({
+                   address: wallet.client.address,
+                   connected: true,
+                   provider: "keplr"
+                });
+                setIsOpen(false);
+            }
+        } else {
+            // TODO - other wallets
+        }
     };
 
     return (
@@ -23,7 +40,7 @@ export const WalletModalContent: FunctionComponent = () => {
             <p className="text-sm pr-4">Connect with one of our supported wallet providers.</p>
             <ul className="mt-4 mb-2 space-y-3">
                 <li>
-                    <a onClick={connect}
+                    <a onClick={() => connect("keplr")}
                        className="hover:cursor-pointer transition duration-300 flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                         <Image src={keplrIcon} height="25" width="25" alt="metamask-logo" />
                         <span className="flex-1 ml-3 whitespace-nowrap">Keplr</span>
@@ -37,7 +54,7 @@ export const WalletModalContent: FunctionComponent = () => {
                 </li>
                 <li>
                     <a
-                       className="transition duration-300 flex items-center p-3 text-base font-bold rounded-lg group dark:bg-gray-700 dark:text-white">
+                       className="hover:cursor-not-allowed transition duration-300 flex items-center p-3 text-base font-bold rounded-lg group dark:bg-gray-700 dark:text-white">
                         <Image src={metamaskIcon} height="25" width="25" alt="metamask-logo" />
                         <span className="flex-1 ml-3 whitespace-nowrap">Metamask</span>
                         <span className="

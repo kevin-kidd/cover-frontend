@@ -1,9 +1,11 @@
-import {FunctionComponent, ReactElement, useState} from "react";
+import {FunctionComponent, ReactElement, useEffect, useState} from "react";
 import {usePersistentStore} from "../../stores/PersistentStore";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import Modal from "../Modals";
 import {useModalStore} from "../../stores/ModalStore";
+import {setupWebKeplr} from "../../func/secret";
+import {useWalletStore} from "../../stores/WalletStore";
 
 const MenuFooter: FunctionComponent = ()  => {
 
@@ -14,10 +16,58 @@ const MenuFooter: FunctionComponent = ()  => {
     const setModalTitle = useModalStore((state) => state.setTitle);
     const setModalName = useModalStore((state) => state.setName);
 
+    const balance = useWalletStore((state) => state.balance);
+
+    const setBalance = useWalletStore((state) => state.setBalance);
+    const setClient = useWalletStore((state) => state.setClient);
+
+
+
+    useEffect(() => {
+        const connect = async (provider: string) => {
+            if(provider === "keplr") {
+                const wallet = await setupWebKeplr();
+                if(wallet.error) {
+                    // TODO -- show error
+                } else {
+                    setClient(wallet.client);
+                    setBalance(wallet.balance);
+                    updateWallet({
+                        address: wallet.client.address,
+                        connected: true,
+                        provider: "keplr"
+                    });
+                }
+            } else {
+                // TODO - other wallets
+            }
+        };
+
+        if(wallet.connected && balance === -1) {
+            connect(wallet.provider).then(() => console.log("connected"));
+        }
+
+        window.addEventListener("keplr_keystorechange", () => {
+            connect(wallet.provider).then(() => console.log("connected"));
+        });
+
+        return () => {
+            window.removeEventListener('keplr_keystorechange', () => connect(wallet.provider));
+        }
+
+    }, [wallet, balance, setBalance, setClient, updateWallet]);
+
     const openWalletPopup = () => {
         setModalName("select-wallet");
         setModalTitle("Connect a wallet");
         setIsOpen(true);
+    };
+
+    const disconnectWallet = () => {
+        updateWallet({
+            connected: false
+        });
+        setClient(undefined);
     };
 
     const [isCopied, setIsCopied] = useState(false);
@@ -62,7 +112,7 @@ const MenuFooter: FunctionComponent = ()  => {
     );
 
     const disconnectButton: ReactElement = (
-        <button onClick={() => updateWallet({ connected: false })}
+        <button onClick={disconnectWallet}
                 className="p-3 group w-fit flex items-center rounded-lg text-tiny border border-[#5596DC]
             text-[#cccccc] hover:text-[#eeeeee] transition duration-500 hover:border-[#66a0df]"
         >
@@ -71,7 +121,7 @@ const MenuFooter: FunctionComponent = ()  => {
         </button>
     );
 
-    const balance: ReactElement = (
+    const walletInfo: ReactElement = (
         <div className="flex flex-row items-center justify-center w-full gap-x-2 px-6">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="flex-shrink-0 fill-white w-6 h-6">
                 <path d="M461.2 128H80c-8.84 0-16-7.16-16-16s7.16-16 16-16h384c8.84 0 16-7.16 16-16 0-26.51-21.49-48-48-48H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h397.2c28.02 0 50.8-21.53 50.8-48V176c0-26.47-22.78-48-50.8-48zM416 336c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/>
@@ -93,7 +143,7 @@ const MenuFooter: FunctionComponent = ()  => {
                     <p className="text-white text-sm truncate">{ wallet.address ?? "Fetching..." }</p>
                 </div>
                 <p className="text-[#cecece] text-xs">
-                    10.2 SCRT
+                    { balance === -1 ? "??" : balance } SCRT
                 </p>
             </div>
         </div>
@@ -104,7 +154,7 @@ const MenuFooter: FunctionComponent = ()  => {
             {
                 wallet.connected && (
                     <>
-                        { balance }
+                        { walletInfo }
                         { disconnectButton }
                     </>
                 )

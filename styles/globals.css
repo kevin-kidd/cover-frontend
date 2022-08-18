@@ -12,6 +12,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.Toastify__toast-theme--dark {
+    background: #1a2128 !important;
+}
+
 #__next {
     position: absolute;
     width: 100%;
@@ -98,12 +102,10 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     background: linear-gradient(90deg, #5ECDD9 0%, #8FFEA7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
 }
 
 .popup-asset-textbox {
-    background: radial-gradient(circle at 100% 100%, #0d1822 0, #0d1822 7px, transparent 7px) 0% 0%/8px 8px no-repeat,            radial-gradient(circle at 0 100%, #0d1822 0, #0d1822 7px, transparent 7px) 100% 0%/8px 8px no-repeat,            radial-gradient(circle at 100% 0, #0d1822 0, #0d1822 7px, transparent 7px) 0% 100%/8px 8px no-repeat,            radial-gradient(circle at 0 0, #0d1822 0, #0d1822 7px, transparent 7px) 100% 100%/8px 8px no-repeat,            linear-gradient(#0d1822, #0d1822) 50% 50%/calc(100% - 2px) calc(100% - 16px) no-repeat,            linear-gradient(#0d1822, #0d1822) 50% 50%/calc(100% - 16px) calc(100% - 2px) no-repeat,            linear-gradient(286deg, rgba(94,205,217,1) 0%, rgba(214,115,254,1) 100%);
+    background: radial-gradient(circle at 100% 100%, #0d1822 0, #0d1822 7px, transparent 7px) 0 0/8px 8px no-repeat,            radial-gradient(circle at 0 100%, #0d1822 0, #0d1822 7px, transparent 7px) 100% 0/8px 8px no-repeat,            radial-gradient(circle at 100% 0, #0d1822 0, #0d1822 7px, transparent 7px) 0 100%/8px 8px no-repeat,            radial-gradient(circle at 0 0, #0d1822 0, #0d1822 7px, transparent 7px) 100% 100%/8px 8px no-repeat,            linear-gradient(#0d1822, #0d1822) 50% 50%/calc(100% - 2px) calc(100% - 16px) no-repeat,            linear-gradient(#0d1822, #0d1822) 50% 50%/calc(100% - 16px) calc(100% - 2px) no-repeat,            linear-gradient(286deg, rgba(94,205,217,1) 0%, rgba(214,115,254,1) 100%);
     border-radius: 8px;
     padding: 5px;
     box-sizing: border-box;

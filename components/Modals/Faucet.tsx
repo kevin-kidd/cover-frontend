@@ -8,7 +8,7 @@ export const FaucetModal: FunctionComponent = () => {
                 Request SCRT
             </button>
             <button className="text-tiny py-2 px-4 w-full bg-black border-[#F2DC68] border rounded-lg hover:text-white duration-200 transition">
-                Request $COVER
+                Request $TEST
             </button>
             <button className="text-tiny py-2 px-4 w-full bg-black border-[#D673FE] border rounded-lg hover:text-white duration-200 transition">
                 Request NFTs

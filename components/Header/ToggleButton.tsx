@@ -13,7 +13,7 @@ const toggleData = {
         names: ["NFTs", "Tokens"]
     },
     createListingToggle: {
-        names: ["Lending", "Borrow"]
+        names: ["Lending", "Borrowing"]
     }
 };
 

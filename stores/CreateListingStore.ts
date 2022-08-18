@@ -1,90 +1,104 @@
 import create from "zustand";
 import { immer } from "zustand/middleware/immer";
+import {Token, Collection} from "./AssetStore";
 
 
-export type CREATE_LISTING_STATE = {
+export type CreateListingState = {
     principal: {
         type?: string
         amount: number
-        address?: string
-        name?: string
-        setAmount: (by: number) => void
+        token?: Token
+        nfts?: Collection
+        setType: (type: string) => void
+        setToken: (token: Token) => void
+        setAmount: (amount: number) => void
     }
     collateral: {
         type?: string
         amount: number
         address?: string
-        tokens?: number
+        token?: Token
         name?: string
-        setAmount: (by: number) => void
+        setType: (type: string) => void
+        setToken: (token: Token) => void
+        setAmount: (amount: number) => void
     }
     duration: {
         days: number
-        setDuration: (by: number) => void
+        setDuration: (duration: number) => void
     }
     misc: {
-        isFilled: boolean
+        step: number
         signedTerms: boolean
-        setIsFilled: (by: boolean) => void
-        setSignedTerms: (by: boolean) => void
+        setStep: (step: number) => void
+        setSignedTerms: (isSigned: boolean) => void
         reset: () => void
     }
     returnAmount: {
         percentage: number
-        setPercentage: (by: number) => void
+        setPercentage: (percentage: number) => void
     }
 }
 
-export const useCreateListingStore = create<CREATE_LISTING_STATE>()(
-    immer((set, get) => ({
+export const useCreateListingStore = create<CreateListingState>()(
+    immer((set) => ({
         principal: {
             amount: -1,
-            setAmount: (by: number) =>
-                set((state) => {
-                    state.principal.amount = by
-                }),
-
+            setAmount: (amount: number) => set((state) => {
+                state.principal.amount = amount
+            }),
+            setToken: (token: Token) => set((state) => {
+                state.principal.token = token
+            }),
+            setType: (type: string) => set((state) => {
+                state.principal.type = type
+            })
         },
         collateral: {
             amount: -1,
-            setAmount: (by: number) =>
-                set((state) => {
-                    state.collateral.amount = by
-                }),
+            setAmount: (amount: number) => set((state) => {
+                state.collateral.amount = amount
+            }),
+            setToken: (token: Token) => set((state) => {
+                state.collateral.token = token
+            }),
+            setType: (type: string) => set((state) => {
+                state.collateral.type = type
+            })
         },
         duration: {
             days: 3,
-            setDuration: (by: number) =>
-                set((state) => {
-                    state.duration.days = by
-                })
+            setDuration: (duration: number) => set((state) => {
+                state.duration.days = duration
+            })
         },
         misc: {
-            isFilled: false,
+            step: 0,
             signedTerms: false,
-            setIsFilled: (by: boolean) =>
-                set((state) => {
-                    state.misc.isFilled = by;
-                }),
-            setSignedTerms: (by: boolean) =>
-                set((state) => {
-                    state.misc.signedTerms = by;
-                }),
+            setStep: (step: number) => set((state) => {
+                state.misc.step = step;
+            }),
+            setSignedTerms: (isSigned: boolean) => set((state) => {
+                state.misc.signedTerms = isSigned;
+            }),
             reset: () =>
                 set((state) => {
                     state.principal.amount = -1;
                     state.collateral.amount = -1;
                     state.duration.days = 3;
-                    state.misc.isFilled = false;
+                    state.misc.step = 1;
+                    state.principal.token = undefined;
+                    state.principal.type = undefined;
+                    state.collateral.type = undefined;
+                    state.collateral.token = undefined;
                     state.misc.signedTerms = false;
                 }),
         },
         returnAmount: {
             percentage: 7,
-            setPercentage: (by: number) =>
-                set((state) => {
-                    state.returnAmount.percentage = by
-                })
+            setPercentage: (percentage: number) => set((state) => {
+                state.returnAmount.percentage = percentage
+            })
         }
     }))
 );

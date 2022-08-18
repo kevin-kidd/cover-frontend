@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Menu from "../components/Menu";
-import Header from "../components/Header";
-import {FaucetWidget, SettingsWidget} from "../components/Header/Widgets";
-import {ToggleButton} from "../components/Header/ToggleButton";
-import {usePersistentStore} from "../stores/PersistentStore";
-import {AssetsFilters, ImportButton} from "../components/Assets/Filters";
-import {TokensTable} from "../components/Assets/TokensTable";
+import Menu from "../../components/Menu";
+import Header from "../../components/Header";
+import {FaucetWidget, SettingsWidget} from "../../components/Header/Widgets";
+import {ToggleButton} from "../../components/Header/ToggleButton";
+import {usePersistentStore} from "../../stores/PersistentStore";
+import {AssetsFilters, ImportButton} from "../../components/Assets/Filters";
+import {Table} from "../../components/Assets/Table";
+import {CollectionsList} from "../../components/Assets/CollectionsList";
 
 
 const AssetsPage: NextPage = () => {
@@ -39,12 +40,7 @@ const AssetsPage: NextPage = () => {
                               </div>
                           </div>
                           <AssetsFilters tokenType={tokenType} />
-                          { tokenType === "Tokens" ?
-                              <TokensTable />
-                              :
-                              <>
-                              </>
-                          }
+                          { tokenType === "Tokens" ? <Table /> : <CollectionsList /> }
                       </div>
                   </div>
               </div>

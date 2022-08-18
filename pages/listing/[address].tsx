@@ -10,7 +10,7 @@ import exampleListings from "../../exampleListings.json";
 import {Listing} from "../../types/general";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper";
-import {round} from "../../functions/helper";
+import {round} from "../../func/helper";
 
 const ListingPage: NextPage<{ listing: Listing }> = ({ listing }) => {
 

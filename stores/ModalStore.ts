@@ -1,6 +1,6 @@
 import create from "zustand";
 
-interface Modals {
+type Modals = {
     name: string
     isOpen: boolean
     title: string

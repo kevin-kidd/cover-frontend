@@ -8,24 +8,24 @@ import {useEffect} from "react";
 import exampleListings from "../exampleListings.json";
 import { useRouter } from "next/router";
 import {FaucetWidget, SettingsWidget} from "../components/Header/Widgets";
-import {usePersistentStore} from "../stores/PersistentStore";
+import {useWalletStore} from "../stores/WalletStore";
 
 
 const MyPage: NextPage = () => {
 
     const listings = useHomeStore((state) => state.selectedListings);
     const setSelectedListings = useHomeStore((state) => state.setSelectedListings);
-    const isConnected = usePersistentStore((state) => state.wallet.connected);
+    const client = useWalletStore((state) => state.client);
     const router = useRouter();
 
     useEffect(() => {
-        if(!isConnected) {
+        if(client === undefined && typeof window !== undefined) {
             router.push("/");
         }
         setTimeout(() => {
             setSelectedListings(exampleListings.lend.nft);
-        }, 5000)
-    }, [setSelectedListings, isConnected, router]);
+        }, 5000);
+    }, [setSelectedListings, router, client]);
 
     const items = {
         left: [FaucetWidget({})],
