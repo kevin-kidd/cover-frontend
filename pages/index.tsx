@@ -28,7 +28,8 @@ const HomePage: NextPage = () => {
     }, [setSelectedListings, setFeaturedListings]);
 
     const items = {
-        left: [PriceWidget({ coin: "SCRT" })],
+        left: [],
+        // left: [PriceWidget({ coin: "SCRT" })],
         right: [ToggleButton({ type: "tokenToggle" }), ToggleButton({ type: "listingToggle" }), SettingsWidget({ page: "test" })]
     };
 
