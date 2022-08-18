@@ -70,7 +70,7 @@ export const NFTLendingListings: FunctionComponent = () => {
   return (
     <>
       <div className="py-5 sm:py-0">
-        <div className="flex justify-between ml-5 items-center sm:ml-20 md:ml-10 lg:ml-0 laptop:ml-8 tablet:ml-12">
+        <div className="flex justify-between ml-5 items-center sm:ml-20 md:ml-10 lg:ml-0 tablet:ml-8 desktop:ml-12">
           <h1 className="font-medium text-md sm:text-lg text-white">NFT Lending Listings</h1>
           <div className="items-center mr-5 sm:mr-20 md:mr-10 laptop:mr-0 tablet:mr-16 mt-1">
             <a href="#" className="font-medium text-tiny sm:text-kindasmall text-red-500 hover:text-red-400 transition duration-150">All Listings</a>
