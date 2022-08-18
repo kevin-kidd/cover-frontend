@@ -13,25 +13,25 @@ const Header: FunctionComponent<Items> = ({ items }) => {
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(true);
 
-    // const handleScroll = () => {
-    //     if(window.scrollY === 0) {
-    //         setDarkHeader(true);
-    //     } else if(window.scrollY !== 0) {
-    //         setDarkHeader(false);
-    //     }
-    // };
-    //
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll, { passive: true });
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
+    const handleScroll = () => {
+        if(window.scrollY === 0) {
+            setDarkHeader(true);
+        } else if(window.scrollY !== 0) {
+            setDarkHeader(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            document.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <div className={classNames(
-            "top-0 px-4 z-20 py-2 sm:py-4 w-full sticky flex flex-row bg-[#1A2128]/75 backdrop-blur",
-            darkHeader ? "lg:bg-transparent lg:backdrop-blur-none lg:transition lg:duration-300" : null
+            "top-0 px-4 z-20 py-2 sm:py-4 w-full sticky flex flex-row transition duration-300",
+            darkHeader ? "lg:bg-transparent lg:backdrop-blur-none" : "bg-[#1A2128]/75 backdrop-blur"
         )}>
             <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none lg:hidden ml-2 sm:ml-6">
                 <span className="sr-only">Open sidebar</span>
