@@ -13,12 +13,7 @@ const classes = {
 }
 
 export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
-
-  // const loading = useHomeStore((state) => state.loading)
-  // const setLoading = useHomeStore((state) => state.setLoading)
-
   const [loading, setLoading] = useState(true)
-
   return (
     <div className={`col-span-1 flex w-full justify-center ${loading ? null : "hover:cursor-pointer"}`}>
       <div className="flex flex-col bg-[#1A2128] w-full object-cover px-4 4k:px-10 rounded-lg big:rounded-2xl 4k:rounded-3xl items-center shadow-sm hover:shadow-2xl transition duration-300">
