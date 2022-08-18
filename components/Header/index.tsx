@@ -22,7 +22,7 @@ const Header: FunctionComponent<Items> = ({ items }) => {
     };
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true, capture: true, once: true });
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -30,8 +30,8 @@ const Header: FunctionComponent<Items> = ({ items }) => {
 
     return (
         <div className={classNames(
-            "top-0 px-4 z-20 py-2 sm:py-4 w-full sticky flex flex-row lg:transition lg:duration-300",
-            darkHeader ? "bg-transparent backdrop-blur-none" : "bg-[#1A2128]/75 backdrop-blur"
+            "top-0 px-4 z-20 py-2 sm:py-4 w-full sticky flex flex-row lg:transition lg:duration-300 bg-[#1A2128]/75 backdrop-blur",
+            darkHeader ? "lg:bg-transparent lg:backdrop-blur-none" : null
         )}>
             <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none lg:hidden ml-2 sm:ml-6">
                 <span className="sr-only">Open sidebar</span>
