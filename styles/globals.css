@@ -12,9 +12,6 @@ html {
 }
 
 #__next:before {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     content: "";
     display: block;
     position: fixed;
