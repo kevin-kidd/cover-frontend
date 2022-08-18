@@ -1,9 +1,11 @@
-import React, {Fragment, FunctionComponent, ReactElement, useEffect, useState} from "react";
+import React, {Fragment, FunctionComponent} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import {XIcon} from "@heroicons/react/solid";
 import {useModalStore} from "../../stores/ModalStore";
 import {WalletModalContent} from "./SelectWallet";
 import {DepositModal, WithdrawModal, WrapModal} from "./AssetManagement";
+import {SettingsModal} from "./Settings";
+import {FaucetModal} from "./Faucet";
 
 
 {/* LIST OF MODAL CONTENT COMPONENTS */}
@@ -12,6 +14,8 @@ const modals = {
     "wrap-asset": <WrapModal />,
     "deposit-asset": <DepositModal />,
     "withdraw-asset": <WithdrawModal />,
+    "settings": <SettingsModal />,
+    "faucet": <FaucetModal />,
     "default": <></>
 };
 
@@ -28,12 +32,12 @@ const Modal: FunctionComponent = () => {
     return (
         <Transition
             show={isOpen}
-            enter="transition duration-100 ease-out"
-            enterFrom="transform scale-95 opacity-0"
-            enterTo="transform scale-100 opacity-100"
-            leave="transition duration-75 ease-out"
-            leaveFrom="transform scale-100 opacity-100"
-            leaveTo="transform scale-95 opacity-0"
+            enter="transition-opacity duration-150"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
             as={Fragment}
         >
             <Dialog onClose={() => setIsOpen(false)} className="relative z-50 my-auto h-screen">

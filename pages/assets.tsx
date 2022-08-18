@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Menu from "../components/Menu";
 import Header from "../components/Header";
-import {SettingsWidget} from "../components/Header/Widgets";
+import {FaucetWidget, SettingsWidget} from "../components/Header/Widgets";
 import {ToggleButton} from "../components/Header/ToggleButton";
 import {usePersistentStore} from "../stores/PersistentStore";
 import {AssetsFilters, ImportButton} from "../components/Assets/Filters";
@@ -14,7 +14,7 @@ const AssetsPage: NextPage = () => {
     const tokenType = usePersistentStore((state) => state.config.toggles.myTokensToggle);
 
     const items = {
-        left: [],
+        left: [FaucetWidget({})],
         right: [ToggleButton({ type: "myTokensToggle" }), SettingsWidget({ page: "test" })]
     };
 

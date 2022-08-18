@@ -7,7 +7,7 @@ import {useHomeStore} from "../stores/HomeStore";
 import {useEffect} from "react";
 import exampleListings from "../exampleListings.json";
 import { useRouter } from "next/router";
-import {SettingsWidget} from "../components/Header/Widgets";
+import {FaucetWidget, SettingsWidget} from "../components/Header/Widgets";
 import {usePersistentStore} from "../stores/PersistentStore";
 
 
@@ -28,7 +28,7 @@ const MyPage: NextPage = () => {
     }, [setSelectedListings, isConnected, router]);
 
     const items = {
-        left: [],
+        left: [FaucetWidget({})],
         right: [SettingsWidget({ page: "test" })]
     };
 

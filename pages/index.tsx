@@ -8,7 +8,7 @@ import exampleListings from "../exampleListings.json";
 // Components
 import Menu from "../components/Menu";
 import { ToggleButton } from "../components/Header/ToggleButton";
-import { SettingsWidget } from "../components/Header/Widgets";
+import {FaucetWidget, SettingsWidget} from "../components/Header/Widgets";
 import Header from "../components/Header";
 import {ListingsSection} from "../components/Listings/ListingsSection";
 
@@ -28,8 +28,7 @@ const ExplorePage: NextPage = () => {
     }, [setSelectedListings, setFeaturedListings]);
 
     const items = {
-        left: [],
-        // left: [PriceWidget({ coin: "SCRT" })],
+        left: [FaucetWidget({})],
         right: [ToggleButton({ type: "tokenToggle" }), ToggleButton({ type: "listingToggle" }), SettingsWidget({ page: "test" })]
     };
 

@@ -65,10 +65,12 @@ export const CollateralCard: FunctionComponent = () => {
     const amount = useCreateListingStore((state) => state.collateral.amount);
     const setAmount = useCreateListingStore((state) => state.collateral.setAmount);
 
+    const createListingToggle = usePersistentStore((state) => state.config.toggles.createListingToggle);
+
     return (
         <div className="bg-[#1A2128] w-full max-w-md mx-auto rounded-lg px-10 py-6 flex flex-col items-center">
             <h2 className="card-title">
-                Offering as Collateral
+                { createListingToggle === "Lending" ? "Asking as Collateral" : "Offering as Collateral" }
             </h2>
             <div className="flex flex-col w-full my-auto items-center">
                 <TokenSearchBox />

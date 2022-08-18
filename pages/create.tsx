@@ -1,5 +1,5 @@
 import {NextPage} from "next";
-import {SettingsWidget} from "../components/Header/Widgets";
+import {FaucetWidget, SettingsWidget} from "../components/Header/Widgets";
 import Head from "next/head";
 import Menu from "../components/Menu";
 import Header from "../components/Header";
@@ -9,7 +9,7 @@ import {ToggleButton} from "../components/Header/ToggleButton";
 const CreatePage: NextPage = () => {
 
     const items = {
-        left: [],
+        left: [FaucetWidget({})],
         right: [ToggleButton({ type: "createListingToggle" }), SettingsWidget({ page: "test" })]
     };
 

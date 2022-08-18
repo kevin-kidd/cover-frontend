@@ -27,15 +27,25 @@ export const WalletModalContent: FunctionComponent = () => {
                        className="hover:cursor-pointer transition duration-300 flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                         <Image src={keplrIcon} height="25" width="25" alt="metamask-logo" />
                         <span className="flex-1 ml-3 whitespace-nowrap">Keplr</span>
-                        <span
-                            className="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400">Recommended</span>
+                        <span className="
+                            inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs
+                            font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400
+                        ">
+                            Recommended
+                        </span>
                     </a>
                 </li>
                 <li>
-                    <a onClick={connect}
-                       className="hover:cursor-pointer transition duration-300 flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                    <a
+                       className="transition duration-300 flex items-center p-3 text-base font-bold rounded-lg group dark:bg-gray-700 dark:text-white">
                         <Image src={metamaskIcon} height="25" width="25" alt="metamask-logo" />
                         <span className="flex-1 ml-3 whitespace-nowrap">Metamask</span>
+                        <span className="
+                            inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs
+                            font-medium rounded bg-gray-800 text-gray-400
+                        ">
+                            Coming Soon
+                        </span>
                     </a>
                 </li>
             </ul>

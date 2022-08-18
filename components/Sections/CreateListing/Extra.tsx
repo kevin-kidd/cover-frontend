@@ -2,12 +2,15 @@ import React, {FunctionComponent} from "react";
 import {useCreateListingStore} from "../../../stores/CreateListingStore";
 import {Transition} from "@headlessui/react";
 import {round} from "../../../functions/helper";
+import {usePersistentStore} from "../../../stores/PersistentStore";
 
 
-export const TermsCard: FunctionComponent<{ type: string }> = ({ type }) => {
+export const TermsCard: FunctionComponent = () => {
 
     const createListingState = useCreateListingStore((state) => state);
     let misc = createListingState.misc;
+
+    const createListingToggle = usePersistentStore((state) => state.config.toggles.createListingToggle);
 
     return (
         <Transition
@@ -24,7 +27,7 @@ export const TermsCard: FunctionComponent<{ type: string }> = ({ type }) => {
                 <h2 className="card-title pb-5">Terms & Conditions</h2>
 
                 <p className="text-white w-full text-center text-sm mb-2">
-                    { type === "Borrowing" ?
+                    { createListingToggle === "Borrowing" ?
                         <>
                             You agree to pay the lender
                             <span className="font-semibold">
@@ -60,7 +63,7 @@ export const TermsCard: FunctionComponent<{ type: string }> = ({ type }) => {
     )
 };
 
-export const ApproveCard: FunctionComponent<{ type: string }> = ({ type }) => {
+export const ApproveCard: FunctionComponent = () => {
 
     const misc = useCreateListingStore((state) => state.misc);
 
