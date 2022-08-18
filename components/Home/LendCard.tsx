@@ -25,9 +25,11 @@ type LendCardProps = {
 
 export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
 
+  const roundedCollateral = Math.round(listing.collateral.amount)
+
   return (
     <div className="col-span-1 lg:row-span-1">
-      <div className="flex flex-col bg-[#1A2128] rounded-lg shadow-xl items-center px-4 w-52 h-80">
+      <div className="flex flex-col bg-[#1A2128] rounded-lg shadow-xl items-center px-4 min-w-52 h-80">
         <div className="border-b border-[#8B98FF] pt-3 pb-2 w-full flex justify-center">
           <p className="card-title text-sm">Offering to Lend</p>
         </div>
@@ -76,17 +78,27 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
             </>
             :
             <>
-              <p className="pl-2 text-white text-sm -mb-0.5">{listing.collateral.amount} {listing.collateral.name}</p>
-              <p className="pl-2 card-collateral text-xs">per {listing.lending.name}.</p>
+            {
+              listing.collateral.amount < 1 ? 
+              <>
+                <p className="pl-2 text-white text-sm -mb-0.5">1 {listing.collateral.name}</p>
+                <p className="pl-2 card-collateral text-xs">per {1 / listing.collateral.amount} {listing.lending.name}.</p>
+              </>
+              :
+              <>
+                <p className="pl-2 text-white text-sm -mb-0.5">{roundedCollateral === listing.collateral.amount ? `${listing.collateral.amount}` : `~${roundedCollateral}`} {listing.collateral.name}</p>
+                <p className="pl-2 card-collateral text-xs">per {listing.lending.name}.</p>
+              </>
+            }
             </>
           }
 
         </div>
         <div className="mb-5 mt-5 rounded-full border-8 border-white border-double">
           <div className="rounded-full bg-white w-10 h-10 border-white border-3 -ml-1 absolute -mt-2">
-            <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full w-full h-full" alt={listing.lending.name} />
+            <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full w-full h-full" alt={listing.collateral.name} />
           </div>
-          <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full h-24 w-24 bg-white" alt={listing.collateral.name} />
+          <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full h-24 w-24 bg-white" alt={listing.lending.name} />
         </div>
       </div>
     </div>
