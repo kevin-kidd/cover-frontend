@@ -23,7 +23,7 @@ const Header: FunctionComponent<Items> = ({ items }) => {
         let scrollHeight = scrollY.get();
         if(scrollHeight > 5 && !darkHeader) setDarkHeader(true);
         else if(scrollHeight <= 5 && darkHeader) setDarkHeader(false);
-    }, 200), [scrollY, darkHeader]);
+    }, 100), [scrollY, darkHeader]);
 
     useEffect(() => {
         scrollY.onChange(update);
