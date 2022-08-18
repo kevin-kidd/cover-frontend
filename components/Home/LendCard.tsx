@@ -45,9 +45,6 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                     <div className="h-2 4k:h-4 bg-slate-700 rounded 4k:rounded-2xl col-span-2 mt-2 4k:mt-6"></div>
                   </div>
                   <div className="h-2 4k:h-4 rounded 4k:rounded-2xl bg-slate-700 mt-4 sm:mt-6 4k:mt-10"></div>
-                  <div className="p-2 sm:p-4 big:p-10 4k:p-12 w-full h-full">
-                    <div className="rounded-full bg-slate-700 aspect-square mt-2 w-full h-auto"></div>
-                  </div>
                 </div>
               </div>
           </>
