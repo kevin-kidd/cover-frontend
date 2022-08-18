@@ -31,7 +31,7 @@ const Header: FunctionComponent<Items> = ({ items }) => {
     return (
         <div className={classNames(
             "top-0 px-4 z-20 py-2 sm:py-4 w-full sticky flex flex-row bg-[#1A2128]/75 backdrop-blur",
-            darkHeader ? "sm:bg-transparent sm:backdrop-blur-none transition duration-300" : null
+            darkHeader ? "lg:bg-transparent lg:backdrop-blur-none lg:transition lg:duration-300" : null
         )}>
             <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none lg:hidden ml-2 sm:ml-6">
                 <span className="sr-only">Open sidebar</span>
