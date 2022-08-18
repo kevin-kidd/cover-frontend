@@ -18,8 +18,8 @@ export const useOnClickOutside = (ref: RefObject<HTMLDivElement>, handler) => {
       },
       [ref, handler]
     );
-}
+};
 
 export const truncateAddress = (address: string) => {
   return address.replace(address.substring(11,address.length - 8), ".....")
-}
+};
