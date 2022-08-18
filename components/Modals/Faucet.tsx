@@ -11,7 +11,7 @@ export const FaucetModal: FunctionComponent = () => {
                 Request $COVER
             </button>
             <button className="text-tiny py-2 px-4 w-full bg-black border-[#D673FE] border rounded-lg hover:text-white duration-200 transition">
-                Request Anons
+                Request NFTs
             </button>
         </div>
     )
