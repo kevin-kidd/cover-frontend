@@ -11,7 +11,7 @@ export const FeaturedListings: FunctionComponent = () => {
         type: "snip20",
         amount: 3600,
         total: 10000,
-        estimatedValue: null,
+        estimatedValue: 3600,
         name: "sATOM"
       },
       collateral: {
