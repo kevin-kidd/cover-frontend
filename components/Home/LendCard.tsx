@@ -49,7 +49,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
 
   return (
     <div className={`col-span-1 lg:row-span-1 ${loading ? null : "hover:cursor-pointer"}`}>
-      <div className="flex flex-col bg-[#1A2128] rounded-lg items-center px-4 sm:min-w-52 sm:w-full w-64 h-80 shadow-sm hover:shadow-2xl transition duration-300">
+      <div className="flex flex-col bg-[#1A2128] rounded-lg items-center px-4 sm:min-w-52 sm:w-full w-60 h-80 shadow-sm hover:shadow-2xl transition duration-300">
         <div className="border-b border-[#8B98FF] pt-3 pb-2 w-full flex justify-center">
           <p className="card-title text-sm">Offering to Lend</p>
         </div>
