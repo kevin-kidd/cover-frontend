@@ -97,38 +97,38 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
     return (
         <>
             {/* Mobile */}
-            {/*<div className="lg:hidden absolute h-screen z-40 w-0" role="dialog" aria-modal="true">*/}
-            {/*    <Transition*/}
-            {/*        show={isOpen}*/}
-            {/*        as="div"*/}
-            {/*        enter="transition-opacity duration-150"*/}
-            {/*        enterFrom="opacity-0"*/}
-            {/*        enterTo="opacity-100"*/}
-            {/*        leave="transition-opacity duration-150"*/}
-            {/*        leaveFrom="opacity-100"*/}
-            {/*        leaveTo="opacity-0"*/}
-            {/*    >*/}
-            {/*        <div className="fixed inset-0 w-full bg-[#1A2128] bg-opacity-75" />*/}
-            {/*        <div className="fixed inset-0 flex z-40">*/}
-            {/*            <div className="flex flex-col overflow-x-hidden overflow-y-auto max-w-sidebar pb-6 w-full bg-[#1A2128]" ref={mobileMenuRef}>*/}
-            {/*                <div onClick={() => toggleMenu()} className="flex row-span-1 justify-end pr-5 pt-5">*/}
-            {/*                    <button type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">*/}
-            {/*                        <span className="sr-only">Close sidebar</span>*/}
-            {/*                        <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">*/}
-            {/*                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />*/}
-            {/*                        </svg>*/}
-            {/*                    </button>*/}
-            {/*                </div>*/}
-            {/*                { Logo }*/}
-            {/*                <div className="h-full flex flex-col justify-between">*/}
-            {/*                    { Nav }*/}
-            {/*                    <MenuFooter />*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*        <div className="flex-shrink-0 w-14" aria-hidden="true" />*/}
-            {/*    </Transition>*/}
-            {/*</div>*/}
+            <div className="lg:hidden absolute h-screen z-40 w-0" role="dialog" aria-modal="true">
+                <Transition
+                    show={isOpen}
+                    as="div"
+                    enter="transition-opacity duration-150"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="transition-opacity duration-150"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
+                    <div className="fixed inset-0 w-full bg-[#1A2128] bg-opacity-75" />
+                    <div className="fixed inset-0 flex z-40">
+                        <div className="flex flex-col overflow-x-hidden overflow-y-auto max-w-sidebar pb-6 w-full bg-[#1A2128]" ref={mobileMenuRef}>
+                            <div onClick={() => toggleMenu()} className="flex row-span-1 justify-end pr-5 pt-5">
+                                <button type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                                    <span className="sr-only">Close sidebar</span>
+                                    <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            { Logo }
+                            <div className="h-full flex flex-col justify-between">
+                                { Nav }
+                                <MenuFooter />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex-shrink-0 w-14" aria-hidden="true" />
+                </Transition>
+            </div>
 
             {/* Desktop */}
 
