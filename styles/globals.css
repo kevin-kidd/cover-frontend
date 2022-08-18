@@ -11,6 +11,24 @@ html {
     scroll-behavior: smooth;
 }
 
+#__next:before {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background-size: cover;
+    background: radial-gradient(95.26% 95.26% at 3.92% 4.74%, rgba(113, 187, 55, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(66.94% 90.71% at 95.87% 33.06%, rgba(65, 201, 244, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+    radial-gradient(58.06% 58.06% at 59.83% 101.66%, rgba(208, 74, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%) #303C4A;
+}
+
 /* target the active bullet */
 span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     background-color: white;
@@ -45,25 +63,6 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-#__next:before {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    content: "";
-    display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-    background-size: cover;
-    background-attachment: scroll;
-    background: radial-gradient(95.26% 95.26% at 3.92% 4.74%, rgba(113, 187, 55, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
-    radial-gradient(66.94% 90.71% at 95.87% 33.06%, rgba(65, 201, 244, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
-    radial-gradient(58.06% 58.06% at 59.83% 101.66%, rgba(208, 74, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%) #303C4A;
 }
 
 .tooltip{
