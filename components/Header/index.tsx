@@ -9,7 +9,7 @@ type Items = {
     }
 }
 
-const Header: FunctionComponent = ({ items }: Items) => {
+const Header: FunctionComponent<Items> = ({ items }) => {
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(true);
 

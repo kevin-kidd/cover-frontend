@@ -42,7 +42,7 @@ const HomePage: NextPage = () => {
           <main className="relative h-screen">
               <Menu activeTitle={"Explore"} />
               <div ref={containerRef} className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
-                  <Header items={items} containerRef={containerRef} />
+                  <Header items={items} />
                   <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-20">
                       <ListingsSection listings={featuredListings} title={"Featured Listings (All)"} displayToggles={false} />
                       <ListingsSection listings={selectedListings} displayToggles={true} />
