@@ -7,8 +7,7 @@ import {round} from "../../../functions/helper";
 export const TermsCard: FunctionComponent<{ type: string }> = ({ type }) => {
 
     const createListingState = useCreateListingStore((state) => state);
-
-    let misc = type === "Borrowing" ? createListingState.borrowing.misc : createListingState.borrowing.misc; // TODO
+    let misc = createListingState.misc;
 
     return (
         <Transition
@@ -29,17 +28,17 @@ export const TermsCard: FunctionComponent<{ type: string }> = ({ type }) => {
                         <>
                             You agree to pay the lender
                             <span className="font-semibold">
-                                { " " + createListingState.borrowing.principal.amount} sSCRT
+                                { " " + createListingState.principal.amount} sSCRT
                             </span>
                             {" "} (principal) + up to
                             <span className="font-semibold">
                                 {" " +
                                     round(
-                                        createListingState.borrowing.principal.amount * (createListingState.returnAmount.percentage / 100),
+                                        createListingState.principal.amount * (createListingState.returnAmount.percentage / 100),
                                         2
                                     ).toFixed(2)
                                 } sSCRT
-                            </span> (interest) in at most <span className="font-semibold">{ createListingState.borrowing.duration.days } days</span>.
+                            </span> (interest) in at most <span className="font-semibold">{ createListingState.duration.days } days</span>.
                             The interest owed is applied in hourly increments. If you fail to repay the loan, you will lose your collateral.
                         </>
                         :
@@ -63,9 +62,7 @@ export const TermsCard: FunctionComponent<{ type: string }> = ({ type }) => {
 
 export const ApproveCard: FunctionComponent<{ type: string }> = ({ type }) => {
 
-    const borrowingMisc = useCreateListingStore((state) => state.borrowing.misc);
-
-    let misc = type === "Borrowing" ? borrowingMisc : borrowingMisc; // TODO
+    const misc = useCreateListingStore((state) => state.misc);
 
     return (
         <Transition

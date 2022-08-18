@@ -3,36 +3,31 @@ import { immer } from "zustand/middleware/immer";
 
 
 export type CREATE_LISTING_STATE = {
-    lending?: {
-
+    principal: {
+        type?: string
+        amount: number
+        address?: string
+        name?: string
+        setAmount: (by: number) => void
     }
-    borrowing?: {
-        principal: {
-            type?: string
-            amount: number
-            address?: string
-            name?: string
-            setAmount: (by: number) => void
-        }
-        collateral: {
-            type?: string
-            amount: number
-            address?: string
-            tokens?: number
-            name?: string
-            setAmount: (by: number) => void
-        }
-        duration: {
-            days: number
-            setDuration: (by: number) => void
-        }
-        misc: {
-            isFilled: boolean
-            signedTerms: boolean
-            setIsFilled: (by: boolean) => void
-            setSignedTerms: (by: boolean) => void
-            reset: () => void
-        }
+    collateral: {
+        type?: string
+        amount: number
+        address?: string
+        tokens?: number
+        name?: string
+        setAmount: (by: number) => void
+    }
+    duration: {
+        days: number
+        setDuration: (by: number) => void
+    }
+    misc: {
+        isFilled: boolean
+        signedTerms: boolean
+        setIsFilled: (by: boolean) => void
+        setSignedTerms: (by: boolean) => void
+        reset: () => void
     }
     returnAmount: {
         percentage: number
@@ -42,49 +37,47 @@ export type CREATE_LISTING_STATE = {
 
 export const useCreateListingStore = create<CREATE_LISTING_STATE>()(
     immer((set, get) => ({
-        borrowing: {
-            principal: {
-                amount: -1,
-                setAmount: (by: number) =>
-                    set((state) => {
-                        state.borrowing.principal.amount = by
-                    }),
+        principal: {
+            amount: -1,
+            setAmount: (by: number) =>
+                set((state) => {
+                    state.principal.amount = by
+                }),
 
-            },
-            collateral: {
-                amount: -1,
-                setAmount: (by: number) =>
-                    set((state) => {
-                        state.borrowing.collateral.amount = by
-                    }),
-            },
-            duration: {
-                days: 3,
-                setDuration: (by: number) =>
-                    set((state) => {
-                    state.borrowing.duration.days = by
+        },
+        collateral: {
+            amount: -1,
+            setAmount: (by: number) =>
+                set((state) => {
+                    state.collateral.amount = by
+                }),
+        },
+        duration: {
+            days: 3,
+            setDuration: (by: number) =>
+                set((state) => {
+                    state.duration.days = by
                 })
-            },
-            misc: {
-                isFilled: false,
-                signedTerms: false,
-                setIsFilled: (by: boolean) =>
-                    set((state) => {
-                        state.borrowing.misc.isFilled = by;
-                    }),
-                setSignedTerms: (by: boolean) =>
-                    set((state) => {
-                        state.borrowing.misc.signedTerms = by;
-                    }),
-                reset: () =>
-                    set((state) => {
-                        state.borrowing.principal.amount = -1;
-                        state.borrowing.collateral.amount = -1;
-                        state.borrowing.duration.days = 3;
-                        state.borrowing.misc.isFilled = false;
-                        state.borrowing.misc.signedTerms = false;
-                    }),
-            },
+        },
+        misc: {
+            isFilled: false,
+            signedTerms: false,
+            setIsFilled: (by: boolean) =>
+                set((state) => {
+                    state.misc.isFilled = by;
+                }),
+            setSignedTerms: (by: boolean) =>
+                set((state) => {
+                    state.misc.signedTerms = by;
+                }),
+            reset: () =>
+                set((state) => {
+                    state.principal.amount = -1;
+                    state.collateral.amount = -1;
+                    state.duration.days = 3;
+                    state.misc.isFilled = false;
+                    state.misc.signedTerms = false;
+                }),
         },
         returnAmount: {
             percentage: 7,
@@ -92,6 +85,6 @@ export const useCreateListingStore = create<CREATE_LISTING_STATE>()(
                 set((state) => {
                     state.returnAmount.percentage = by
                 })
-        },
+        }
     }))
 );

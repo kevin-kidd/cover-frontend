@@ -1,12 +1,15 @@
 import React, {FunctionComponent} from "react";
 import {useCreateListingStore} from "../../../stores/CreateListingStore";
 import {CollectionSearchBox, ReturnSlider, TokenSearchBox} from "./Inputs";
+import {usePersistentStore} from "../../../stores/PersistentStore";
 
-export const BorrowingCard: FunctionComponent = () => {
+export const PrincipalCard: FunctionComponent = () => {
 
-    const amount = useCreateListingStore((state) => state.borrowing.principal.amount);
-    const setAmount = useCreateListingStore((state) => state.borrowing.principal.setAmount);
-    const duration = useCreateListingStore((state) => state.borrowing.duration);
+    const amount = useCreateListingStore((state) => state.principal.amount);
+    const setAmount = useCreateListingStore((state) => state.principal.setAmount);
+    const duration = useCreateListingStore((state) => state.duration);
+
+    const createListingToggle = usePersistentStore((state) => state.config.toggles.createListingToggle);
 
     const handleDurationChange = (e) => {
         if(!e.target.value) {
@@ -18,9 +21,15 @@ export const BorrowingCard: FunctionComponent = () => {
         duration.setDuration(value);
     };
 
+    const handleKeyDown = (e) => {
+        if(e.code === "Backspace" && e.target.valueAsNumber === 0) {
+            setAmount(-1);
+        }
+    };
+
     return (
         <div className="bg-[#1A2128] w-full max-w-md mx-auto rounded-lg px-10 py-6 flex flex-col items-center">
-            <h2 className="card-title pb-7">Asking to Borrow</h2>
+            <h2 className="card-title pb-7">{ createListingToggle === "Lending" ? "Offering to Lend": "Asking to Borrow" }</h2>
             <TokenSearchBox />
             <p className="py-3 text-white text-lg">
                 or
@@ -32,6 +41,7 @@ export const BorrowingCard: FunctionComponent = () => {
                 <input type="number" value={ amount === -1 ? "" : amount }
                        className="w-20 h-7 text-tiny bg-transparent rounded-lg border border-accent focus:ring-0 focus:border-accent"
                        onChange={(e) => setAmount(Number(e.target.value))}
+                       onKeyDown={handleKeyDown}
                 />
                 <p className="mx-auto">for</p>
                 <input type="number" min="3" max="999" value={duration.days === -1 ? "" : duration.days}
@@ -50,10 +60,10 @@ export const BorrowingCard: FunctionComponent = () => {
     )
 };
 
-export const BorrowingCollateralCard: FunctionComponent = () => {
+export const CollateralCard: FunctionComponent = () => {
 
-    const amount = useCreateListingStore((state) => state.borrowing.collateral.amount);
-    const setAmount = useCreateListingStore((state) => state.borrowing.collateral.setAmount);
+    const amount = useCreateListingStore((state) => state.collateral.amount);
+    const setAmount = useCreateListingStore((state) => state.collateral.setAmount);
 
     return (
         <div className="bg-[#1A2128] w-full max-w-md mx-auto rounded-lg px-10 py-6 flex flex-col items-center">
