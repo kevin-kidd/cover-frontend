@@ -1,10 +1,90 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useHomeStore } from "../../states/HomeState";
 import { LendCard } from "./LendCard";
 
 export const FeaturedListings: FunctionComponent = () => {
 
-  const listings = useHomeStore((state) => state.listings.featured)
+  const listings = useHomeStore((state) => state.featuredListings)
+  const setFeaturedListings = useHomeStore((state) => state.setFeaturedListings)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFeaturedListings([
+        {
+          isPartiallyFunded: true,
+          lending: {
+            type: "snip20",
+            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sATOM.svg",
+            amount: 3600,
+            total: 10000,
+            name: "sATOM"
+          },
+          collateral: {
+            type: "snip20",
+            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sSCRT.svg",
+            name: "sSCRT",
+            amount: 18
+          },
+          duration: "1 month, and 3 weeks",
+          returnPercentage: 5
+        },
+        {
+          isPartiallyFunded: false,
+          lending: {
+            type: "snip20",
+            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sSCRT.svg",
+            amount: 4500,
+            estimatedValue: 4500,
+            name: "sSCRT"
+          },
+          collateral: {
+            type: "snip721",
+            image: "https://stashhappstorage.blob.core.windows.net/collection-assets/secret1hu0nwzzxlrwks7pn0rslmgsk7kcx0s0kgztq22_icon_1639929050903.jpg",
+            name: "Anons",
+            amount: 2
+          },
+          duration: "3 months",
+          returnPercentage: 6
+        },
+        {
+          isPartiallyFunded: false,
+          lending: {
+            type: "snip20",
+            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sSCRT.svg",
+            amount: 3500,
+            estimatedValue: 3600,
+            name: "sSCRT"
+          },
+          collateral: {
+            type: "snip20",
+            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sXMR.svg",
+            name: "sXMR",
+            amount: 21.432
+          },
+          duration: "1 month, and 3 days",
+          returnPercentage: 7
+        },
+        {
+          isPartiallyFunded: true,
+          lending: {
+            type: "snip20",
+            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sUSDT.svg",
+            amount: 2100,
+            total: 4000,
+            name: "sUSDT"
+          },
+          collateral: {
+            type: "snip20",
+            image: "https://cloudflare-ipfs.com/ipfs/bafybeif5snkn5bvr2swh3zf3zq4rqkrggbpg6avjsmygyy5mftnb5rh4z4/sATOM.svg",
+            name: "sATOM",
+            amount: 0.05
+          },
+          duration: "2 weeks",
+          returnPercentage: 5
+        }
+      ])
+    }, 5000)
+  }, [])
 
   return (
     <>
