@@ -1,24 +1,6 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import { FunctionComponent, useEffect } from "react";
-import { useHomeStore } from "../../states/HomeState";
-
-interface Listing {
-  isPartiallyFunded: boolean,
-  lending: {
-    type: string,
-    estimatedValue?: number,
-    amount: number,
-    total?: number,
-    name: string
-  },
-  collateral: {
-    type: string,
-    name: string,
-    amount: number
-  },
-  duration: string,
-  returnPercentage: number
-}
+import { useHomeStore, Listing } from "../../states/HomeState";
 
 type LendCardProps = {
   listing: Listing
@@ -140,15 +122,22 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                     </>
                   }
                 </div>
-                <div className={`aspect-square 4k:mb-8 ${listing.isPartiallyFunded ? "mt-2 mb-3 max-w-1/2" : "my-4 max-w-1/2l"}`}>
+                {/* <div className={`aspect-square 4k:mb-8 ${listing.isPartiallyFunded ? "mt-2 mb-3 max-w-1/2" : "my-4 max-w-1/2l"}`}>
                   <div className="rounded-full border-8 border-white border-double">
                     <div className="rounded-full bg-white w-8 h-8 sm:w-10 sm:h-10 desktop:h-12 desktop:w-12 big:w-16 big:h-16 4k:w-28 4k:h-28 -ml-1 absolute -mt-2">
-                      <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full border-white border-2 w-full h-full bg-black" alt={listing.collateral.name} />
+                      <Image src={listing.collateral.image} className="rounded-full border-white border-2 w-full h-full bg-black" alt={listing.collateral.name} />
                     </div>
-                    <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full w-full bg-black border-white border" priority alt={listing.lending.name} />
+                    <Image src={listing.lending.image} className="rounded-full w-full bg-black border-white border" priority alt={listing.lending.name} />
+                  </div>
+                </div> */}
+                <div className="my-2 p-1 4k:p-8 w-full max-w-1/2l aspect-square mx-auto block justify-center">
+                  <div className="rounded-full block bg-white w-8 h-8 sm:w-10 sm:h-10 desktop:h-12 desktop:w-12 big:w-16 big:h-16 4k:w-28 4k:h-28 -ml-1 absolute -mt-2 z-10 border-2 border-white border-double">
+                    <Image src={`https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.image}`} layout="responsive" width="100" height="100" className="rounded-full border-white border-2 w-full h-full" alt={listing.collateral.name} />
+                  </div>
+                  <div className="rounded-full block w-full h-full border-double border-white border-6">
+                    <Image layout="responsive" width="500" height="500" priority={true} className="rounded-full w-full h-full" src={`https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.lending.image}`} alt={listing.lending.name} />
                   </div>
                 </div>
-               
             </>
           }
         </>

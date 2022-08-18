@@ -1,22 +1,7 @@
-import Image from "next/future/image";
-import { FunctionComponent, useEffect } from "react";
-import { useHomeStore } from "../../states/HomeState";
-
-interface Listing {
-  borrowing: {
-    type: string,
-    amount: number,
-    name: string,
-    estimatedValue: number
-  },
-  collateral: {
-    type: string,
-    name: string,
-    amount: number
-  },
-  duration: string,
-  returnPercentage: number
-}
+import Image from "next/image";
+import { useState } from "react";
+import { FunctionComponent } from "react";
+import { Listing } from "../../states/HomeState";
 
 type BorrowCardProps = {
   listing: Listing
@@ -29,14 +14,10 @@ const classes = {
 
 export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
 
-  const loading = useHomeStore((state) => state.loading)
-  const setLoading = useHomeStore((state) => state.setLoading)
+  // const loading = useHomeStore((state) => state.loading)
+  // const setLoading = useHomeStore((state) => state.setLoading)
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 4000)
-  }, [setLoading])
+  const [loading, setLoading] = useState(false)
 
   return (
     <div className={`col-span-1 flex w-full justify-center ${loading ? null : "hover:cursor-pointer"}`}>
@@ -81,10 +62,23 @@ export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
                 </div>
                 <div className="w-full inline-flex justify-center items-center pt-1 4k:pt-3">
                   <p className={`text-white ${classes.amount}`}>{listing.collateral.amount}x {listing.collateral.name}</p>
-                  <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full border-white border w-5 h-5 4k:w-16 4k:h-16 bg-black ml-2 4k:ml-6" alt={listing.collateral.name} />
+                  <div className="w-6 h-6 rounded-full 4k:w-16 4k:h-16 bg-black ml-2 4k:ml-6 relative">
+                    <Image src={`https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.icon}`} className="rounded-full border-white border" layout="responsive" width="32" height="32" alt={`icon-${listing.collateral.name}`} priority={true} />
+                  </div>
                 </div>
-                <div className="my-2 p-1 4k:p-8 w-full mx-auto flex justify-center">
-                  <Image src={`/static/temporary/nfts/${listing.collateral.name}.png`} className="rounded desktop:rounded-lg big:rounded-xl 4k:rounded-2xl bg-black bg-black w-full" alt={listing.collateral.name} />
+                <div className="my-2 p-1 4k:p-8 w-full aspect-square mx-auto block justify-center">
+                  <Image 
+                    layout="responsive" width="500" height="500" placeholder="blur" priority={true} alt={listing.collateral.name} 
+                    className="rounded desktop:rounded-lg big:rounded-xl 4k:rounded-2xl bg-black w-full h-full" 
+                    blurDataURL={
+                      listing.collateral.name.includes('data:image/') ? 
+                      listing.collateral.image : `https://res.cloudinary.com/drgbtjcgt/image/fetch/w_100/e_blur:1000,q_auto,f_webp/${listing.collateral.image}`
+                    } 
+                    src={
+                      listing.collateral.image.includes('data:image/') ? 
+                      listing.collateral.image : `https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.image}`
+                    } 
+                  />
                 </div>
               </div>
             </>

@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
-  experimental: {
-    images: {
-      allowFutureImage: true
-    }
-  }
+  images: {
+    domains: ["res.cloudinary.com", "stashhappstorage.blob.core.windows.net"]
+  },
+  experimental: { images: { allowFutureImage: true } }
 }
-
-module.exports = nextConfig

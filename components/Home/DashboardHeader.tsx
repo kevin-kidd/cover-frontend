@@ -11,7 +11,7 @@ const DashboardHeader: FunctionComponent = () => {
 
 
   return (
-      <div className={`top-0 z-10 sticky transition duration-300 flex ${darkHeader ? "bg-[#1A2128] shadow-2xl" : "bg-transparent"}`}>
+      <div className={`top-0 z-20 sticky transition duration-300 flex ${darkHeader ? "bg-[#1A2128] shadow-2xl" : "bg-transparent"}`}>
         <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none lg:hidden ml-6">
           <span className="sr-only">Open sidebar</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

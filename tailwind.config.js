@@ -36,7 +36,10 @@ module.exports = {
         '4k': '3200px'
       },
       borderWidth: {
-        '3': '3px'
+        '3': '3px',
+        '6': '6px',
+        '9': '9px',
+        '12': '12px'
       },
       minWidth: {
         '52': '13rem'

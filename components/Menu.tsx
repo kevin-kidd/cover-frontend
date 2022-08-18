@@ -1,6 +1,5 @@
 import { FunctionComponent, useRef } from "react"
-import logo from "../assets/logo.svg"
-import Image from 'next/future/image'
+import Image from 'next/image'
 import { Transition } from '@headlessui/react'
 import { useMenuStore } from "../states/MenuState";
 import { MenuFooter } from "./MenuFooter"
@@ -97,15 +96,15 @@ const Menu: FunctionComponent = () => {
                       </svg>
                     </button>
                   </div>
-                  <div className="flex justify-center row-span-2 -mt-10">
+                  <div className="flex justify-center row-span-2 -mt-10 relative">
                     <Image
-                      src={logo}
+                      src={`/static/logo.svg`}
+                      layout="responsive"
+                      width="500"
+                      height="250"
                       priority={true}
                       className="h-14 w-auto"
                       alt="Cover"
-                      // width={500} automatically provided
-                      // blurDataURL="data:..." automatically provided
-                      // placeholder="blur" // Optional blur-up while loading
                     />
                   </div>
                   <div className="overflow-y-auto flex justify-center row-span-2">
@@ -136,15 +135,15 @@ const Menu: FunctionComponent = () => {
 
         <div className="hidden sticky left-0 top-0 lg:flex lg:flex-col lg:h-screen">
             <div className="flex-1 grid grid-rows-6 min-h-0 bg-[#1A2128]">
-                <div className="row-span-1 flex items-center justify-center min-h-20 flex-shrink-0 bg-[#1A2128] w-1/2 mx-auto">
+                <div className="row-span-1 flex items-center justify-center min-h-20 flex-shrink-0 bg-[#1A2128] w-1/2 mx-auto relative">
                   <Image
                         priority={true}
-                        src={logo}
+                        layout="responsive"
+                        width="800"
+                        height="500"
+                        src={`/static/logo.svg`}
                         className="h-fit w-auto"
                         alt="Cover"
-                        // width={500} automatically provided
-                        // blurDataURL="data:..." automatically provided
-                        // placeholder="blur" // Optional blur-up while loading
                   />
                 </div>
                 <div className="row-span-4 flex flex-col justify-center items-center overflow-y-auto">
@@ -155,9 +154,9 @@ const Menu: FunctionComponent = () => {
                           className={
                             `font-medium rounded-3xl flex items-center group text-white
                             text-kindasmall desktop:text-base default:text-xl big:text-3xl 4k:text-5xl
-                            p-3 default:p-5 big:p-6 4k:p-10
-                            ${item.active ? "bg-[#7BBD75] text-white group" : 
-                            "text-white hover:bg-gray-700 hover:text-white group transition duration-150"}
+                            p-3 default:p-5 big:p-6 4k:p-10 group
+                            ${item.active ? "bg-[#7BBD75]" : 
+                            "hover:bg-gray-700 hover:text-white transition duration-150"}
                             `
                           }>
                             <svg 

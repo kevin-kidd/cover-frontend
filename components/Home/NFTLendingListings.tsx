@@ -1,72 +1,15 @@
 import { FunctionComponent } from "react";
+import { useHomeStore } from "../../states/HomeState";
 import { AdvancedButton } from "./AdvancedButton";
 import { BorrowCard } from "./BorrowCard"
 import { CollateralDenomBox } from "./CollateralDenomBox";
 import { PrincipalDenomBox } from "./PrincipalDenomBox"
-let exampleListings = [
-  {
-    borrowing: {
-      type: "snip20",
-      amount: 300,
-      name: "sSCRT",
-      estimatedValue: 600
-    },
-    collateral: {
-      type: "snip721",
-      name: "Anons",
-      amount: 2
-    },
-    duration: "1 month",
-    returnPercentage: 6
-  },
-  {
-    borrowing: {
-      type: "snip20",
-      amount: 500,
-      name: "sXMR",
-      estimatedValue: 600
-    },
-    collateral: {
-      type: "snip721",
-      name: "Anons",
-      amount: 2
-    },
-    duration: "1 month",
-    returnPercentage: 5
-  },
-  {
-    borrowing: {
-      type: "snip20",
-      amount: 400,
-      name: "sUSDT",
-      estimatedValue: 600
-    },
-    collateral: {
-      type: "snip721",
-      name: "Anons",
-      amount: 1
-    },
-    duration: "2 weeks",
-    returnPercentage: 7
-  },
-  {
-    borrowing: {
-      type: "snip20",
-      amount: 99,
-      name: "sATOM",
-      estimatedValue: 600
-    },
-    collateral: {
-      type: "snip721",
-      name: "Anons",
-      amount: 1
-    },
-    duration: "3 weeks",
-    returnPercentage: 5
-  }
-]
+
 
 export const NFTLendingListings: FunctionComponent = () => {
+
+  const listings = useHomeStore((state) => state.listings.select)
+
   return (
     <>
       <div className="w-11/12 2xl:w-4/5 py-5 sm:pt-6 sm:pb-8 border-b border-black w-full mx-auto">
@@ -110,7 +53,7 @@ export const NFTLendingListings: FunctionComponent = () => {
           ">
             <>
               {
-                exampleListings.map((ele, index) => (
+                listings.map((ele, index) => (
                   <BorrowCard key={'listing-' + index} listing={ele} />
                 ))
               }

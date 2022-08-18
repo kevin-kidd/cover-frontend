@@ -1,75 +1,10 @@
 import { FunctionComponent } from "react";
+import { useHomeStore } from "../../states/HomeState";
 import { LendCard } from "./LendCard";
-
 
 export const FeaturedListings: FunctionComponent = () => {
 
-  let exampleListings = [
-    {
-      isPartiallyFunded: true,
-      lending: {
-        type: "snip20",
-        amount: 3600,
-        total: 10000,
-        name: "sATOM"
-      },
-      collateral: {
-        type: "snip20",
-        name: "sSCRT",
-        amount: 18
-      },
-      duration: "1 month, and 3 weeks",
-      returnPercentage: 5
-    },
-    {
-      isPartiallyFunded: false,
-      lending: {
-        type: "snip20",
-        amount: 4500,
-        estimatedValue: 4500,
-        name: "sSCRT"
-      },
-      collateral: {
-        type: "snip721",
-        name: "Anons",
-        amount: 2
-      },
-      duration: "3 months",
-      returnPercentage: 6
-    },
-    {
-      isPartiallyFunded: false,
-      lending: {
-        type: "snip20",
-        amount: 3500,
-        estimatedValue: 3600,
-        name: "sSCRT"
-      },
-      collateral: {
-        type: "snip20",
-        name: "sXMR",
-        amount: 21.432
-      },
-      duration: "1 month, and 3 days",
-      returnPercentage: 7
-    },
-    {
-      isPartiallyFunded: true,
-      lending: {
-        type: "snip20",
-        amount: 2100,
-        total: 4000,
-        name: "sUSDT"
-      },
-      collateral: {
-        type: "snip20",
-        name: "sATOM",
-        amount: 0.05
-      },
-      duration: "2 weeks",
-      returnPercentage: 5
-    }
-  ]
+  const listings = useHomeStore((state) => state.listings.featured)
 
   return (
     <>
@@ -90,7 +25,7 @@ export const FeaturedListings: FunctionComponent = () => {
           ">
             <>
               {
-                exampleListings.map((ele, index) => (
+                listings.map((ele, index) => (
                   <LendCard key={'listing-' + index} listing={ele} />
                 ))
               }
