@@ -2,6 +2,7 @@ import {FunctionComponent, ReactNode} from "react";
 
 export type MenuItem = {
     title: string
+    walletRequired: boolean
     href: string
     icon: {
         viewBox: string
