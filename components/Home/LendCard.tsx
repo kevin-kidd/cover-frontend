@@ -49,7 +49,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
 
   return (
     <div className={`col-span-1 lg:row-span-1 ${loading ? null : "hover:cursor-pointer"}`}>
-      <div className="flex flex-col bg-[#1A2128] rounded-lg items-center px-4 min-w-52 h-80 shadow-sm hover:shadow-2xl transition duration-300">
+      <div className="flex flex-col bg-[#1A2128] rounded-lg items-center px-4 sm:min-w-52 sm:w-full w-64 h-80 shadow-sm hover:shadow-2xl transition duration-300">
         <div className="border-b border-[#8B98FF] pt-3 pb-2 w-full flex justify-center">
           <p className="card-title text-sm">Offering to Lend</p>
         </div>
@@ -136,7 +136,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                   <div className="rounded-full bg-white w-10 h-10 -ml-1 absolute -mt-2">
                     <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full border-white border-2 w-full h-full bg-black" alt={listing.collateral.name} />
                   </div>
-                  <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full bg-black border-white border h-24 w-24" alt={listing.lending.name} />
+                  <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full bg-black border-white border h-24 w-24" priority alt={listing.lending.name} />
                 </div>
             </>
           }

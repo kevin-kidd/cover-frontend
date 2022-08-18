@@ -1,10 +1,10 @@
-import { FunctionComponent, useState } from "react"
+import { FunctionComponent, useRef, useState } from "react"
 import logo from "../assets/logo.png"
 import Image from 'next/future/image'
-import { mobileMenuRefProps } from "../types/common";
 import { Transition } from '@headlessui/react'
 import { useMenuStore } from "../states/MenuState";
 import { MenuFooter } from "./MenuFooter"
+import { useOnClickOutside } from "../functions/helper";
 
 const menuItems = [
   {
@@ -63,7 +63,11 @@ const menuItems = [
   }
 ]
 
-const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
+const Menu: FunctionComponent = () => {
+
+  const setOpen = useMenuStore((state) => state.setOpen)
+  const mobileMenuRef = useRef<HTMLDivElement>()
+  useOnClickOutside(mobileMenuRef, () => setOpen(false))
 
   const isOpen = useMenuStore((state) => state.isOpen)
   const toggleMenu = useMenuStore((state) => state.toggleMenu)

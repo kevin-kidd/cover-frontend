@@ -1,6 +1,6 @@
-import { Ref, useEffect } from "react"
+import { RefObject, useEffect } from "react"
 
-export const useOnClickOutside = (ref, handler) => {
+export const useOnClickOutside = (ref: RefObject<HTMLDivElement>, handler) => {
     useEffect(
       () => {
         const listener = (event) => {
@@ -18,4 +18,8 @@ export const useOnClickOutside = (ref, handler) => {
       },
       [ref, handler]
     );
-  }
+}
+
+export const truncateAddress = (address: string) => {
+  return address.replace(address.substring(11,address.length - 8), ".....")
+}

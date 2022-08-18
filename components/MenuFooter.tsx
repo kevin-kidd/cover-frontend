@@ -1,4 +1,5 @@
 import { FunctionComponent, useState } from "react";
+import { truncateAddress } from "../functions/helper";
 import { useMenuStore } from "../states/MenuState";
 
 
@@ -11,6 +12,7 @@ export const MenuFooter: FunctionComponent = () => {
     const setWalletConnected = useMenuStore((state) => state.setWalletConnected)
 
     const secretAddress = "secret18ld7zwzkgsfv9z6phqhlsft9prjysulpdq950z"
+    const truncatedAddress = truncateAddress(secretAddress)
 
     if(walletConnected) {
         return (
@@ -39,7 +41,7 @@ export const MenuFooter: FunctionComponent = () => {
                   }} 
                   onMouseLeave={() => setIsCopied(false)}>
                     <span className={`tooltip rounded shadow-lg p-1 px-2 bg-gray-200 text-black text-sm -mt-8 justify-center ${isCopied ? "ml-10" : "ml-3"}`}>{isCopied ? "Copied!" : "Copy to clipboard"}</span>
-                    <p className="text-sm font-medium text-white w-2/3 md:w-40 truncate">{ secretAddress }</p>
+                    <p className="text-sm font-medium text-white w-2/3 md:w-40">{ truncatedAddress }</p>
                   </div>
                   <p className={`text-xs font-medium ${hoverExit ? "text-gray-300" : "text-gray-400"}`}>Disconnect wallet</p>
                 </div>
