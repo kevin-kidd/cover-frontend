@@ -42,7 +42,7 @@ export const MenuFooter: FunctionComponent = () => {
         )
     }
     return (
-        <div className="flex items-center justify-center mb-14">
+        <div className="flex items-center justify-center mb-5 lg:mb-14 md:mb-14 sm:mb-14">
             <button 
                 onClick={() => setWalletConnected(true)}
                 className="bg-[#5596DC] px-5 py-4 text-white font-medium text-md rounded-lg transition duration-150 hover:bg-blue-400"

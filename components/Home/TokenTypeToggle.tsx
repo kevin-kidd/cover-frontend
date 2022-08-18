@@ -8,7 +8,7 @@ export const TokenTypeToggle: FunctionComponent = () => {
 
     return (
       <>
-        <div className="rounded-2xl bg-black lg:w-52 md:w-52 sm:w-52 w-32 h-12 p-3px w-full flex mr-10" onClick={() => tokenToggle()}>
+        <div className="rounded-2xl bg-black lg:w-52 md:w-52 sm:w-52 w-32 h-12 p-3px w-full flex lg:mr-12 md:mr-2 mr-2" onClick={() => tokenToggle()}>
           <button 
             className={`w-1/2 group ${tokenToggleActive ? 'toggle-active bg-white' : null}`}
           >

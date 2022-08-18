@@ -6,13 +6,19 @@
     -webkit-tap-highlight-color: transparent
 }
 
-html {
-    height: 100%;
+body:before {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
     background-size: cover;
-    background-repeat:no-repeat;
     background: radial-gradient(95.26% 95.26% at 3.92% 4.74%, rgba(113, 187, 55, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
     radial-gradient(66.94% 90.71% at 95.87% 33.06%, rgba(65, 201, 244, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
     radial-gradient(58.06% 58.06% at 59.83% 101.66%, rgba(208, 74, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%) #303C4A;
@@ -38,4 +44,37 @@ html {
     html {
         font-size: 8px!important;
     }
+}
+
+.card-title {
+    background: linear-gradient(90deg, #6CF6FF -0.74%, #DA70FF 101.57%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card-upto {
+    background: linear-gradient(90deg, #6DB9FF -3.07%, #E858FF 104.38%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card-asking-for {
+    background: linear-gradient(90deg, #6CF6FF -0.49%, #DA70FF 102.45%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card-and {
+    background: linear-gradient(90deg, #6CF6FF -1.37%, #DA70FF 105.16%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card-collateral {
+    background: linear-gradient(90deg, #6CF6FF -0.77%, #DA70FF 101.56%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.progress-bar {
+    background: linear-gradient(90deg, rgba(125, 255, 216, 0.66) 0%, rgba(64, 152, 255, 0.66) 338.51%)
+}
+
+.progress-bar-track {
+    background: rgba(217, 217, 217, 0.66);
 }

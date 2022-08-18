@@ -8,7 +8,7 @@ export const ListingTypeToggle: FunctionComponent = () => {
 
     return (
       <>
-        <div className="rounded-2xl bg-black lg:w-52 md:w-40 sm:w-40 w-32 h-12 p-3px w-full flex lg:mr-10 md:mr-4 mr-2" onClick={() => listingToggle()}>
+        <div className="rounded-2xl bg-black lg:w-52 md:w-40 sm:w-40 w-32 h-12 p-3px w-full flex lg:mr-12 md:mr-2 mr-2" onClick={() => listingToggle()}>
           <button 
             className={`w-1/2 group ${listingToggleActive ? 'toggle-active bg-white' : null}`}
           >
