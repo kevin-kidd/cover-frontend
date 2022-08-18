@@ -19,15 +19,15 @@ const Header: FunctionComponent<Items> = ({ items }) => {
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(false);
 
-    // const update = useMemo(() => throttle(() => {
-    //     let scrollHeight = scrollY.get();
-    //     if(scrollHeight > 5 && !darkHeader) setDarkHeader(true);
-    //     else if(scrollHeight <= 5 && darkHeader) setDarkHeader(false);
-    // }, 100), [scrollY, darkHeader]);
-    //
-    // useEffect(() => {
-    //     scrollY.onChange(update);
-    // }, [scrollY, update]);
+    const update = useMemo(() => throttle(() => {
+        let scrollHeight = scrollY.get();
+        if(scrollHeight > 5 && !darkHeader) setDarkHeader(true);
+        else if(scrollHeight <= 5 && darkHeader) setDarkHeader(false);
+    }, 100), [scrollY, darkHeader]);
+
+    useEffect(() => {
+        scrollY.onChange(update);
+    }, [scrollY, update]);
 
     return (
         <div className={classNames(
