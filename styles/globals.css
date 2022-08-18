@@ -11,6 +11,11 @@ html {
     scroll-behavior: smooth;
 }
 
+#__next {
+    position: absolute;
+    width: 100%;
+}
+
 #__next:before {
     content: "";
     display: block;
