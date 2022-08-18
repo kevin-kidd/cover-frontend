@@ -9,6 +9,19 @@ type Items = {
     }
 }
 
+const throttle = (callbackFn, limit) => {
+    let wait = false;
+    return function () {
+        if (!wait) {
+            callbackFn.call();
+            wait = true;
+            setTimeout(function () {
+                wait = false;
+            }, limit);
+        }
+    }
+};
+
 const Header: FunctionComponent<Items> = ({ items }) => {
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(true);
@@ -22,9 +35,9 @@ const Header: FunctionComponent<Items> = ({ items }) => {
     };
 
     useEffect(() => {
-        document.addEventListener('scroll', handleScroll, { passive: true });
+        document.addEventListener('scroll', throttle(handleScroll, 100), { passive: true });
         return () => {
-            document.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('scroll', throttle(handleScroll, 100));
         };
     }, []);
 
