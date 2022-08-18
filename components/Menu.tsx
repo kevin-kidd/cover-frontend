@@ -15,12 +15,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const menuItems = [
   {
-    title: "Home",
+    title: "Explore",
     href: "/",
     walletRequired: false,
     icon: {
-      viewBox: "0 0 330.242 330.242",
-      path: <path d="M324.442,129.811l-41.321-33.677V42.275c0-6.065-4.935-11-11-11h-26c-6.065,0-11,4.935-11,11v14.737l-55.213-44.999  c-3.994-3.254-9.258-5.047-14.822-5.047c-5.542,0-10.781,1.782-14.753,5.019L5.8,129.81c-6.567,5.351-6.173,10.012-5.354,12.314  c0.817,2.297,3.448,6.151,11.884,6.151h19.791v154.947c0,11.058,8.972,20.053,20,20.053h62.5c10.935,0,19.5-8.809,19.5-20.053  v-63.541c0-5.446,5.005-10.405,10.5-10.405h42c5.238,0,9.5,4.668,9.5,10.405v63.541c0,10.87,9.388,20.053,20.5,20.053h61.5  c11.028,0,20-8.996,20-20.053V148.275h19.791c8.436,0,11.066-3.854,11.884-6.151C330.615,139.822,331.009,135.161,324.442,129.811z" />
+      viewBox: "0 0 496 512",
+      path: <path d="M225.38 233.37c-12.5 12.5-12.5 32.76 0 45.25 12.49 12.5 32.76 12.5 45.25 0 12.5-12.5 12.5-32.76 0-45.25-12.5-12.49-32.76-12.49-45.25 0zM248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm126.14 148.05L308.17 300.4a31.938 31.938 0 0 1-15.77 15.77l-144.34 65.97c-16.65 7.61-33.81-9.55-26.2-26.2l65.98-144.35a31.938 31.938 0 0 1 15.77-15.77l144.34-65.97c16.65-7.6 33.8 9.55 26.19 26.2z" />
     }
   },
   {
@@ -28,8 +28,8 @@ const menuItems = [
     href: "/my-page",
     walletRequired: true,
     icon: {
-      viewBox: "0 0 512 512",
-      path: <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z" />
+      viewBox: "0 0 37.5 37.499999",
+      path: <path d="M 36.179688 15.519531 L 19.867188 1.019531 C 19.144531 0.476562 18.238281 0.476562 17.511719 1.019531 L 1.199219 15.519531 C 0.476562 16.242188 0.292969 17.332031 1.019531 18.054688 C 1.742188 18.78125 2.832031 18.960938 3.554688 18.238281 L 4.101562 17.511719 L 4.101562 34.914062 C 4.101562 36 4.824219 36.726562 5.914062 36.726562 L 31.289062 36.726562 C 32.375 36.726562 33.101562 36 33.101562 34.914062 L 33.101562 17.511719 L 33.644531 18.054688 C 34.367188 18.78125 35.457031 18.601562 36.179688 17.875 C 36.90625 17.332031 36.90625 16.0625 36.179688 15.519531 Z M 18.601562 16.789062 C 21.320312 16.789062 23.492188 18.960938 23.492188 21.679688 C 23.492188 24.398438 21.320312 26.574219 18.601562 26.574219 C 15.882812 26.574219 13.707031 24.398438 13.707031 21.679688 C 13.707031 18.960938 15.882812 16.789062 18.601562 16.789062 Z M 9.539062 33.101562 C 9.539062 32.917969 9.539062 32.917969 9.71875 32.738281 C 13.707031 27.84375 20.957031 26.9375 25.851562 30.925781 C 26.574219 31.46875 27.117188 32.011719 27.664062 32.738281 C 27.664062 32.738281 27.664062 32.917969 27.84375 33.101562 Z M 9.539062 33.101562 " />
     }
   },
   {
@@ -42,16 +42,7 @@ const menuItems = [
     }
   },
   {
-    title: "Analytics",
-    href: "#",
-    walletRequired: false,
-    icon: {
-      viewBox: "0 0 448 512",
-      path: <path d="M160 80C160 53.49 181.5 32 208 32H240C266.5 32 288 53.49 288 80V432C288 458.5 266.5 480 240 480H208C181.5 480 160 458.5 160 432V80zM0 272C0 245.5 21.49 224 48 224H80C106.5 224 128 245.5 128 272V432C128 458.5 106.5 480 80 480H48C21.49 480 0 458.5 0 432V272zM400 96C426.5 96 448 117.5 448 144V432C448 458.5 426.5 480 400 480H368C341.5 480 320 458.5 320 432V144C320 117.5 341.5 96 368 96H400z" />
-    }
-  },
-  {
-    title: "Trade Bonds",
+    title: "Trade",
     href: "#",
     walletRequired: false,
     icon: {
@@ -60,7 +51,16 @@ const menuItems = [
     }
   },
   {
-    title: "Create Listing",
+    title: "Info",
+    href: "#",
+    walletRequired: false,
+    icon: {
+      viewBox: "0 0 448 512",
+      path: <path d="M160 80C160 53.49 181.5 32 208 32H240C266.5 32 288 53.49 288 80V432C288 458.5 266.5 480 240 480H208C181.5 480 160 458.5 160 432V80zM0 272C0 245.5 21.49 224 48 224H80C106.5 224 128 245.5 128 272V432C128 458.5 106.5 480 80 480H48C21.49 480 0 458.5 0 432V272zM400 96C426.5 96 448 117.5 448 144V432C448 458.5 426.5 480 400 480H368C341.5 480 320 458.5 320 432V144C320 117.5 341.5 96 368 96H400z" />
+    }
+  },
+  {
+    title: "Create",
     href: "#",
     walletRequired: true,
     icon: {
@@ -78,20 +78,26 @@ const Item: FunctionComponent<{ item: MenuItem, active: boolean }> = ({ item, ac
 
   return (
       <Link href={ disabled ? "" : item.href }>
-        <button className={classNames(
-            "font-medium rounded-2xl flex items-center text-white group text-base w-full px-2 my-4 group h-12",
-            active ? "bg-[#7BBD75]" : "text-[#9ba3af] hover:text-[#bcc1c9] transition duration-150"
-        )}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}
-              className={classNames(
-                "mx-2 h-7 w-5",
-                active ? "fill-[#303C4A]" : "fill-gray-400 group-hover:fill-[#bcc1c9] transition duration-150"
-              )}
-          >
-            { item.icon.path }
-          </svg>
-          { item.title }
-        </button>
+        <div className="group flex items-center text-base w-full px-4 my-4 group h-12 hover:cursor-pointer transition duration-150">
+          <div className={classNames(
+              "mr-2 p-2 h-9 w-9 border rounded-xl",
+              active ? "border-[#7BBD75]" : "border-gray-300 transition duration-150"
+          )}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox} className={classNames(
+                "m-auto",
+                active ? "fill-[#7BBD75]/90" : "group-hover:fill-[#eeeeee]/90 fill-[#c0c0c0] transition duration-150"
+            )}>
+              { item.icon.path }
+            </svg>
+          </div>
+
+          <p className={classNames(
+              "font-medium text-base pl-1",
+              active ? "text-[#eeeeee]" : "text-[#c0c0c0] group-hover:text-[#eeeeee]/90"
+          )}>
+            { item.title }
+          </p>
+        </div>
       </Link>
   )
 };
@@ -121,7 +127,7 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
           >
             <div className="fixed inset-0 w-full bg-[#1A2128] bg-opacity-75" />
               <div className="fixed inset-0 flex z-40">
-                <div className="flex flex-col overflow-x-hidden overflow-y-auto gap-4 max-w-sidebar pb-6 w-full bg-[#1A2128]" ref={mobileMenuRef}>
+                <div className="flex flex-col overflow-x-hidden overflow-y-auto max-w-sidebar pb-6 w-full bg-[#1A2128]" ref={mobileMenuRef}>
                   <div onClick={() => toggleMenu()} className="flex row-span-1 justify-end pr-5 pt-5">
                     <button type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Close sidebar</span>
@@ -230,7 +236,7 @@ const MenuFooter: FunctionComponent = () => {
 
   const connectButton: ReactElement = (
       <button onClick={() => setWalletConnected(true)}
-          className="p-3 rounded-lg w-fit text-tiny bg-[#5596DC] text-white transition duration-150 hover:bg-[#66a0df]"
+          className="p-3 rounded-lg w-fit text-tiny text-[#eeeeee] hover:text-[#ffffff] transition duration-150 bg-[#5596DC]/95  hover:bg-[#5596DC]"
       >
         Connect Wallet
       </button>
@@ -239,19 +245,19 @@ const MenuFooter: FunctionComponent = () => {
   const disconnectButton: ReactElement = (
       <button onClick={() => setWalletConnected(false)}
           className="p-3 group w-fit flex items-center rounded-lg text-tiny border border-[#5596DC]
-            text-[#cccccc] hover:text-white transition duration-500 hover:border-[#66a0df]"
+            text-[#cccccc] hover:text-[#eeeeee] transition duration-500 hover:border-[#66a0df]"
       >
-        <FontAwesomeIcon icon={faSignOutAlt} className="p-1 mr-1 w-5 h-5 transition duration-500 text-[#cecece] group-hover:text-white" />
+        <FontAwesomeIcon icon={faSignOutAlt} className="p-1 mr-1 h-5 w-5 transition duration-500 text-[#cccccc] group-hover:text-[#eeeeee]" />
         Disconnect
       </button>
   );
 
   const balance: ReactElement = (
-    <div className="flex flex-row items-center w-sidebar lg:w-full gap-x-2 px-2 lg:pr-8">
+    <div className="flex flex-row items-center justify-center w-full gap-x-2 px-2 lg:px-4">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="flex-shrink-0 fill-white w-6 h-6">
         <path d="M461.2 128H80c-8.84 0-16-7.16-16-16s7.16-16 16-16h384c8.84 0 16-7.16 16-16 0-26.51-21.49-48-48-48H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h397.2c28.02 0 50.8-21.53 50.8-48V176c0-26.47-22.78-48-50.8-48zM416 336c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/>
       </svg>
-      <div className="flex flex-col w-fit lg:w-full">
+      <div className="flex flex-col w-3/4 lg:w-full">
         <div className="hover:cursor-pointer has-tooltip flex justify-center" onMouseLeave={() => setIsCopied(false)}
             onClick={() => {
               document.addEventListener('copy', function(e) {

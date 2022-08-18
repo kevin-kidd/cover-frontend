@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Dispatch, FunctionComponent, SetStateAction, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper";
-import { Listing } from "../types/general";
+import { Listing } from "../../types/general";
 
 const classes = {
   text: {

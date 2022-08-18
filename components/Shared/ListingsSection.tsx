@@ -1,8 +1,8 @@
 import { FunctionComponent, useState } from "react";
-import { useHomeStore } from "../stores/Home";
+import { useHomeStore } from "../../stores/Home";
 import { ListingCard } from "./ListingCard";
 import Typed from "react-typed";
-import {Listing} from "../types/general";
+import {Listing} from "../../types/general";
 
 const DenomSearchBox: FunctionComponent<{type: string}> = ({ type }) => {
 

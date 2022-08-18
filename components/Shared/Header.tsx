@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactElement, useEffect, useState } from "react";
-import { useMenuStore} from "../stores/Menu";
+import { useMenuStore} from "../../stores/Menu";
 import classNames from "classnames";
 
-const Header: FunctionComponent<{ items: ReactElement[] }> = ({ items }) => {
+const Header: FunctionComponent<{ items: { left: ReactElement[], right: ReactElement[] } }> = ({ items }) => {
 
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(true);
@@ -35,15 +35,26 @@ const Header: FunctionComponent<{ items: ReactElement[] }> = ({ items }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
-            <div className="lg:container lg:mx-auto lg:pr-20 w-full">
-                <div className="w-full flex justify-end items-center h-10">
-                    {
-                        items.map((Item: ReactElement, index: number) => (
-                            <div className="h-full sm:px-4 px-1 py-1 sm:py-0" key={`header-item-${index}`}>
-                                { Item }
-                            </div>
-                        ))
-                    }
+            <div className="lg:container lg:mx-auto w-full">
+                <div className="w-full flex sm:justify-between justify-end px-4 md:px-10 xl:px-20 items-center h-10">
+                    <div className="h-full hidden w-0 sm:w-fit sm:flex">
+                        {
+                            items.left.map((Item: ReactElement, index: number) => (
+                                <div className="h-full sm:px-4 px-1 py-1 sm:py-0" key={`header-item-${index}`}>
+                                    { Item }
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className="flex w-fit h-full">
+                        {
+                            items.right.map((Item: ReactElement, index: number) => (
+                                <div className="h-full sm:px-4 px-1 py-1 sm:py-0" key={`header-item-${index}`}>
+                                    { Item }
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
         </div>
