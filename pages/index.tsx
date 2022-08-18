@@ -20,8 +20,10 @@ const HomePage: NextPage = () => {
       <Head>
         <title>Home - Cover</title>
       </Head>
-      <Menu mobileMenuRef={mobileMenuRef} />
-      <Dashboard />
+      <main className="flex-1">
+        <Menu mobileMenuRef={mobileMenuRef} />
+        <Dashboard />
+      </main>
     </>
   )
 }
