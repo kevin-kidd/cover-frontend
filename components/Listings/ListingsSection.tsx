@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { useHomeStore } from "../../stores/Home";
-import { ListingCard } from "./ListingCard";
+import { Card } from "./Card";
 import Typed from "react-typed";
 import {Listing} from "../../types/general";
 
@@ -132,7 +132,7 @@ export const ListingsSection: FunctionComponent<{ listings: Listing[], title?: s
         ">
         {
           listings.map((ele, index) => (
-            <ListingCard key={'listing-' + index} index={index} listing={ele} />
+            <Card key={'listing-' + index} index={index} listing={ele} />
           ))
         }
       </div>

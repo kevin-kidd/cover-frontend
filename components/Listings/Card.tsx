@@ -25,8 +25,8 @@ type Snip721DisplayProps = {
 
 const CardTitle: FunctionComponent<{cardType: string}> = ({cardType}) => {
   return (
-      <div className="border-b border-[#8B98FF] w-full py-2 flex justify-center">
-        <p className="card-title text-sm sm:text-tiny xl:text-base font-medium">
+      <div className="border-b border-[#8B98FF] w-full pt-1.5 pb-1 flex justify-center">
+        <p className="card-title text-sm sm:text-tiny xl:text-base font-semibold">
           { cardType === "borrow" ? "Asking to Borrow" : "Offering to Lend" }
         </p>
       </div>
@@ -55,7 +55,7 @@ const CardHeader: FunctionComponent<CardProps> = ({ listing }) => {
             { listing.lending.total ?
                 <>
                     <div className="w-full inline-flex justify-center items-end">
-                        <p className={`text-white pl-1 sm:pl-2 ${classes.text.small}`}>{listing.lending.amount} / {listing.lending.total}</p>
+                        <p className={`text-white pl-1 sm:pl-2 ${classes.text.medium}`}>{listing.lending.amount} / {listing.lending.total}</p>
                         <p className={`text-white pl-1 sm:pl-2 ${classes.text.smaller}`}>{listing.lending.name}</p>
                     </div>
                     { /* Progress Bar */ }
@@ -68,13 +68,11 @@ const CardHeader: FunctionComponent<CardProps> = ({ listing }) => {
                     </div>
                 </>
                 :
-                <>
-                    <div className="w-full inline-flex justify-center items-center">
-                        <p className={`text-white ${classes.text.medium}`}>{listing.lending.amount}</p>
-                        <p className={`text-white pl-1 ${classes.text.smaller}`}>{listing.lending.name}</p>
-                        <p className={`text-gray-400 pb-1 pl-1 ${classes.text.smaller}`}>≈${listing.lending.estimatedValue}</p>
-                    </div>
-                </>
+                <div className="w-full inline-flex justify-center items-center">
+                    <p className={`text-white ${classes.text.medium}`}>{listing.lending.amount}</p>
+                    <p className={`text-white pl-1 ${classes.text.smaller}`}>{listing.lending.name}</p>
+                    <p className={`text-gray-400 pb-1 pl-1 ${classes.text.smaller}`}>≈${listing.lending.estimatedValue}</p>
+                </div>
             }
             <p className={`text-white font-light justify-center flex ${classes.text.smaller}`}>
                 for {listing.duration}
@@ -318,7 +316,7 @@ const CardSkeleton: FunctionComponent<{ listingType: string }> = ({ listingType 
     );
 };
 
-export const ListingCard: FunctionComponent<{ listing: Listing, index: number }> = ({ listing, index }) => {
+export const Card: FunctionComponent<{ listing: Listing, index: number }> = ({ listing, index }) => {
 
   const [loading, setLoading] = useState(true);
 
@@ -328,9 +326,7 @@ export const ListingCard: FunctionComponent<{ listing: Listing, index: number }>
 
   return (
     <div className={`w-full sm:w-52 h-full mx-auto ${hiddenClass} ${loading ? null : "hover:cursor-pointer"}`}>
-      <div className={`
-        flex flex-col bg-[#1A2128] px-3 rounded-lg items-center shadow-sm hover:shadow-xl transition duration-300 w-full h-full
-      `}>
+      <div className="flex flex-col bg-[#1A2128] px-3 rounded-lg items-center shadow-sm hover:shadow-lg transition duration-300 w-full h-full">
         <CardTitle cardType={listing.listingType} />
           {
             loading ?

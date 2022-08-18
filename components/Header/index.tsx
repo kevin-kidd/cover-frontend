@@ -61,4 +61,4 @@ const Header: FunctionComponent<{ items: { left: ReactElement[], right: ReactEle
     )
 };
 
-export default Header
+export default Header;

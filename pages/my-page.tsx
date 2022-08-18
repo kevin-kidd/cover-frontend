@@ -1,21 +1,21 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Menu from "../components/Menu";
-import Header from "../components/Shared/Header";
-import {ListingsSection} from "../components/Shared/ListingsSection";
+import Header from "../components/Header";
+import {ListingsSection} from "../components/Listings/ListingsSection";
 import {useHomeStore} from "../stores/Home";
 import {useEffect} from "react";
 import exampleListings from "../exampleListings.json";
-import {useMenuStore} from "../stores/Menu";
 import { useRouter } from "next/router";
-import {SettingsWidget} from "../components/Shared/HeaderItems";
+import {SettingsWidget} from "../components/Header/Widgets";
+import {usePersistentStore} from "../stores/Persistent";
 
 
 const MyPage: NextPage = () => {
 
     const listings = useHomeStore((state) => state.selectedListings);
     const setSelectedListings = useHomeStore((state) => state.setSelectedListings);
-    const isConnected = useMenuStore((state) => state.walletConnected);
+    const isConnected = usePersistentStore((state) => state.wallet.connected);
     const router = useRouter();
 
     useEffect(() => {

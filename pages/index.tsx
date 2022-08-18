@@ -1,12 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Menu from "../components/Menu";
-import {ToggleButton, SettingsWidget, PriceWidget} from "../components/Shared/HeaderItems";
-import Header from "../components/Shared/Header";
-import {ListingsSection} from "../components/Shared/ListingsSection";
-import {useHomeStore} from "../stores/Home";
 import {useEffect} from "react";
+
+import {useHomeStore} from "../stores/Home";
 import exampleListings from "../exampleListings.json";
+
+// Components
+import Menu from "../components/Menu";
+import { ToggleButton } from "../components/Header/ToggleButton";
+import { SettingsWidget, PriceWidget } from "../components/Header/Widgets";
+import Header from "../components/Header";
+import {ListingsSection} from "../components/Listings/ListingsSection";
 
 
 const HomePage: NextPage = () => {
