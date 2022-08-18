@@ -28,7 +28,7 @@ const menuItems = [
     },
     {
         title: "Assets",
-        href: "#",
+        href: "/assets",
         walletRequired: false,
         icon: {
             viewBox: "0 0 512 512",

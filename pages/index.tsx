@@ -13,7 +13,7 @@ import Header from "../components/Header";
 import {ListingsSection} from "../components/Listings/ListingsSection";
 
 
-const HomePage: NextPage = () => {
+const ExplorePage: NextPage = () => {
 
     const selectedListings = useHomeStore((state) => state.selectedListings);
     const setSelectedListings = useHomeStore((state) => state.setSelectedListings);
@@ -38,7 +38,7 @@ const HomePage: NextPage = () => {
     return (
       <>
           <Head>
-              <title>Home - Cover</title>
+              <title>Explore</title>
           </Head>
           <main>
               <Menu activeTitle={"Explore"} />
@@ -54,4 +54,4 @@ const HomePage: NextPage = () => {
     )
 };
 
-export default HomePage
+export default ExplorePage

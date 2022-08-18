@@ -35,7 +35,7 @@ const MyPage: NextPage = () => {
     return (
       <>
           <Head>
-              <title>My Page - Cover</title>
+              <title>My Page</title>
           </Head>
           <main className="relative h-screen">
               <Menu activeTitle={"My Page"} />

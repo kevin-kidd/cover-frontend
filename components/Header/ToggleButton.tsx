@@ -8,6 +8,9 @@ const toggleData = {
     },
     listingToggle: {
         names: ["Lend", "Borrow"]
+    },
+    myTokensToggle: {
+        names: ["NFTs", "Tokens"]
     }
 };
 
@@ -53,7 +56,7 @@ export const ToggleButton: FunctionComponent<{type: string}> = ({ type }) => {
     };
 
     return (
-        <div className="toggle-button-gradient border border-transparent rounded-2xl flex h-full" onClick={execToggle}>
+        <div className="button-gradient border border-transparent rounded-2xl flex h-full w-full" onClick={execToggle}>
             <button className={classNames(
                 "w-1/2 group flex items-center",
                 selectedToggle.activeId === 0 ? "toggle-active rounded-2xl bg-[#28333e]" : null
