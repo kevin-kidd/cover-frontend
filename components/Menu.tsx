@@ -1,4 +1,4 @@
-import {FunctionComponent, useRef, useState} from "react";
+import {FunctionComponent, ReactNode, useRef, useState} from "react";
 import Image from "next/image"
 import { Transition } from "@headlessui/react";
 import { useMenuStore } from "../stores/Menu";
@@ -6,11 +6,24 @@ import { useOnClickOutside } from "../functions/helper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/logo.svg";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+
+type MenuItem = {
+  title: string
+  active: boolean
+  disabled: boolean
+  href: string
+  icon: {
+    viewBox: string
+    path: ReactNode
+  }
+}
 
 const menuItems = [
   {
     title: "Home",
     active: true,
+    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 330.242 330.242",
@@ -20,6 +33,7 @@ const menuItems = [
   {
     title: "My Page",
     active: false,
+    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 512 512",
@@ -29,6 +43,7 @@ const menuItems = [
   {
     title: "Assets",
     active: false,
+    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 512 512",
@@ -38,6 +53,7 @@ const menuItems = [
   {
     title: "Analytics",
     active: false,
+    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 448 512",
@@ -47,6 +63,7 @@ const menuItems = [
   {
     title: "Trade Bonds",
     active: false,
+    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 512 512",
@@ -56,6 +73,7 @@ const menuItems = [
   {
     title: "Create Listing",
     active: false,
+    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 512 512",
@@ -63,6 +81,30 @@ const menuItems = [
     }
   }
 ];
+
+const MenuItem: FunctionComponent<{ item: MenuItem }> = ({ item }) => {
+  return (
+      <Link href={item.href}>
+        <button
+            className={
+              `font-medium rounded-2xl flex items-center group text-white text-kindasmall 2xl:text-base w-full p-3 2xl:p-5 group
+              ${item.active ? "bg-[#7BBD75]" : "hover:bg-gray-700 hover:text-white transition duration-150"}`
+            }
+        >
+          <svg
+              xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}
+              className={
+                `flex-shrink-0 mr-4 h-7 w-5 2xl:h-8 2xl:w-6
+                            ${item.active ? "fill-[#303C4A]" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] transition duration-150" }`
+              }
+          >
+            { item.icon.path }
+          </svg>
+          { item.title }
+        </button>
+      </Link>
+  )
+};
 
 const Menu: FunctionComponent = () => {
 
@@ -110,15 +152,7 @@ const Menu: FunctionComponent = () => {
                     <nav className="px-2 space-y-4">
                       {
                         menuItems.map((item) => (
-                          <a onClick={() => toggleMenu()} href={item.href} key={item.title}
-                          className={item.active ? "bg-[#7BBD75] text-white group flex items-center px-3.5 py-2.5 text-kindasmall font-medium rounded-3xl" : 
-                          "text-white hover:bg-gray-700 hover:text-white group flex items-center px-3.5 py-2.5 text-kindasmall font-medium rounded-3xl transition duration-150"}
-                          >
-                            <svg className={item.active ? "fill-[#303C4A] mr-4 flex-shrink-0 h-8 w-6" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] mr-4 flex-shrink-0 h-10 w-8  transition duration-150" } xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}>
-                              { item.icon.path }
-                            </svg>
-                            { item.title }
-                          </a>
+                            <MenuItem key={`mobile-menu-item-${item.title}`} item={item} />
                         ))
                       }
                     </nav>
@@ -147,28 +181,7 @@ const Menu: FunctionComponent = () => {
                   <nav className="space-y-2 xl:space-y-4 default:space-y-5 4k:space-y-10 w-fit">
                       {
                       menuItems.map((item) => (
-                        <a href={item.href} key={item.title}
-                        className={
-                          `font-medium rounded-3xl big:rounded-5xl flex items-center group text-white
-                          text-kindasmall desktop:text-base default:text-xl big:text-3xl 4k:text-5xl
-                          p-3 default:p-5 big:p-6 4k:p-10 group
-                          ${item.active ? "bg-[#7BBD75]" : 
-                          "hover:bg-gray-700 hover:text-white transition duration-150"}
-                          `
-                        }>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}
-                            className={
-                              `flex-shrink-0 mr-4
-                              h-7 w-5 desktop:h-8 desktop:w-6 big:w-14 big:h-10 4k:w-20 4k:h-14
-                              ${item.active ? "fill-[#303C4A]" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] transition duration-150" }`
-                            }
-
-                            >
-                            { item.icon.path }
-                          </svg>
-                          { item.title }
-                        </a>
+                          <MenuItem key={`menu-item-${item.title}`} item={item} />
                       ))
                     }
                   </nav>
