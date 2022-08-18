@@ -16,7 +16,7 @@ export const MenuFooter: FunctionComponent = () => {
 
     if(walletConnected) {
         return (
-          <div className="row-span-2 row-end-10 max-w-xs md:w-64 w-full flex items-end">
+          <div className="row-span-1 row-end-10 max-w-xs md:w-64 w-auto flex items-end">
             <div className="bg-gray-700 p-4 border-r-2 border-b-2 border-gray-800 w-full">
               <div className="flex items-center">
                 <div 
@@ -40,10 +40,10 @@ export const MenuFooter: FunctionComponent = () => {
                     setIsCopied(true)
                   }} 
                   onMouseLeave={() => setIsCopied(false)}>
-                    <span className={`tooltip rounded shadow-lg p-1 px-2 bg-gray-200 text-black text-sm -mt-8 justify-center ${isCopied ? "ml-10" : "ml-3"}`}>{isCopied ? "Copied!" : "Copy to clipboard"}</span>
-                    <p className="text-sm font-medium text-white w-2/3 md:w-40">{ truncatedAddress }</p>
+                    <span className={`tooltip rounded shadow-lg p-1 px-2 bg-gray-200 text-black text-kindasmall -mt-9 justify-center ${isCopied ? "ml-10" : "ml-3"}`}>{isCopied ? "Copied!" : "Copy to clipboard"}</span>
+                    <p className="text-kindasmall font-medium text-white w-2/3 md:w-40">{ truncatedAddress }</p>
                   </div>
-                  <p className={`text-xs font-medium ${hoverExit ? "text-gray-300" : "text-gray-400"}`}>Disconnect wallet</p>
+                  <p className={`text-tiny sm:text-kindasmaller font-medium ${hoverExit ? "text-gray-300" : "text-gray-400"}`}>Disconnect wallet</p>
                 </div>
               </div>
             </div>
@@ -51,11 +51,11 @@ export const MenuFooter: FunctionComponent = () => {
         )
     }
     return (
-      <div className="row-span-2 pb-2">
+      <div className="row-span-1 flex justify-center mb-5 px-14 md:px-6">
         <div className="flex items-center justify-center">
             <button 
                 onClick={() => setWalletConnected(true)}
-                className="bg-[#5596DC] px-5 py-4 text-white font-medium text-md rounded-lg transition duration-150 hover:bg-blue-400"
+                className="bg-[#5596DC] px-4 py-3 md:px-6 md:py-4 text-white font-medium text-md rounded-lg transition duration-150 hover:bg-[#66a0df]"
             >
                 Connect Wallet
             </button>
