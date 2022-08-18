@@ -2,60 +2,50 @@ import {FunctionComponent} from "react";
 import {CogIcon} from "@heroicons/react/solid";
 import {useHomeStore} from "../../stores/Home";
 
-export const ListingTypeToggle: FunctionComponent = () => {
+export const ToggleButton: FunctionComponent<{type: string}> = ({ type }) => {
 
     const listingToggleActive = useHomeStore((state) => state.listingToggleActive);
     const toggleListing = useHomeStore((state) => state.toggleListing);
-
-    return (
-        <div className="toggle-button-gradient border sm:border-2 border-transparent rounded-2xl flex mr-2 sm:mr-6 lg:mr-12 h-full" onClick={() => toggleListing()}>
-            <button
-                className={`w-1/2 group flex items-center ${listingToggleActive ? "toggle-active rounded-2xl bg-[#28333e]" : null}`}
-            >
-                <a className={`text-sm sm:text-tiny lg:text-kindasmall px-4 sm:px-6 lg:px-8 mr-1 ${listingToggleActive ? "text-[#eeeeee]" : "group-hover:text-[#eeeeee] text-[#8c8c8c] transition duration-150"}`}>
-                    Lend
-                </a>
-            </button>
-            <button
-                className={`w-1/2 group flex items-center ${listingToggleActive ? null : "toggle-active rounded-2xl bg-[#28333e]"}`}
-            >
-                <a className={`text-sm sm:text-tiny lg:text-kindasmall px-4 sm:px-6 lg:px-8 mr-1 ${listingToggleActive ? "group-hover:text-[#eeeeee] text-[#8c8c8c] transition duration-150" : "text-[#eeeeee]"}`}>
-                    Borrow
-                </a>
-            </button>
-        </div>
-    )
-};
-
-export const TokenTypeToggle: FunctionComponent = () => {
-
     const tokenToggleActive = useHomeStore((state) => state.tokenToggleActive);
     const toggleToken = useHomeStore((state) => state.toggleToken);
 
+    let toggleButton, toggleActive, toggleNames;
+
+    if(type === "token") {
+        toggleButton = toggleToken;
+        toggleActive = tokenToggleActive;
+        toggleNames = ["NFTs", "Tokens"];
+    } else {
+        toggleButton = toggleListing;
+        toggleActive = listingToggleActive;
+        toggleNames = ["Lend", "Borrow"];
+    }
+
     return (
-        <div className="toggle-button-gradient border sm:border-2 border-transparent rounded-2xl flex mr-2 sm:mr-6 lg:mr-12 h-full" onClick={() => toggleToken()}>
+        <div className="toggle-button-gradient border sm:border-2 border-transparent rounded-2xl flex h-full" onClick={() => toggleButton()}>
             <button
-                className={`w-1/2 group flex items-center ${tokenToggleActive ? "toggle-active rounded-2xl bg-[#28333e]" : null}`}
+                className={`w-1/2 h-full group flex items-center ${toggleActive ? "toggle-active rounded-2xl bg-[#28333e]" : null}`}
             >
-                <a className={`text-sm sm:text-tiny lg:text-kindasmall px-4 sm:px-6 lg:px-8 mr-1 ${tokenToggleActive ? "text-[#eeeeee]" : "group-hover:text-[#eeeeee] text-[#8c8c8c] transition duration-150"}`}>
-                    NFTs
+                <a className={`text-xs sm:text-sm px-3 sm:px-5 mr-1 ${toggleActive ? "text-[#eeeeee]" : "group-hover:text-[#c5c5c5] text-[#8c8c8c] transition duration-300"}`}>
+                    { toggleNames[0] }
                 </a>
             </button>
             <button
-                className={`w-1/2 group flex items-center ${tokenToggleActive ? null : "toggle-active rounded-2xl bg-[#28333e]"}`}
+                className={`w-1/2 group flex items-center ${toggleActive ? null : "toggle-active rounded-2xl bg-[#28333e]"}`}
             >
-                <a className={`text-sm sm:text-tiny lg:text-kindasmall px-4 sm:px-6 lg:px-8 mr-1 ${tokenToggleActive ? "group-hover:text-[#eeeeee] text-[#8c8c8c] transition duration-150" : "text-[#eeeeee]"}`}>
-                    Tokens
+                <a className={`text-xs sm:text-sm px-3 sm:px-5 mr-1 ${toggleActive ? "group-hover:text-[#c5c5c5] text-[#8c8c8c] transition duration-300" : "text-[#eeeeee]"}`}>
+                    { toggleNames[1] }
                 </a>
             </button>
         </div>
     )
 };
 
-export const SettingsButton: FunctionComponent = () => {
+export const SettingsButton: FunctionComponent<{page: string}> = ({ page }) => {
     return (
-        <button className="hidden sm:flex rounded-full border border-[#b2bfcd] w-12 h-auto p-1 text-[#b2bfcd] hover:text-[#bac5d2] hover:border-[#bac5d2] transition duration-150">
-            <CogIcon className="h-full w-full"/>
+        <button
+            className="flex rounded-full w-auto h-full border border-[#95a6ba] p-1 text-[#bac5d2] hover:border-[#bac5d2] transition duration-300">
+            <CogIcon className="h-full" />
         </button>
-    );
+    )
 };

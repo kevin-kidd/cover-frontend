@@ -1,4 +1,4 @@
-import {FunctionComponent, ReactNode} from "react";
+import {ReactNode} from "react";
 
 export type MenuItem = {
     title: string
@@ -9,10 +9,6 @@ export type MenuItem = {
         path: ReactNode
     }
 }
-
-export type HeaderProps = {
-    items: FunctionComponent[]
-};
 
 export type Listing = {
     listingType: string

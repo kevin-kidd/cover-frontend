@@ -32,16 +32,16 @@ const MyPage: NextPage = () => {
           <Head>
               <title>My Page - Cover</title>
           </Head>
-          <div className="flex flex-row min-h-screen w-full">
+          <main className="relative h-screen">
               <Menu activeTitle={"My Page"} />
-              <div className="flex flex-col w-full">
-                  <Header items={[SettingsButton]} />
-                  <div className="px-1 sm:px-8 lg:px-16 2xl:px-20 container mx-auto">
+              <div className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
+                  <Header items={[SettingsButton({ page: "test" })]} />
+                  <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-20">
                       <ListingsSection listings={listings} title={"My Listings (All)"} displayToggles={true} />
                       <ListingsSection listings={listings} title={"Listings With My Positions"} displayToggles={false} />
                   </div>
               </div>
-          </div>
+          </main>
       </>
     )
 };

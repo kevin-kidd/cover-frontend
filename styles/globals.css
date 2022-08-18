@@ -51,7 +51,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     object-fit: cover;
 }
 
-body:before {
+main:before {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

@@ -16,7 +16,7 @@
         "name": "sSCRT",
         "amount": 18
       },
-      "duration": "1 month, and 3 weeks",
+      "duration": "7 weeks",
       "returnPercentage": 5
     },
     {
@@ -54,7 +54,7 @@
         "name": "sXMR",
         "amount": 21.432
       },
-      "duration": "1 month, and 3 days",
+      "duration": "33 days",
       "returnPercentage": 7
     },
     {
@@ -98,7 +98,7 @@
           "amount": 3
         },
         "listingType": "borrow",
-        "duration": "1 month",
+        "duration": "30 days",
         "returnPercentage": 6
       },
       {
@@ -119,7 +119,7 @@
           "amount": 2
         },
         "listingType": "borrow",
-        "duration": "1 month",
+        "duration": "30 days",
         "returnPercentage": 5
       },
       {

@@ -21,7 +21,10 @@ module.exports = {
         '52': '13rem'
       },
       width: {
-        "90%": "90%",
+        "90%": "90%"
+      },
+      spacing: {
+        "sidebar": "13rem"
       },
       maxWidth: {
         '3/4': '75%'
