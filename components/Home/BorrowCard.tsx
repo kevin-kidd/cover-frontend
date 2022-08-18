@@ -17,7 +17,7 @@ export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
   // const loading = useHomeStore((state) => state.loading)
   // const setLoading = useHomeStore((state) => state.setLoading)
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   return (
     <div className={`col-span-1 flex w-full justify-center ${loading ? null : "hover:cursor-pointer"}`}>
@@ -25,7 +25,6 @@ export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
         <div className="border-b border-[#8B98FF] w-full py-2 4k:pt-5 4k:pb-4 flex justify-center">
           <p className="card-title text-kindasmall desktop:text-base big:text-xl 4k:text-4xl">Asking to Borrow</p>
         </div>
-        <>
         {
           loading ?
             <>
@@ -39,9 +38,9 @@ export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
                       </div>
                       <div className="h-2 4k:h-4 rounded 4k:rounded-2xl bg-slate-700 mt-4 sm:mt-6 4k:mt-10"></div>
                     </div>
-                    <div className="py-3 px-2 w-full h-full">
+                    {/* <div className="py-3 px-2 w-full h-full">
                       <div className="rounded-2xl bg-slate-700 aspect-square mt-2 w-full h-auto"></div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
             </>
@@ -66,24 +65,24 @@ export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
                     <Image src={`https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.icon}`} className="rounded-full border-white border" layout="responsive" width="32" height="32" alt={`icon-${listing.collateral.name}`} priority={true} />
                   </div>
                 </div>
-                <div className="my-2 p-1 4k:p-8 w-full aspect-square mx-auto block justify-center">
-                  <Image 
-                    layout="responsive" width="500" height="500" placeholder="blur" priority={true} alt={listing.collateral.name} 
-                    className="rounded desktop:rounded-lg big:rounded-xl 4k:rounded-2xl bg-black w-full h-full" 
-                    blurDataURL={
-                      listing.collateral.name.includes('data:image/') ? 
-                      listing.collateral.image : `https://res.cloudinary.com/drgbtjcgt/image/fetch/w_100/e_blur:1000,q_auto,f_webp/${listing.collateral.image}`
-                    } 
-                    src={
-                      listing.collateral.image.includes('data:image/') ? 
-                      listing.collateral.image : `https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.image}`
-                    } 
-                  />
-                </div>
               </div>
             </>
-          }
-        </>
+        }
+        <div className="my-2 p-1 4k:p-8 w-full aspect-square mx-auto block justify-center">
+          <Image 
+            layout="responsive" width="500" height="500" placeholder="blur" priority={true} alt={listing.collateral.name} 
+            className="rounded desktop:rounded-lg big:rounded-xl 4k:rounded-2xl bg-black w-full h-full"
+            onLoadingComplete={() => setLoading(false)}
+            blurDataURL={
+              listing.collateral.name.includes('data:image/') ? 
+              listing.collateral.image : `https://res.cloudinary.com/drgbtjcgt/image/fetch/w_100/e_blur:1000,q_auto,f_webp/${listing.collateral.image}`
+            } 
+            src={
+              listing.collateral.image.includes('data:image/') ? 
+              listing.collateral.image : `https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.image}`
+            } 
+          />
+        </div>
       </div>
     </div>
   )
