@@ -177,11 +177,8 @@ export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
                 </>
             }
 
-            <div className="lg:flex hidden w-full h-fit">
+            <div className="flex w-90% h-fit">
                 <Snip721Display images={listing.collateral.images} setLoading={setLoading} />
-            </div>
-            <div className="lg:hidden flex w-full h-fit">
-              <Snip721Display images={listing.collateral.images.slice(0,1)} setLoading={setLoading} />
             </div>
           </div>
         </div>

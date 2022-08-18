@@ -133,46 +133,47 @@ const Menu: FunctionComponent = () => {
         {/* Desktop */}
 
         <div className="hidden sticky top-0 left-0 col-span-1 lg:flex lg:flex-col h-screen">
-            <div className="flex-1 grid grid-rows-6 min-h-0 bg-[#1A2128]">
-                <div className="row-span-1 flex items-center justify-center min-h-20 flex-shrink-0 bg-[#1A2128] w-1/2 mx-auto relative">
-                  <Image
+            <div className="flex-1 grid grid-flow-row auto-rows-auto bg-[#1A2128]">
+              <div className="w-1/2 h-full mx-auto">
+                <Image
                     priority={true}
-                    layout="fill"
+                    layout="responsive"
+                    height="500"
+                    width="500"
                     src={logo}
-                    className="h-fit w-auto"
                     alt="Cover" />
-                </div>
-                <div className="row-span-4 flex flex-col justify-center items-center overflow-y-auto">
-                    <nav className="space-y-2 xl:space-y-4 default:space-y-5 4k:space-y-10 w-fit">
-                        {
-                        menuItems.map((item) => (
-                          <a href={item.href} key={item.title}
-                          className={
-                            `font-medium rounded-3xl big:rounded-5xl flex items-center group text-white
-                            text-kindasmall desktop:text-base default:text-xl big:text-3xl 4k:text-5xl
-                            p-3 default:p-5 big:p-6 4k:p-10 group
-                            ${item.active ? "bg-[#7BBD75]" : 
-                            "hover:bg-gray-700 hover:text-white transition duration-150"}
-                            `
-                          }>
-                            <svg 
-                              xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}
-                              className={
-                                `flex-shrink-0 mr-4
-                                h-7 w-5 desktop:h-8 desktop:w-6 big:w-14 big:h-10 4k:w-20 4k:h-14
-                                ${item.active ? "fill-[#303C4A]" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] transition duration-150" }`
-                              }
-                              
-                              >
-                              { item.icon.path }
-                            </svg>
-                            { item.title }
-                          </a>
-                        ))
-                      }
-                    </nav>
-                </div>
-                <MenuFooter />
+              </div>
+              <div className="flex flex-col justify-center items-center overflow-y-auto">
+                  <nav className="space-y-2 xl:space-y-4 default:space-y-5 4k:space-y-10 w-fit">
+                      {
+                      menuItems.map((item) => (
+                        <a href={item.href} key={item.title}
+                        className={
+                          `font-medium rounded-3xl big:rounded-5xl flex items-center group text-white
+                          text-kindasmall desktop:text-base default:text-xl big:text-3xl 4k:text-5xl
+                          p-3 default:p-5 big:p-6 4k:p-10 group
+                          ${item.active ? "bg-[#7BBD75]" : 
+                          "hover:bg-gray-700 hover:text-white transition duration-150"}
+                          `
+                        }>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}
+                            className={
+                              `flex-shrink-0 mr-4
+                              h-7 w-5 desktop:h-8 desktop:w-6 big:w-14 big:h-10 4k:w-20 4k:h-14
+                              ${item.active ? "fill-[#303C4A]" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] transition duration-150" }`
+                            }
+
+                            >
+                            { item.icon.path }
+                          </svg>
+                          { item.title }
+                        </a>
+                      ))
+                    }
+                  </nav>
+              </div>
+              <MenuFooter />
             </div>
         </div>
       </>
@@ -191,7 +192,7 @@ const MenuFooter: FunctionComponent = () => {
 
   if(walletConnected) {
     return (
-        <div className="row-span-1 flex items-end">
+        <div className="flex items-end">
           <div className="bg-gray-700 p-4 border-r-2 border-b-2 border-gray-800 w-full">
             <div className="grid grid-cols-4 flex items-center">
               <div

@@ -16,7 +16,7 @@ export const FeaturedListings: FunctionComponent = () => {
 
   return (
     <>
-      <div className="w-11/12 2xl:w-4/5 sm:py-4 default:py-6 big:py-8 4k:py-12 border-b border-black w-full mx-auto">
+      <div className="w-11/12 2xl:w-4/5 py-4 default:py-6 big:py-8 4k:py-12 border-b border-black w-full mx-auto">
         <div className="flex justify-between items-end">
           <h1 className="text-md sm:text-base default:text-xl big:text-3xl 4k:text-5xl font-medium text-white ml-6">
             Featured Listings (All)
