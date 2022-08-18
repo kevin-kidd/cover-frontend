@@ -83,7 +83,7 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
           >
             <div className="fixed inset-0 bg-[#1A2128] bg-opacity-75"></div>
               <div className="fixed inset-0 flex z-40">
-                <div className="flex-1 flex flex-col max-w-xs w-full bg-gray-800" ref={mobileMenuRef}>
+                <div className="flex-1 flex flex-col max-w-xs w-full bg-[#1A2128]" ref={mobileMenuRef}>
                   <div className="flex justify-end pr-5 pt-5">
                     <button onClick={() => toggleMenu()} type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Close sidebar</span>
@@ -127,8 +127,8 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
           </Transition>
         </div>
         <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-            <div className="flex-1 flex flex-col min-h-0 bg-gray-800">
-                <div className="flex items-center justify-center h-20 flex-shrink-0 px-4 bg-gray-800 mt-6">
+            <div className="flex-1 flex flex-col min-h-0 bg-[#1A2128]">
+                <div className="flex items-center justify-center h-20 flex-shrink-0 px-4 bg-[#1A2128] mt-6">
                   <Image
                         priority={true}
                         src={logo}

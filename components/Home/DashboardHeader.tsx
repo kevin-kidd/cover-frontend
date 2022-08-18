@@ -9,7 +9,7 @@ const DashboardHeader: FunctionComponent = () => {
 
   return (
       <div className="top-0 z-10 flex-shrink-0 flex h-auto border-b border-black mx-2">
-        <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none md:hidden ml-10">
+        <button type="button" onClick={() => toggleMenu()} className="text-white focus:outline-none md:hidden ml-6">
           <span className="sr-only">Open sidebar</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />

@@ -67,7 +67,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                     </div>
                     <div className="flex justify-center">
                       <div className="w-40 rounded-full h-2.5 mt-2 mb-1 progress-bar-track">
-                          <div className="progress-bar h-2.5 rounded-full" style={{width: `${(listing.lending.amount / listing.lending.total) * 100}%`}}></div>
+                          <div className="progress-bar h-2.5 rounded-full" style={{width: `${(1 - (listing.lending.amount / listing.lending.total)) * 100}%`}}></div>
                       </div>
                     </div>
                     <p className="text-xs text-white mb-2 justify-center flex">
