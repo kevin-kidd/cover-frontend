@@ -136,7 +136,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                   <div className="rounded-full bg-white w-10 h-10 -ml-1 absolute -mt-2">
                     <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full border-white border-2 w-full h-full bg-black" alt={listing.collateral.name} />
                   </div>
-                  <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full bg-black border-white border h-24 w-24 p-2" alt={listing.lending.name} />
+                  <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full bg-black border-white border h-24 w-24" alt={listing.lending.name} />
                 </div>
             </>
           }

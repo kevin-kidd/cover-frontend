@@ -8,7 +8,7 @@ import { MenuFooter } from "./MenuFooter"
 
 const menuItems = [
   {
-    title: "Dashboard",
+    title: "Home",
     active: true,
     href: "#",
     icon: {
