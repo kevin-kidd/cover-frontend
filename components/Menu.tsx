@@ -1,4 +1,4 @@
-import {FunctionComponent, ReactNode, useRef, useState} from "react";
+import {FunctionComponent, useRef, useState} from "react";
 import Image from "next/image"
 import { Transition } from "@headlessui/react";
 import { useMenuStore } from "../stores/Menu";
@@ -7,24 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/logo.svg";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-
-type MenuItem = {
-  title: string
-  active: boolean
-  disabled: boolean
-  href: string
-  icon: {
-    viewBox: string
-    path: ReactNode
-  }
-}
+import { MenuItem } from "../types/general";
 
 const menuItems = [
   {
     title: "Home",
-    active: true,
-    disabled: false,
-    href: "#",
+    href: "/",
     icon: {
       viewBox: "0 0 330.242 330.242",
       path: <path d="M324.442,129.811l-41.321-33.677V42.275c0-6.065-4.935-11-11-11h-26c-6.065,0-11,4.935-11,11v14.737l-55.213-44.999  c-3.994-3.254-9.258-5.047-14.822-5.047c-5.542,0-10.781,1.782-14.753,5.019L5.8,129.81c-6.567,5.351-6.173,10.012-5.354,12.314  c0.817,2.297,3.448,6.151,11.884,6.151h19.791v154.947c0,11.058,8.972,20.053,20,20.053h62.5c10.935,0,19.5-8.809,19.5-20.053  v-63.541c0-5.446,5.005-10.405,10.5-10.405h42c5.238,0,9.5,4.668,9.5,10.405v63.541c0,10.87,9.388,20.053,20.5,20.053h61.5  c11.028,0,20-8.996,20-20.053V148.275h19.791c8.436,0,11.066-3.854,11.884-6.151C330.615,139.822,331.009,135.161,324.442,129.811z" />
@@ -32,9 +20,7 @@ const menuItems = [
   },
   {
     title: "My Page",
-    active: false,
-    disabled: false,
-    href: "#",
+    href: "/my-page",
     icon: {
       viewBox: "0 0 512 512",
       path: <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z" />
@@ -42,8 +28,6 @@ const menuItems = [
   },
   {
     title: "Assets",
-    active: false,
-    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 512 512",
@@ -52,8 +36,6 @@ const menuItems = [
   },
   {
     title: "Analytics",
-    active: false,
-    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 448 512",
@@ -62,8 +44,6 @@ const menuItems = [
   },
   {
     title: "Trade Bonds",
-    active: false,
-    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 512 512",
@@ -72,8 +52,6 @@ const menuItems = [
   },
   {
     title: "Create Listing",
-    active: false,
-    disabled: false,
     href: "#",
     icon: {
       viewBox: "0 0 512 512",
@@ -82,21 +60,26 @@ const menuItems = [
   }
 ];
 
-const MenuItem: FunctionComponent<{ item: MenuItem }> = ({ item }) => {
+const MenuItem: FunctionComponent<{ item: MenuItem, active: boolean }> = ({ item, active }) => {
+
+  const isConnected = useMenuStore((state) => state.walletConnected);
+
   return (
       <Link href={item.href}>
         <button
-            className={
-              `font-medium rounded-2xl flex items-center group text-white text-kindasmall 2xl:text-base w-full p-3 2xl:p-5 group
-              ${item.active ? "bg-[#7BBD75]" : "hover:bg-gray-700 hover:text-white transition duration-150"}`
-            }
+            className={`
+              font-medium rounded-2xl flex items-center group text-white text-kindasmall 2xl:text-base w-full p-3 2xl:p-5 group
+              ${ active ? "bg-[#7BBD75]" : "hover:bg-gray-700 transition duration-150" }
+              ${ !isConnected && item.title === "My Page" ? "hover:cursor-default hover:bg-transparent text-gray-400" : null}
+            `}
         >
           <svg
               xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}
-              className={
-                `flex-shrink-0 mr-4 h-7 w-5 2xl:h-8 2xl:w-6
-                            ${item.active ? "fill-[#303C4A]" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] transition duration-150" }`
-              }
+              className={`
+                flex-shrink-0 mr-4 h-7 w-5 2xl:h-8 2xl:w-6
+                ${ active ? "fill-[#303C4A]" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] transition duration-150" }
+                ${ !isConnected && item.title === "My Page" ? "fill-gray-400" : null }
+              `}
           >
             { item.icon.path }
           </svg>
@@ -106,7 +89,7 @@ const MenuItem: FunctionComponent<{ item: MenuItem }> = ({ item }) => {
   )
 };
 
-const Menu: FunctionComponent = () => {
+const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
 
   const setOpen = useMenuStore((state) => state.setOpen);
   const mobileMenuRef = useRef<HTMLDivElement>();
@@ -152,7 +135,7 @@ const Menu: FunctionComponent = () => {
                     <nav className="px-2 space-y-4">
                       {
                         menuItems.map((item) => (
-                            <MenuItem key={`mobile-menu-item-${item.title}`} item={item} />
+                            <MenuItem key={`mobile-menu-item-${item.title}`} item={item} active={activeTitle === item.title} />
                         ))
                       }
                     </nav>
@@ -181,7 +164,7 @@ const Menu: FunctionComponent = () => {
                   <nav className="space-y-2 xl:space-y-4 default:space-y-5 4k:space-y-10 w-fit">
                       {
                       menuItems.map((item) => (
-                          <MenuItem key={`menu-item-${item.title}`} item={item} />
+                          <MenuItem key={`menu-item-${item.title}`} item={item} active={activeTitle === item.title} />
                       ))
                     }
                   </nav>

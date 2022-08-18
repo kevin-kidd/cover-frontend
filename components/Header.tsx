@@ -1,9 +1,6 @@
 import {FunctionComponent, useEffect, useState} from "react";
 import { useMenuStore} from "../stores/Menu";
-
-type HeaderProps = {
-    items: FunctionComponent[]
-};
+import { HeaderProps } from "../types/general";
 
 const Header: FunctionComponent<HeaderProps> = ({ items }) => {
 

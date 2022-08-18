@@ -1,46 +1,16 @@
 import create from 'zustand'
+import {Listing} from "../types/general";
 
-export type Listing = {
-  listingType: string
-  isPartiallyFunded?: boolean
-  duration: string
-  returnPercentage: number
-  borrowing?: {
-    tokenType: string
-    amount: number
-    image?: string
-    icon?: string
-    name: string
-    estimatedValue?: number
-  },
-  lending?: {
-    tokenType: string
-    estimatedValue?: number
-    amount: number
-    image: string
-    icon?: string
-    total?: number
-    name: string
-  },
-  collateral: {
-    tokenType: string
-    name: string
-    images: string[]
-    icon?: string
-    amount: number
-  }
-}
-
-interface HomeState {
-  listingToggleActive: boolean,
-  tokenToggleActive: boolean,
-  loading: boolean,
-  featuredListings: Listing[],
-  selectedListings: Listing[],
-  setSelectedListings: (by: Listing[]) => void,
-  setFeaturedListings: (by: Listing[]) => void,
-  setLoading: (by: boolean) => void,
-  toggleListing: () => void,
+type HomeState = {
+  listingToggleActive: boolean
+  tokenToggleActive: boolean
+  loading: boolean
+  featuredListings: Listing[]
+  selectedListings: Listing[]
+  setSelectedListings: (by: Listing[]) => void
+  setFeaturedListings: (by: Listing[]) => void
+  setLoading: (by: boolean) => void
+  toggleListing: () => void
   toggleToken: () => void
 }
 
@@ -62,6 +32,7 @@ const emptyLoanListing = {
   duration: "",
   returnPercentage: 0
 };
+
 const emptyBorrowListing = {
   listingType: "borrow",
   borrowing: {
@@ -78,6 +49,7 @@ const emptyBorrowListing = {
   duration: "",
   returnPercentage: 0
 };
+
 let emptyLoans: Listing[] = [emptyLoanListing, emptyLoanListing, emptyLoanListing, emptyLoanListing];
 let emptyBorrows: Listing[] = [emptyBorrowListing, emptyBorrowListing, emptyBorrowListing, emptyBorrowListing];
 

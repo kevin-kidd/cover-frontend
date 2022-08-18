@@ -1,8 +1,9 @@
-import {FunctionComponent, useEffect, useState} from "react";
-import { useHomeStore } from "../../stores/Home";
-import exampleListings from "../../exampleListings.json";
+import { FunctionComponent, useEffect, useState } from "react";
+import { useHomeStore } from "../stores/Home";
+import exampleListings from "../exampleListings.json";
 import { ListingCard } from "./ListingCard";
 import Typed from "react-typed";
+import {Listing} from "../types/general";
 
 const DenomSearchBox: FunctionComponent<{type: string}> = ({ type }) => {
 
@@ -65,20 +66,20 @@ const AdvancedButton: FunctionComponent = () => {
     )
 };
 
-const SectionTitle: FunctionComponent = () => {
+const SectionTitle: FunctionComponent<{title?: string}> = ({ title }) => {
   const loanType = useHomeStore((state) => state.listingToggleActive);
   const tokenType = useHomeStore((state) => state.tokenToggleActive);
 
-  let title: string;
-
-  if(loanType && tokenType) title = "NFT Lending";
-  else if(!loanType && tokenType) title = "NFT Borrowing";
-  else if(loanType && !tokenType) title = "Token Lending";
-  else if(!loanType && !tokenType) title = "Token Borrowing";
+  if(title === undefined) {
+      if(loanType && tokenType) title = "NFT Lending Listings";
+      else if(!loanType && tokenType) title = "NFT Borrowing Listings";
+      else if(loanType && !tokenType) title = "Token Lending Listings";
+      else if(!loanType && !tokenType) title = "Token Borrowing Listings";
+  }
 
   return (
-      <div className="flex justify-between items-end py-4">
-          <h1 className="text-tiny md:text-base xl:text-lg font-medium text-white">{ title } Listings</h1>
+      <div className="flex justify-between items-end pt-4 px-1 sm:px-2 md:px-3 xl:px-6">
+          <h1 className="text-tiny md:text-base xl:text-lg font-medium text-white">{ title }</h1>
           <a href="#" className="mt-1 font-medium text-red-500 transition duration-150 text-sm lg:text-tiny 2xl:text-base">
               All Listings
           </a>
@@ -86,8 +87,9 @@ const SectionTitle: FunctionComponent = () => {
   )
 };
 
-const SectionHeader: FunctionComponent = () => {
-  return (
+const SectionHeader: FunctionComponent<{displayToggles: boolean}> = ({ displayToggles }) => {
+    if(!displayToggles) return (<></>);
+    return (
       <>
         {/* Mobile */}
         <div className="sm:hidden grid grid-rows-2 grid-cols-3 grid-flow-col justify-center items-center w-full mt-4">
@@ -102,7 +104,7 @@ const SectionHeader: FunctionComponent = () => {
           </div>
         </div>
         {/* Desktop */}
-        <div className="hidden sm:grid sm:grid-cols-5 justify-center gap-x-2 items-center w-full mt-2">
+        <div className="hidden sm:grid sm:grid-cols-5 justify-center gap-x-2 items-center w-full mt-6">
             <div className="w-full col-span-2 flex justify-self-center xl:w-5/6 sm:h-10 h-8">
               <DenomSearchBox type={"principal"} />
             </div>
@@ -114,25 +116,15 @@ const SectionHeader: FunctionComponent = () => {
           </div>
         </div>
       </>
-  )
+    )
 };
 
 
-export const SelectedListings: FunctionComponent = () => {
-
-  const listings = useHomeStore((state) => state.selectedListings);
-  const setSelectedListings = useHomeStore((state) => state.setSelectedListings);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSelectedListings(exampleListings.lend.nft);
-    }, 5000)
-  }, [setSelectedListings]);
-
+export const ListingsSection: FunctionComponent<{ listings: Listing[], title?: string, displayToggles: boolean }> = ({ listings, title, displayToggles}) => {
   return (
-    <div className="border-t border-black pb-8 pt-4 w-full">
-      <SectionTitle />
-      <SectionHeader />
+    <div className="border-t border-black pb-4 2xl:pb-8 pt-4 w-full">
+      <SectionTitle title={title} />
+      <SectionHeader displayToggles={displayToggles} />
         <div className="
             justify-center items-center w-full my-8
             grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4

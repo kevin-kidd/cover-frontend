@@ -1,13 +1,14 @@
 import Img from "next/future/image";
 import Image from "next/image";
-import {Dispatch, FunctionComponent, SetStateAction, useState} from "react";
-import { Listing } from "../../stores/Home";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {EffectCards, Pagination} from "swiper";
+import { Dispatch, FunctionComponent, SetStateAction, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCards, Pagination } from "swiper";
+import { Listing } from "../types/general";
 
 const classes = {
   text: {
       small: "text-xs lg:text-sm 2xl:text-tiny",
+      medium: "text-tiny lg:text-base",
       large: "text-sm lg:text-base 2xl:text-lg"
   }
 };
@@ -177,7 +178,7 @@ const CardBody: FunctionComponent<CardProps> = ({ listing }) => {
         return (
             <div className="mt-1 4k:mt-4 flex flex-col w-full h-fit">
                 <div className="w-full flex justify-center items-center">
-                    <p className={`collateralized-by ${classes.text.small}`}>Collateralized by</p>
+                    <p className={`collateralized-by ${classes.text.medium}`}>Collateralized by</p>
                 </div>
                 <div className="w-full inline-flex justify-center items-center pt-1 4k:pt-3">
                     <p className={`text-white truncate ${classes.text.small}`}>{listing.collateral.amount}x {listing.collateral.name}</p>
