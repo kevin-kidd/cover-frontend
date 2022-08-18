@@ -1,9 +1,12 @@
 import create from 'zustand'
 
 export type Listing = {
+  listingType: string
   isPartiallyFunded?: boolean
+  duration: string
+  returnPercentage: number
   borrowing?: {
-    type: string
+    tokenType: string
     amount: number
     image?: string
     icon?: string
@@ -11,7 +14,7 @@ export type Listing = {
     estimatedValue?: number
   },
   lending?: {
-    type: string
+    tokenType: string
     estimatedValue?: number
     amount: number
     image: string
@@ -20,14 +23,12 @@ export type Listing = {
     name: string
   },
   collateral: {
-    type: string
+    tokenType: string
     name: string
     images: string[]
     icon?: string
     amount: number
-  },
-  duration: string
-  returnPercentage: number
+  }
 }
 
 interface HomeState {
@@ -39,20 +40,21 @@ interface HomeState {
   setSelectedListings: (by: Listing[]) => void,
   setFeaturedListings: (by: Listing[]) => void,
   setLoading: (by: boolean) => void,
-  listingToggle: () => void,
-  tokenToggle: () => void
+  toggleListing: () => void,
+  toggleToken: () => void
 }
 
 const emptyLoanListing = {
+  listingType: "lend",
   isPartiallyFunded: false,
   lending: {
-    type: "",
+    tokenType: "",
     image: "",
     amount: 0,
     name: ""
   },
   collateral: {
-    type: "",
+    tokenType: "",
     images: [],
     name: "",
     amount: 0
@@ -61,13 +63,14 @@ const emptyLoanListing = {
   returnPercentage: 0
 };
 const emptyBorrowListing = {
+  listingType: "borrow",
   borrowing: {
-    type: "",
+    tokenType: "",
     amount: 0,
     name: "",
   },
   collateral: {
-    type: "",
+    tokenType: "",
     name: "",
     images: [],
     amount: 0
@@ -83,8 +86,8 @@ export const useHomeStore = create<HomeState>()((set) => ({
   tokenToggleActive: true,
   loading: true,
   setLoading: (by) => set(() => ({ loading: by })),
-  listingToggle: () => set((state) => ({ listingToggleActive: !state.listingToggleActive })),
-  tokenToggle: () => set((state) => ({ tokenToggleActive: !state.tokenToggleActive })),
+  toggleListing: () => set((state) => ({ listingToggleActive: !state.listingToggleActive })),
+  toggleToken: () => set((state) => ({ tokenToggleActive: !state.tokenToggleActive })),
   setFeaturedListings: (by: Listing[]) => set(() => ({ featuredListings: by })),
   setSelectedListings: (by: Listing[]) => set(() => ({ selectedListings: by })),
   featuredListings: emptyLoans,

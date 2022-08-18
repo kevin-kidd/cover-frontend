@@ -78,11 +78,14 @@ body:before {
     z-index: 100;
 }
 
+.toggle-button-gradient {
+    background:
+            linear-gradient(#1a2128, #1a2128) padding-box,
+            linear-gradient(90deg, #59BFCA 0%, #D773FF 100%) border-box;
+}
+
 .toggle-active {
-    background: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 84px 67px rgba(0, 0, 0, 0.03), 0 54px 39px rgba(0, 0, 0, 0.0227778), 0 32px 21px rgba(0, 0, 0, 0.0182222), 0 17px 11px rgba(0, 0, 0, 0.015), 0 7px 5px rgba(0, 0, 0, 0.0117778), 0 2px 3px rgba(0, 0, 0, 0.00722222);
-    border-radius: 13px;
 }
 
 @media(max-width: 320px) {

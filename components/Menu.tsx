@@ -76,7 +76,7 @@ const Menu: FunctionComponent = () => {
     return (
       <>
       {/* Mobile */}
-        <div className="relative w-full z-40 lg:hidden" role="dialog" aria-modal="true">
+        <div className="relative z-40 lg:hidden w-0" role="dialog" aria-modal="true">
           <Transition
             show={isOpen}
             as="div"
@@ -132,9 +132,9 @@ const Menu: FunctionComponent = () => {
 
         {/* Desktop */}
 
-        <div className="hidden sticky top-0 left-0 col-span-1 lg:flex lg:flex-col h-screen">
-            <div className="flex-1 grid grid-flow-row auto-rows-auto bg-[#1A2128]">
-              <div className="w-1/2 h-full mx-auto">
+        <div className="hidden sticky h-screen inset-y-0 max-w-[260px] w-full lg:flex lg:flex-col">
+            <div className="h-full grid grid-flow-row auto-rows-auto bg-[#1A2128]">
+              <div className="w-1/2 h-fit mx-auto">
                 <Image
                     priority={true}
                     layout="responsive"
@@ -196,13 +196,13 @@ const MenuFooter: FunctionComponent = () => {
           <div className="bg-gray-700 p-4 border-r-2 border-b-2 border-gray-800 w-full">
             <div className="grid grid-cols-4 flex items-center">
               <div
-                  className="col-span-1 mx-auto bg-gray-900 flex justify-center rounded-full hover:cursor-pointer w-2/3 h-full"
+                  className="col-span-1 mx-auto bg-gray-900 flex rounded-full hover:cursor-pointer w-2/3 h-auto"
                   onClick={() => setWalletConnected(false)}
                   onMouseEnter={() => setHoverExit(true)} onMouseLeave={() => setHoverExit(false)}
               >
-                <FontAwesomeIcon icon={faSignOutAlt} className={`mx-auto p-2 default:p-4 big:p-6 4k:p-8 h-auto w-auto transition duration-150 ${hoverExit ? "text-gray-400" : "text-gray-500"}`} />
+                <FontAwesomeIcon icon={faSignOutAlt} className={`mx-auto p-2 transition duration-150 ${hoverExit ? "text-gray-400" : "text-gray-500"}`} />
               </div>
-              <div className="col-span-3 mr-3 lg:mr-5 4k:mr-12">
+              <div className="col-span-3 mr-3 lg:mr-5">
                 <div className="has-tooltip hover:cursor-pointer w-full flex justify-center"
                      onClick={() => {
                        document.addEventListener('copy', function(e) {
@@ -214,11 +214,11 @@ const MenuFooter: FunctionComponent = () => {
                        setIsCopied(true);
                      }}
                      onMouseLeave={() => setIsCopied(false)}>
-                  <span className={`tooltip rounded shadow-lg p-1 px-2 bg-gray-200 text-black -mt-9 default:-mt-10 big:-mt-14 4k:-mt-20 text-kindasmall default:text-base big:text-2xl 4k:text-4xl`}>{isCopied ? "Copied!" : "Copy to clipboard"}</span>
-                  <p className="text-kindasmaller xl:text-kindasmall default:text-lg big:text-2xl 4k:text-4xl font-medium text-white truncate">{ secretAddress }</p>
+                  <span className={`tooltip rounded shadow-lg p-1 px-2 bg-gray-200 text-black -mt-9 text-sm`}>{isCopied ? "Copied!" : "Copy to clipboard"}</span>
+                  <p className="text-sm font-medium text-white truncate">{ secretAddress }</p>
                 </div>
                 <p
-                    className={`text-tiny default:text-kindasmall big:text-lg 4k:text-2xl font-medium hover:cursor-pointer  transition duration-150 ${hoverExit ? "text-gray-300" : "text-gray-400"}`}
+                    className={`text-xs font-medium hover:cursor-pointer transition duration-150 ${hoverExit ? "text-gray-300" : "text-gray-400"}`}
                     onClick={() => setWalletConnected(false)}
                     onMouseEnter={() => setHoverExit(true)}
                     onMouseLeave={() => setHoverExit(false)}
@@ -236,11 +236,7 @@ const MenuFooter: FunctionComponent = () => {
         <div className="flex items-center justify-center">
           <button
               onClick={() => setWalletConnected(true)}
-              className="
-                  p-4 desktop:p-5 big:p-7 4k:p-10
-                  rounded-lg desktop:rounded-xl big:rounded-2xl 4k:rounded-2xl
-                  text-kindasmall desktop:text-base default:text-xl big:text-3xl 4k:text-5xl
-                  bg-[#5596DC] text-white font-medium transition duration-150 hover:bg-[#66a0df]"
+              className="p-4 rounded-lg text-kindasmall bg-[#5596DC] text-white font-medium transition duration-150 hover:bg-[#66a0df]"
           >
             Connect Wallet
           </button>
