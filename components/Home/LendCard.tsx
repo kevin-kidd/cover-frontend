@@ -25,7 +25,17 @@ type LendCardProps = {
 
 export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
 
-  const roundedCollateral = Math.round(listing.collateral.amount)
+  let collateralPerAmount: string
+  let roundedCollateral: number
+
+  if(listing.collateral.amount < 1) {
+    collateralPerAmount = (Math.round(1 / listing.collateral.amount)).toString()
+    if(collateralPerAmount.length > 7) {
+        collateralPerAmount = collateralPerAmount.slice(0, 6) + "..."
+    }
+  } else {
+    roundedCollateral = Math.round(listing.collateral.amount)
+  }
 
   return (
     <div className="col-span-1 lg:row-span-1 hover:cursor-pointer">
@@ -69,7 +79,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
           <p className="card-asking-for text-xs">Asking for:</p>
           <p className="pl-2 text-[#FF6969] text-xs">+{listing.returnPercentage}% return</p>
         </div>
-        <div className="w-full pt-1 pb-2 inline-flex items-end justify-center pb-1">
+        <div className="pt-1 pb-2 inline-flex items-end justify-center pb-1 whitespace-nowrap">
           <p className="card-and text-xs">And</p>
           { listing.collateral.type === "snip721" ? 
             <>
@@ -82,12 +92,12 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
               listing.collateral.amount < 1 ? 
               <>
                 <p className="pl-2 text-white text-sm -mb-0.5">1 {listing.collateral.name}</p>
-                <p className="pl-2 card-collateral text-xs">per {1 / listing.collateral.amount} {listing.lending.name}.</p>
+                <p className="pl-2 card-collateral text-xs">per {collateralPerAmount} {listing.lending.name}.</p>
               </>
               :
               <>
                 <p className="pl-2 text-white text-sm -mb-0.5">{roundedCollateral === listing.collateral.amount ? `${listing.collateral.amount}` : `~${roundedCollateral}`} {listing.collateral.name}</p>
-                <p className="pl-2 card-collateral text-xs">per {listing.lending.name}.</p>
+                <p className="pl-2 card-collateral text-xs">per {collateralPerAmount} {listing.lending.name}.</p>
               </>
             }
             </>

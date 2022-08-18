@@ -51,7 +51,7 @@ export const FeaturedListings: FunctionComponent = () => {
       collateral: {
         type: "snip20",
         name: "sXMR",
-        amount: 9
+        amount: 21.432
       },
       duration: "1 month, and 3 days",
       returnPercentage: 7
