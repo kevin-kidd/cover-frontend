@@ -10,9 +10,9 @@ const Header: FunctionComponent<{ items: { left: ReactElement[], right: ReactEle
     useEffect(() => {
 
         const handleScroll = () => {
-            if(window.scrollY === 0 && !darkHeader) {
+            if(window.scrollY === 0) {
                 setDarkHeader(true);
-            } else if(window.scrollY !== 0 && darkHeader) {
+            } else if(window.scrollY !== 0) {
                 setDarkHeader(false);
             }
         };
@@ -22,7 +22,7 @@ const Header: FunctionComponent<{ items: { left: ReactElement[], right: ReactEle
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [darkHeader]);
+    }, []);
 
     return (
         <div className={classNames(

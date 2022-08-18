@@ -106,11 +106,11 @@ export const ToggleButton: FunctionComponent<{type: string}> = ({ type }) => {
     return (
         <div className="toggle-button-gradient border border-transparent rounded-2xl flex h-full" onClick={execToggle}>
             <button className={classNames(
-                "w-1/2 h-full group flex items-center",
+                "w-1/2 group flex items-center",
                 activeId === 0 ? "toggle-active rounded-2xl bg-[#28333e]" : null
             )}>
                 <a className={classNames(
-                    "text-xs sm:text-sm px-3 sm:px-5 mr-1",
+                    "text-xs sm:text-sm px-3 sm:px-5 ml-1",
                     activeId === 0 ? "text-[#eeeeee]" : "group-hover:text-[#c5c5c5] text-[#8c8c8c] transition duration-300"
                 )}>
                     { toggle.names[0] }

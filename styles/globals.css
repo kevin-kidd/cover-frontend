@@ -58,15 +58,13 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
 
 #__next:before {
     content: "";
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
-    z-index: -10;
+    position: fixed;
+    min-height: 100vh;
+    width: 100vw;
+    z-index: -1;
     background: radial-gradient(95.26% 95.26% at 3.92% 4.74%, rgba(113, 187, 55, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
     radial-gradient(66.94% 90.71% at 95.87% 33.06%, rgba(65, 201, 244, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
     radial-gradient(58.06% 58.06% at 59.83% 101.66%, rgba(208, 74, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%) #303C4A;
