@@ -75,9 +75,9 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                 <>
                   <div className="border-b border-[#8B98FF] flex flex-col w-full">
                     <div className="pt-2 w-full inline-flex justify-center items-end">
-                        <p className="card-upto text-tiny">up to</p>
-                        <p className="text-white text-sm sm:text-kindasmall pl-2">{listing.lending.amount} / {listing.lending.total}</p>
-                        <p className="text-white text-sm pl-2 sm:text-tiny">{listing.lending.name}</p>
+                        <p className="card-upto text-sm sm:text-tiny">up to</p>
+                        <p className="text-white sm:pl-2 pl-1 text-tiny sm:text-kindasmall">{listing.lending.amount} / {listing.lending.total}</p>
+                        <p className="text-white sm:pl-2 pl-1 text-sm sm:text-tiny">{listing.lending.name}</p>
                     </div>
                     <div className="flex justify-center">
                       <div className="w-40 rounded-full h-2.5 mt-1 mb-1 progress-bar-track">
@@ -93,8 +93,8 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                   <>
                     <div className="border-b border-[#8B98FF] flex flex-col w-full pt-2 pb-3">
                       <div className="w-full inline-flex justify-center items-end">
-                        <p className="text-white text-sm sm:text-kindasmall">{listing.lending.amount}</p>
-                        <p className="text-tiny text-white pl-1 sm:text-tiny">{listing.lending.name}</p>
+                        <p className="text-white text-tiny sm:text-kindasmall">{listing.lending.amount}</p>
+                        <p className="text-sm text-white pl-1 sm:text-tiny">{listing.lending.name}</p>
                         <p className="text-gray-400 text-sm pl-1 sm:text-tiny sm:pb-0.5">≈${listing.lending.estimatedValue}</p>
                       </div>
                       <p className="text-sm text-white justify-center flex pt-0.5 sm:text-tiny">
@@ -104,28 +104,28 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                   </>
                 }
                 <div className="w-full py-2 inline-flex justify-center pb-1 items-end">
-                  <p className="card-asking-for text-tiny sm:text-tiny">Asking for:</p>
+                  <p className="card-asking-for text-sm sm:text-tiny">Asking for:</p>
                   <p className="pl-2 text-[#FF6969] text-tiny sm:text-kindasmaller">+{listing.returnPercentage}% return</p>
                 </div>
-                <div className="pt-1 pb-2 inline-flex items-end justify-center pb-1 whitespace-nowrap">
+                <div className="pt-1 pb-2 inline-flex items-center justify-center pb-1 whitespace-nowrap">
                   <p className="card-and text-sm sm:text-tiny">And</p>
                   { listing.collateral.type === "snip721" ? 
                     <>
-                      <p className="pl-2 text-white text-tiny sm:text-kindasmaller">{listing.collateral.amount} {listing.collateral.name}</p>
-                      <p className="pl-2 card-collateral text-sm sm:text-tiny">as collateral.</p>
+                      <p className="sm:pl-2 pl-1 text-white text-tiny sm:text-kindasmaller">{listing.collateral.amount} {listing.collateral.name}</p>
+                      <p className="sm:pl-2 pl-1 card-collateral text-sm sm:text-tiny">as collateral</p>
                     </>
                     :
                     <>
                       {
                         listing.collateral.amount < 1 ? 
                         <>
-                          <p className="pl-2 text-white text-tiny sm:text-kindasmaller -mb-0.5">1 {listing.collateral.name}</p>
-                          <p className="pl-2 card-collateral text-sm sm:text-tiny">per {collateralPerAmount} {listing.lending.name}.</p>
+                          <p className="sm:pl-2 pl-1 text-white text-tiny sm:text-kindasmaller">1 {listing.collateral.name}</p>
+                          <p className="sm:pl-2 pl-1 card-collateral text-sm sm:text-tiny">per {collateralPerAmount} {listing.lending.name}</p>
                         </>
                         :
                         <>
-                          <p className="pl-2 text-white text-tiny sm:text-kindasmaller">{roundedCollateral === listing.collateral.amount ? `${listing.collateral.amount}` : `~${roundedCollateral}`} {listing.collateral.name}</p>
-                          <p className="pl-2 card-collateral text-sm sm:text-tiny">per {collateralPerAmount} {listing.lending.name}.</p>
+                          <p className="sm:pl-2 pl-1 text-white text-tiny sm:text-kindasmaller">{roundedCollateral === listing.collateral.amount ? `${listing.collateral.amount}` : `~${roundedCollateral}`} {listing.collateral.name}</p>
+                          <p className="sm:pl-2 pl-1 card-collateral text-sm sm:text-tiny">per {collateralPerAmount} {listing.lending.name}</p>
                         </>
                       }
                     </>
