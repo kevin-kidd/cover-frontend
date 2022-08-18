@@ -27,9 +27,9 @@ type LendCardProps = {
 export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
 
   const loading = useHomeStore((state) => state.loading)
-  const setLoading = useHomeStore((state) => state.setLoading)
 
   useEffect(() => {
+    const setLoading = useHomeStore((state) => state.setLoading)
     setTimeout(() => {
       setLoading(false)
     }, 4000)
