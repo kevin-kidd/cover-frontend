@@ -29,7 +29,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
 
   return (
     <div className="col-span-1 lg:row-span-1">
-      <div className="flex flex-col bg-[#1A2128] rounded-lg shadow-xl items-center px-4 min-w-52 h-80">
+      <div className="flex flex-col bg-[#1A2128] rounded-lg shadow-xl items-center px-4 min-w-52 h-80 hover:cursor-pointer">
         <div className="border-b border-[#8B98FF] pt-3 pb-2 w-full flex justify-center">
           <p className="card-title text-sm">Offering to Lend</p>
         </div>
