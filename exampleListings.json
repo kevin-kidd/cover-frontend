@@ -1,6 +1,7 @@
 {
   "featured": [
     {
+      "address": "secret12345678",
       "isPartiallyFunded": true,
       "listingType": "lend",
       "lending": {
@@ -20,6 +21,7 @@
       "returnPercentage": 5
     },
     {
+      "address": "secret1234567",
       "isPartiallyFunded": false,
       "listingType": "lend",
       "lending": {
@@ -39,6 +41,7 @@
       "returnPercentage": 6
     },
     {
+      "address": "secret123456",
       "isPartiallyFunded": false,
       "listingType": "lend",
       "lending": {
@@ -58,6 +61,7 @@
       "returnPercentage": 7
     },
     {
+      "address": "secret12345",
       "isPartiallyFunded": true,
       "listingType": "lend",
       "lending": {
@@ -80,6 +84,7 @@
   "lend": {
     "nft": [
       {
+        "address": "secret1234",
         "borrowing": {
           "tokenType": "snip20",
           "amount": 300,
@@ -102,6 +107,7 @@
         "returnPercentage": 6
       },
       {
+        "address": "secret123",
         "borrowing": {
           "tokenType": "snip20",
           "amount": 500,
@@ -123,6 +129,7 @@
         "returnPercentage": 5
       },
       {
+        "address": "secret12",
         "borrowing": {
           "tokenType": "snip20",
           "amount": 400,
@@ -141,6 +148,7 @@
         "returnPercentage": 7
       },
       {
+        "address": "secret1",
         "borrowing": {
           "tokenType": "snip20",
           "amount": 99,

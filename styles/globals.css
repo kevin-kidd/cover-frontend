@@ -68,15 +68,6 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     object-fit: cover;
 }
 
-.tooltip{
-    visibility: hidden;
-    position: absolute;
-}
-.has-tooltip:hover .tooltip {
-    visibility: visible;
-    z-index: 100;
-}
-
 .button-gradient {
     background:
             linear-gradient(#1a2128, #1a2128) padding-box,

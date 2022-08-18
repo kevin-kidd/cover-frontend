@@ -12,7 +12,7 @@ const Item: FunctionComponent<{ item: MenuItem, active: boolean }> = ({ item, ac
 
     return (
         <Link href={ disabled ? "" : item.href }>
-            <div className="group flex items-center text-base w-full px-3 my-3 sm:my-4 sm:px-4 group h-10 sm:h-12 hover:cursor-pointer transition duration-150">
+            <a className="group flex items-center text-base w-full px-3 my-3 sm:my-4 sm:px-4 group h-10 sm:h-12 hover:cursor-pointer transition duration-150">
                 <div className={classNames(
                     "mr-2 p-2 h-9 w-9 border rounded-xl",
                     active ? "border-[#7BBD75]" : "border-[#eeeeee]/90 transition duration-150"
@@ -31,7 +31,7 @@ const Item: FunctionComponent<{ item: MenuItem, active: boolean }> = ({ item, ac
                 )}>
                     { item.title }
                 </p>
-            </div>
+            </a>
         </Link>
     )
 };

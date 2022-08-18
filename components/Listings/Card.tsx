@@ -4,6 +4,7 @@ import { Dispatch, FunctionComponent, SetStateAction, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper";
 import { Listing } from "../../types/general";
+import Link from "next/link";
 
 const classes = {
   text: {
@@ -325,22 +326,24 @@ export const Card: FunctionComponent<{ listing: Listing, index: number }> = ({ l
   if(index === 3) hiddenClass = "hidden xl:flex";
 
   return (
-    <div className={`w-44 sm:w-52 h-full mx-auto ${hiddenClass} ${loading ? null : "hover:cursor-pointer"}`}>
-      <div className="flex flex-col bg-[#1A2128] px-3 rounded-lg items-center shadow-sm hover:shadow-lg transition duration-300 w-full h-full">
-        <CardTitle cardType={listing.listingType} />
-          {
-            loading ?
-                <CardSkeleton listingType={listing.listingType} />
-                :
-                <>
-                  <CardHeader listing={listing} />
-                  <CardBody listing={listing} />
-                </>
-          }
-          <div className={ loading ? "hidden" : "w-full h-full" }>
-              <CardFooter listing={listing} setLoading={setLoading} />
+      <Link href={`/listing/${listing.address}`}>
+          <div className={`w-44 sm:w-52 h-full mx-auto ${hiddenClass} ${loading ? null : "hover:cursor-pointer"}`}>
+              <div className="flex flex-col bg-[#1A2128] px-3 rounded-lg items-center shadow-sm hover:shadow-lg transition duration-300 w-full h-full">
+                  <CardTitle cardType={listing.listingType} />
+                  {
+                      loading ?
+                          <CardSkeleton listingType={listing.listingType} />
+                          :
+                          <>
+                              <CardHeader listing={listing} />
+                              <CardBody listing={listing} />
+                          </>
+                  }
+                  <div className={ loading ? "hidden" : "w-full h-full" }>
+                      <CardFooter listing={listing} setLoading={setLoading} />
+                  </div>
+              </div>
           </div>
-      </div>
-    </div>
+      </Link>
   )
 };

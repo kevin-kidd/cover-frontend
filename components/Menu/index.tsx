@@ -87,8 +87,8 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
         <div className="w-full flex justify-center pt-4">
             <Image
                 className="hover:cursor-pointer"
-                height="42"
-                width="123"
+                height="45"
+                width="150"
                 src={logo}
                 alt="Cover" />
         </div>

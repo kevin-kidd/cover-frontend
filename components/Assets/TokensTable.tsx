@@ -30,7 +30,7 @@ const TableItem: FunctionComponent<Asset> = ({ assetData, isImported })  => {
     const assetName: ReactElement = (
         <>
             { assetData.icon && (
-                <div className="justify-center items-center flex col-start-2 h-11 w-11">
+                <div className="justify-center items-center flex col-start-2 h-8 w-8 sm:h-11 sm:w-11">
                     <Image
                         src={assetData.icon}
                         alt={assetData.name} width="50" height="50"

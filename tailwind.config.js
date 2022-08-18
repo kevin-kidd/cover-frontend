@@ -1,5 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  daisyui: {
+    themes: [
+      {
+        dark: {
+          "primary": "#38bdf8",
+          "secondary": "#D926A9",
+          "accent": "#1FB2A6",
+          "neutral": "#e5e7eb",
+          "base-100": "#2A303C",
+          "info": "#3ABFF8",
+          "success": "#36D399",
+          "warning": "#FBBD23",
+          "error": "#F87272",
+        },
+      },
+    ],
+  },
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -27,12 +44,14 @@ module.exports = {
         "sidebar": "13rem"
       },
       maxWidth: {
-        '3/4': '75%',
-        "sidebar": "13rem"
+        "3/4": "75%",
+        "sidebar": "13rem",
+        "xxs": "17rem"
       }
     },
   },
   plugins: [
-    require('@tailwindcss/forms')
+    require('@tailwindcss/forms'),
+    require("daisyui")
   ],
 };

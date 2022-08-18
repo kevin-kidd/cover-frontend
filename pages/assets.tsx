@@ -31,7 +31,7 @@ const AssetsPage: NextPage = () => {
                   <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-20">
                       <div className="border-t border-black mb-4 lg:mb-8 w-full px-2 sm:px-2 md:px-3 xl:px-6">
                           <div className="w-full flex justify-between mb-2 sm:mb-0">
-                              <h1 className="pt-6 pb-2 text-tiny text-lg lg:text-xl font-medium text-white">
+                              <h1 className="pt-6 pb-2 text-tiny lg:text-xl font-medium text-white">
                                   My { tokenType === "NFTs" ? "Collections" : "Tokens" }
                               </h1>
                               <div className="flex sm:hidden items-end">

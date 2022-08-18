@@ -22,6 +22,7 @@ export type Asset = {
 
 export type Listing = {
     listingType: string
+    address: string
     isPartiallyFunded?: boolean
     duration: string
     returnPercentage: number
