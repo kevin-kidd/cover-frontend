@@ -4,6 +4,7 @@ import { Transition } from '@headlessui/react'
 import { useMenuStore } from "../states/MenuState";
 import { MenuFooter } from "./MenuFooter"
 import { useOnClickOutside } from "../functions/helper";
+import logo from "../assets/logo.svg"
 
 const menuItems = [
   {
@@ -96,14 +97,11 @@ const Menu: FunctionComponent = () => {
                       </svg>
                     </button>
                   </div>
-                  <div className="flex justify-center row-span-2 -mt-10 relative">
+                  <div className="justify-center row-span-2 -mt-10 max-h-16 h-auto w-auto relative flex">
                     <Image
-                      src={`/static/logo.svg`}
-                      layout="responsive"
-                      width="500"
-                      height="250"
                       priority={true}
-                      className="h-14 w-auto"
+                      src={logo}
+                      layout="fill"
                       alt="Cover"
                     />
                   </div>
@@ -137,13 +135,11 @@ const Menu: FunctionComponent = () => {
             <div className="flex-1 grid grid-rows-6 min-h-0 bg-[#1A2128]">
                 <div className="row-span-1 flex items-center justify-center min-h-20 flex-shrink-0 bg-[#1A2128] w-1/2 mx-auto relative">
                   <Image
-                        priority={true}
-                        layout="responsive"
-                        width="800"
-                        height="500"
-                        src={`/static/logo.svg`}
-                        className="h-fit w-auto"
-                        alt="Cover"
+                    priority={true}
+                    layout="fill"
+                    src={logo}
+                    className="h-fit w-auto"
+                    alt="Cover"
                   />
                 </div>
                 <div className="row-span-4 flex flex-col justify-center items-center overflow-y-auto">

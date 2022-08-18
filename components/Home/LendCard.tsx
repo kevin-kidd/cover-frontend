@@ -121,8 +121,8 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
           <div className="my-2 p-1 4k:p-8 w-full max-w-1/2l aspect-square mx-auto block justify-center">
             <div className="rounded-full block bg-white w-8 h-8 sm:w-10 sm:h-10 desktop:h-12 desktop:w-12 big:w-16 big:h-16 4k:w-28 4k:h-28 -ml-1 absolute -mt-2 z-10 border-2 border-white border-double">
               <Image 
-                src={`https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.image}`} 
-                width="100" height="100" alt={listing.collateral.name}
+                src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + listing.collateral.image} 
+                width="100" height="100" alt={listing.collateral.name} priority={true}
                 className="rounded-full border-white border-2 w-full h-full" layout="responsive" 
               />
             </div>
@@ -130,7 +130,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
               <Image 
                 layout="responsive" width="500" height="500" priority={true} className="rounded-full w-full h-full" 
                 onLoadingComplete={() => setLoading(false)} alt={listing.lending.name}
-                src={`https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.lending.image}`}
+                src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + listing.lending.image}
               />
             </div>
           </div>

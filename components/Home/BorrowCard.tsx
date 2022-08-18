@@ -59,7 +59,7 @@ export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
                 <div className="w-full inline-flex justify-center items-center pt-1 4k:pt-3">
                   <p className={`text-white ${classes.amount}`}>{listing.collateral.amount}x {listing.collateral.name}</p>
                   <div className="w-6 h-6 rounded-full 4k:w-16 4k:h-16 bg-black ml-2 4k:ml-6 relative">
-                    <Image src={`https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.icon}`} className="rounded-full border-white border" layout="responsive" width="32" height="32" alt={`icon-${listing.collateral.name}`} priority={true} />
+                    <Image src={`https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.icon}`} priority={true} className="rounded-full border-white border" layout="responsive" width="32" height="32" alt={`icon-${listing.collateral.name}`} priority={true} />
                   </div>
                 </div>
               </div>
@@ -72,13 +72,13 @@ export const BorrowCard: FunctionComponent<BorrowCardProps> = ({ listing }) => {
               className="rounded desktop:rounded-lg big:rounded-xl 4k:rounded-2xl bg-black w-full h-full"
               onLoadingComplete={() => setLoading(false)}
               blurDataURL={
-                listing.collateral.name.includes('data:image/') ? 
+                listing.collateral.image.includes('data:image/') ? 
                 listing.collateral.image : `https://res.cloudinary.com/drgbtjcgt/image/fetch/w_100/e_blur:1000,q_auto,f_webp/${listing.collateral.image}`
               } 
               src={
                 listing.collateral.image.includes('data:image/') ? 
                 listing.collateral.image : `https://res.cloudinary.com/drgbtjcgt/image/fetch/${listing.collateral.image}`
-              } 
+              }
             />
           </div>
         }
