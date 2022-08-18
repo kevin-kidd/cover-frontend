@@ -1,27 +1,32 @@
-import { FunctionComponent, ReactElement, useEffect, useState } from "react";
+import {FunctionComponent, ReactElement, useEffect, useState} from "react";
 import { useMenuStore} from "../../stores/Menu";
 import classNames from "classnames";
 
-const Header: FunctionComponent<{ items: { left: ReactElement[], right: ReactElement[] } }> = ({ items }) => {
+type Items = {
+    items: {
+        left: ReactElement[]
+        right: ReactElement[]
+    }
+}
 
+const Header: FunctionComponent = ({ items }: Items) => {
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(true);
 
-    // const handleScroll = () => {
-    //     if(window.scrollY === 0) {
-    //         setDarkHeader(true);
-    //     } else if(window.scrollY !== 0) {
-    //         setDarkHeader(false);
-    //     }
-    // };
-    //
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll);
-    //
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
+    const handleScroll = () => {
+        if(window.scrollY === 0) {
+            setDarkHeader(true);
+        } else if(window.scrollY !== 0) {
+            setDarkHeader(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <div className={classNames(

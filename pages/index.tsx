@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import {useEffect} from "react";
+import {useEffect, useRef} from "react";
 
 import {useHomeStore} from "../stores/Home";
 import exampleListings from "../exampleListings.json";
@@ -32,6 +32,8 @@ const HomePage: NextPage = () => {
         right: [ToggleButton({ type: "token" }), ToggleButton({ type: "listing-type" }), SettingsWidget({ page: "test" })]
     };
 
+    const containerRef = useRef(null);
+
     return (
       <>
           <Head>
@@ -39,8 +41,8 @@ const HomePage: NextPage = () => {
           </Head>
           <main className="relative h-screen">
               <Menu activeTitle={"Explore"} />
-              <div className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
-                  <Header items={items} />
+              <div ref={containerRef} className="lg:ml-sidebar w-full lg:w-auto h-screen flex flex-col">
+                  <Header items={items} containerRef={containerRef} />
                   <div className="px-1 sm:px-4 lg:container lg:mx-auto lg:px-20">
                       <ListingsSection listings={featuredListings} title={"Featured Listings (All)"} displayToggles={false} />
                       <ListingsSection listings={selectedListings} displayToggles={true} />
