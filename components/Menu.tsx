@@ -108,7 +108,7 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
     return (
       <>
       {/* Mobile */}
-        <div className="relative z-40 md:hidden w-0" role="dialog" aria-modal="true">
+        <div className="relative z-40 lg:hidden w-0" role="dialog" aria-modal="true">
           <Transition
             show={isOpen}
             as="div"
@@ -156,7 +156,7 @@ const Menu: FunctionComponent<{ activeTitle: string }> = ({ activeTitle }) => {
 
         {/* Desktop */}
 
-        <div className="hidden md:flex md:flex-col fixed w-sidebar bg-[#1A2128] p-6 pb-3 h-full overflow-x-hidden overflow-y-auto">
+        <div className="hidden lg:flex lg:flex-col fixed w-sidebar bg-[#1A2128] p-6 pb-3 h-full overflow-x-hidden overflow-y-auto">
             <div className="w-full flex justify-center pt-4">
               <Image
                   className="hover:cursor-pointer"
@@ -247,7 +247,7 @@ const MenuFooter: FunctionComponent = () => {
   );
 
   const balance: ReactElement = (
-    <div className="flex flex-row w-sidebar items-center lg:w-full gap-x-2 px-2 lg:pr-8">
+    <div className="flex flex-row items-center w-sidebar lg:w-full gap-x-2 px-2 lg:pr-8">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="flex-shrink-0 fill-white w-6 h-6">
         <path d="M461.2 128H80c-8.84 0-16-7.16-16-16s7.16-16 16-16h384c8.84 0 16-7.16 16-16 0-26.51-21.49-48-48-48H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h397.2c28.02 0 50.8-21.53 50.8-48V176c0-26.47-22.78-48-50.8-48zM416 336c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/>
       </svg>
