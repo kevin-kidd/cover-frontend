@@ -30,14 +30,14 @@ const TableItem: FunctionComponent<Asset> = ({ assetData, isImported })  => {
     const assetName: ReactElement = (
         <>
             { assetData.icon && (
-                <div className="justify-center items-center flex col-start-2">
+                <div className="justify-center items-center flex col-start-2 h-11 w-11">
                     <Image
                         src={assetData.icon}
                         alt={assetData.name} width="50" height="50"
                     />
                 </div>
             )}
-            <div className="col-span-2 flex flex-col items-center">
+            <div className="col-start-3 col-span-3 xl:col-span-2 flex flex-col items-center">
                 <p className="text-white text-sm sm:text-base">{ assetData.name }</p>
                 { assetData.network && (
                     <p className="text-[#cccccc] font-light text-xs hidden md:flex truncate">{ assetData.network }</p>
@@ -89,10 +89,10 @@ const TableItem: FunctionComponent<Asset> = ({ assetData, isImported })  => {
     );
 
     return (
-        <div className="w-full bg-[#1A2128] rounded-xl py-2 mt-3 relative">
-          <div className="grid grid-cols-3 md:grid-cols-4 place-items-center">
+        <div className="w-full bg-[#1A2128] rounded-xl mt-3 relative sm:py-2">
+          <div className="grid grid-cols-3 md:grid-cols-4 place-items-center h-12">
 
-              <div className="grid grid-cols-4 items-center w-full">
+              <div className="grid grid-cols-5 items-center w-full h-full">
                   { assetName }
               </div>
 
