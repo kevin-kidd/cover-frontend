@@ -103,7 +103,7 @@ const TableItem: FunctionComponent<Asset> = ({ assetData, isImported })  => {
               { assetOptions }
 
               { isImported && (
-                  <button className="w-6 h-6 bg-black p-0.5 rounded-md absolute -right-1 -top-1">
+                  <button className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 bg-black p-0.5 rounded-md absolute -right-1 -top-1">
                       <XIcon className="fill-gray-200 w-full h-full" />
                   </button>
               )}
