@@ -135,7 +135,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                       <div className="h-2 bg-slate-700 rounded col-span-2 mt-2"></div>
                     </div>
                     <div className="h-2 bg-slate-700 rounded mt-2"></div>
-                    <div className="rounded-full bg-slate-700 h-24 w-24 mt-10 mx-auto"></div>
+                    <div className="rounded-full bg-slate-700 h-28 w-28 mt-10 mx-auto"></div>
                   </div>
                 </div>
             </>
