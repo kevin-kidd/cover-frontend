@@ -91,7 +91,7 @@ export const FeaturedListings: FunctionComponent = () => {
             <>
               {
                 exampleListings.map((listing, index) => (
-                  <LendCard listing={exampleListings[index]} />
+                  <LendCard key={'listing-' + index} listing={exampleListings[index]} />
                 ))
               }
             </>
