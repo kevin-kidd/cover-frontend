@@ -1,10 +1,10 @@
 import { FunctionComponent, useState } from "react"
-import { useRecoilState } from "recoil";
-import { mobileMenuState } from "../atoms/HomeState"
 import logo from "../assets/logo.png"
 import Image from 'next/future/image'
 import { mobileMenuRefProps } from "../types/common";
 import { Transition } from '@headlessui/react'
+import { useMenuStore } from "../states/MenuState";
+import { MenuFooter } from "./MenuFooter"
 
 const menuItems = [
   {
@@ -65,16 +65,14 @@ const menuItems = [
 
 const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
 
-  const [mobileMenu, setMobileMenu] = useRecoilState(mobileMenuState)
-  const [hoverExit, setHoverExit] = useState(false)
-  const [isCopied, setIsCopied] = useState(false)
-  const secretAddress = "secret18ld7zwzkgsfv9z6phqhlsft9prjysulpdq950z"
+  const isOpen = useMenuStore((state) => state.isOpen)
+  const toggleMenu = useMenuStore((state) => state.toggleMenu)
 
     return (
       <>
         <div className="relative z-40 md:hidden" role="dialog" aria-modal="true">
           <Transition
-            show={mobileMenu}
+            show={isOpen}
             as="div"
             enter="transition-opacity duration-150"
             enterFrom="opacity-0"
@@ -87,7 +85,7 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
               <div className="fixed inset-0 flex z-40">
                 <div className="flex-1 flex flex-col max-w-xs w-full bg-gray-800" ref={mobileMenuRef}>
                   <div className="flex justify-end pr-5 pt-5">
-                    <button onClick={() => setMobileMenu(false)} type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                    <button onClick={() => toggleMenu()} type="button" className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Close sidebar</span>
                       <svg className="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -109,11 +107,11 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
                     <nav className="px-2 space-y-4">
                       {
                         menuItems.map((item) => (
-                          <a onClick={() => setMobileMenu(false)} href={item.href} key={item.title}
+                          <a onClick={() => toggleMenu()} href={item.href} key={item.title}
                           className={item.active ? "bg-[#7BBD75] text-white group flex items-center px-5 py-3 text-base font-medium rounded-3xl" : 
-                          "text-white hover:bg-gray-700 hover:text-white group flex items-center px-5 py-3 text-base font-medium rounded-3xl"}
+                          "text-white hover:bg-gray-700 hover:text-white group flex items-center px-5 py-3 text-base font-medium rounded-3xl transition duration-150"}
                           >
-                            <svg className={item.active ? "fill-[#303C4A] mr-4 flex-shrink-0 h-10 w-8" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] mr-4 flex-shrink-0 h-10 w-8" } xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}>
+                            <svg className={item.active ? "fill-[#303C4A] mr-4 flex-shrink-0 h-10 w-8" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] mr-4 flex-shrink-0 h-10 w-8  transition duration-150" } xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}>
                               { item.icon.path }
                             </svg>
                             { item.title }
@@ -122,19 +120,7 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
                       }
                     </nav>
                   </div>
-                  <div className="flex bg-gray-700 p-4 overflow-x-hidden">
-                    <div className="flex items-center">
-                      <div className="h-14 w-14 bg-gray-900 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="h-full w-full py-3 fill-gray-500">
-                          <path d="M96 480h64C177.7 480 192 465.7 192 448S177.7 416 160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64C177.7 96 192 81.67 192 64S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256C0 437 42.98 480 96 480zM504.8 238.5l-144.1-136c-6.975-6.578-17.2-8.375-26-4.594c-8.803 3.797-14.51 12.47-14.51 22.05l-.0918 72l-128-.001c-17.69 0-32.02 14.33-32.02 32v64c0 17.67 14.34 32 32.02 32l128 .001l.0918 71.1c0 9.578 5.707 18.25 14.51 22.05c8.803 3.781 19.03 1.984 26-4.594l144.1-136C514.4 264.4 514.4 247.6 504.8 238.5z"/>
-                        </svg>
-                      </div>
-                      <div className="ml-3">
-                        <p className="text-base font-medium text-white w-1/2 truncate">secret18ld7zwzkgsfv9z6phqhlsft9prjysulpdq950z</p>
-                        <p className="text-sm font-medium text-gray-400">Disconnect wallet</p>
-                      </div>
-                    </div>
-                  </div>
+                  <MenuFooter />
                 </div>
               </div>
             <div className="flex-shrink-0 w-14" aria-hidden="true"></div>
@@ -157,11 +143,11 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
                     <nav className="flex-1 px-10 space-y-4">
                         {
                         menuItems.map((item) => (
-                          <a onClick={() => setMobileMenu(false)} href={item.href} key={item.title}
+                          <a onClick={() => toggleMenu()} href={item.href} key={item.title}
                           className={item.active ? "bg-[#7BBD75] text-white group flex items-center px-4 py-3 text-base font-medium rounded-3xl" : 
-                          "text-white hover:bg-gray-700 hover:text-white group flex items-center px-4 py-3 text-base font-medium rounded-3xl"}
+                          "text-white hover:bg-gray-700 hover:text-white group flex items-center px-4 py-3 text-base font-medium rounded-3xl transition duration-150"}
                           >
-                            <svg className={item.active ? "fill-[#303C4A] mr-4 flex-shrink-0 h-8 w-6" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] mr-4 flex-shrink-0 h-8 w-6" } xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}>
+                            <svg className={item.active ? "fill-[#303C4A] mr-4 flex-shrink-0 h-8 w-6" : "fill-[#B2BFCD] group-hover:text-[#B2BFCD] mr-4 flex-shrink-0 h-8 w-6 transition duration-150" } xmlns="http://www.w3.org/2000/svg" viewBox={item.icon.viewBox}>
                               { item.icon.path }
                             </svg>
                             { item.title }
@@ -170,27 +156,7 @@ const Menu: FunctionComponent<mobileMenuRefProps> = ({ mobileMenuRef }) => {
                       }
                     </nav>
                 </div>
-                <div className="flex bg-gray-700 p-4 overflow-x-hidden border-r-2 border-b-2 border-gray-800">
-                  <div className="flex items-center">
-                    <div className="h-12 w-12 bg-gray-900 rounded-full hover:cursor-pointer" onMouseEnter={() => setHoverExit(true)} onMouseLeave={() => setHoverExit(false)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="h-full w-full py-3 fill-gray-500 hover:fill-gray-400">
-                        <path d="M96 480h64C177.7 480 192 465.7 192 448S177.7 416 160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64C177.7 96 192 81.67 192 64S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256C0 437 42.98 480 96 480zM504.8 238.5l-144.1-136c-6.975-6.578-17.2-8.375-26-4.594c-8.803 3.797-14.51 12.47-14.51 22.05l-.0918 72l-128-.001c-17.69 0-32.02 14.33-32.02 32v64c0 17.67 14.34 32 32.02 32l128 .001l.0918 71.1c0 9.578 5.707 18.25 14.51 22.05c8.803 3.781 19.03 1.984 26-4.594l144.1-136C514.4 264.4 514.4 247.6 504.8 238.5z"/>
-                      </svg>
-                    </div>
-                    <div className="ml-3">
-                      <div className="has-tooltip hover:cursor-pointer" 
-                      onClick={() => { 
-                        navigator.clipboard.writeText(secretAddress)
-                        setIsCopied(true)
-                      }} 
-                      onMouseLeave={() => setIsCopied(false)}>
-                        <span className={`tooltip rounded shadow-lg p-1 px-2 bg-gray-200 text-black text-sm -mt-8 justify-center ${isCopied ? "ml-10" : "ml-3"}`}>{isCopied ? "Copied!" : "Copy to clipboard"}</span>
-                        <p className="text-sm font-medium text-white w-1/2 truncate">{ secretAddress }</p>
-                      </div>
-                      <p className={`text-xs font-medium ${hoverExit ? "text-gray-300" : "text-gray-400"}`}>Disconnect wallet</p>
-                    </div>
-                  </div>
-                </div>
+                <MenuFooter />
             </div>
         </div>
       </>

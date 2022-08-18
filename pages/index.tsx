@@ -1,19 +1,18 @@
 import type { NextPage } from 'next'
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import Head from 'next/head'
 import Menu from '../components/Menu'
 import { useOnClickOutside } from "../functions/helper";
-import { useRecoilState } from "recoil";
-import { mobileMenuState } from "../atoms/HomeState"
 
 import styles from '../styles/Home.module.css'
 import Dashboard from '../components/Home/Dashboard'
+import { useMenuStore } from '../states/MenuState';
 
 const HomePage: NextPage = () => {
 
-  const [mobileMenu, setMobileMenu] = useRecoilState(mobileMenuState)
+  const setOpen = useMenuStore((state) => state.setOpen)
   const mobileMenuRef = useRef()
-  useOnClickOutside(mobileMenuRef, () => setMobileMenu(false))
+  useOnClickOutside(mobileMenuRef, () => setOpen(false))
 
   return (
     <>
