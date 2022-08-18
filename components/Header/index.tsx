@@ -13,20 +13,20 @@ const Header: FunctionComponent<Items> = ({ items }) => {
     const toggleMenu = useMenuStore((state) => state.toggleMenu);
     const [darkHeader, setDarkHeader] = useState<boolean>(true);
 
-    const handleScroll = () => {
-        if(window.scrollY === 0) {
-            setDarkHeader(true);
-        } else if(window.scrollY !== 0) {
-            setDarkHeader(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    // const handleScroll = () => {
+    //     if(window.scrollY === 0) {
+    //         setDarkHeader(true);
+    //     } else if(window.scrollY !== 0) {
+    //         setDarkHeader(false);
+    //     }
+    // };
+    //
+    // useEffect(() => {
+    //     window.addEventListener('scroll', handleScroll, { passive: true });
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
 
     return (
         <div className={classNames(
