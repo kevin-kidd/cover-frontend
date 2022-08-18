@@ -86,7 +86,7 @@ export const FeaturedListings: FunctionComponent = () => {
         </div>
         <div className="py-8">
           <div className="border-b border-black mx-2 pb-10 justify-center items-center
-          grid tablet:grid-rows-1 md:grid-rows-2 sm:grid-rows-2 xs:grid-rows-4 grid-rows-4 grid-flow-col
+          grid tablet:grid-rows-1 sm:grid-rows-2 xs:grid-rows-4 grid-rows-4 grid-flow-col
           gap-10 tablet:gap-20 md:gap-x-15 md:gap-y-10">
             <>
               {
