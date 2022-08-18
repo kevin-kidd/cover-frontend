@@ -3,7 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./public/**/*.{svg,png,webp}",
+    "./public/**/*.{svg,png,webp}"
   ],
   theme: {
     fontSize: {
@@ -31,17 +31,24 @@ module.exports = {
         'laptop': '1150px',
         'tablet': '1320px',
         'desktop': '1400px',
-        'big': '1921px'
+        'default': '1919px',
+        'big': '2500px',
+        '4k': '3200px'
       },
       borderWidth: {
         '3': '3px'
       },
       minWidth: {
         '52': '13rem'
+      },
+      maxWidth: {
+        '1/2': '60%',
+        '1/2l': '65%',
+        '3/4': '75%'
       }
     },
   },
   plugins: [
-     require('@tailwindcss/forms'),
+     require('@tailwindcss/forms')
   ],
 }

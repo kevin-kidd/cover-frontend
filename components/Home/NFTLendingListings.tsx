@@ -69,26 +69,47 @@ let exampleListings = [
 export const NFTLendingListings: FunctionComponent = () => {
   return (
     <>
-      <div className="py-5 sm:py-0">
-        <div className="flex justify-between ml-5 items-center sm:ml-20 md:ml-10 lg:ml-0 tablet:ml-8 desktop:ml-12">
-          <h1 className="font-medium text-md sm:text-lg text-white">NFT Lending Listings</h1>
-          <div className="items-center mr-5 sm:mr-20 md:mr-10 laptop:mr-0 tablet:mr-16 mt-1">
-            <a href="#" className="font-medium text-tiny sm:text-kindasmall text-red-500 hover:text-red-400 transition duration-150">All Listings</a>
+      <div className="w-11/12 2xl:w-4/5 py-5 sm:pt-6 sm:pb-8 border-b border-black w-full mx-auto">
+        <div className="flex justify-between items-center">
+          <h1 className="text-md sm:text-lg default:text-xl big:text-2xl 4k:text-4xl font-medium text-white ml-6">
+            NFT Lending Listings
+          </h1>
+          <a href="#" className="items-center mr-6 mt-1 font-medium text-red-500 hover:text-[#f16060] transition duration-150 text-tiny sm:text-kindasmall default:text-base big:text-xl 4k:text-2xl">
+            All Listings
+          </a>
+        </div>
+        <div className="sm:hidden grid grid-rows-2 grid-cols-3 grid-flow-col justify-center items-center w-full mt-4">
+          <div className="row-span-1 col-span-2">
+            <PrincipalDenomBox />
+          </div>
+          <div className="row-span-1 col-span-2">
+            <CollateralDenomBox />
+          </div>
+          <div className="row-span-2 col-span-1 flex justify-center">
+            <AdvancedButton />
           </div>
         </div>
-        <div className="inline-flex flex w-full mt-6 sm:ml-6 items-center">
-          <PrincipalDenomBox />
-          <CollateralDenomBox />
-          <AdvancedButton />
+        <div className="hidden sm:grid grid-cols-5 justify-center items-center w-full gap-x-4 mt-4">
+          <div className="col-span-2 flex justify-end">
+            <PrincipalDenomBox />
+          </div>
+          <div className="col-span-2 flex justify-center">
+            <CollateralDenomBox />
+          </div>
+          <div className="col-span-1">
+            <AdvancedButton />
+          </div>
         </div>
-        <div className="mt-6 sm:mt-8">
-          <div className="border-b border-black mx-2 pb-10 justify-center items-center
-          grid laptop:grid-rows-1 grid-rows-2 grid-flow-col
-          gap-8 md:gap-y-10 desktop:gap-x-20 tablet:gap-x-12 laptop:gap-x-6 xl:gap-x-12">
+        <div className="pt-4 sm:pt-4 big:pt-8 sm:px-8">
+          <div className="
+            justify-center items-center grid
+            grid-cols-2 sm:grid-cols-4 gap-4 w-full
+            sm:gap-x-1 md:gap-x-2 lg:gap-x-4 desktop:gap-x-14 big:gap-x-20
+          ">
             <>
               {
                 exampleListings.map((ele, index) => (
-                  <BorrowCard key={'listing-' + index} listing={exampleListings[index]} />
+                  <BorrowCard key={'listing-' + index} listing={ele} />
                 ))
               }
             </>

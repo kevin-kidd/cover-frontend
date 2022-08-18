@@ -6,9 +6,9 @@ interface Listing {
   isPartiallyFunded: boolean,
   lending: {
     type: string,
-    estimatedValue: number,
+    estimatedValue?: number,
     amount: number,
-    total: number,
+    total?: number,
     name: string
   },
   collateral: {
@@ -24,6 +24,11 @@ type LendCardProps = {
   listing: Listing
 }
 
+const classes = {
+  gradient: "text-tiny desktop:text-kindasmaller big:text-lg 4k:text-3xl",
+  amount: "text-tiny sm:text-kindasmaller desktop:text-kindasmall big:text-xl 4k:text-4xl",
+}
+
 export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
 
   const loading = useHomeStore((state) => state.loading)
@@ -34,6 +39,8 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
       setLoading(false)
     }, 4000)
   }, [setLoading])
+
+  // const loading = true
 
   let collateralPerAmount: string
   let roundedCollateral: number
@@ -48,24 +55,26 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
   }
 
   return (
-    <div className={`col-span-1 lg:row-span-1 ${loading ? null : "hover:cursor-pointer"}`}>
-      <div className="flex flex-col bg-[#1A2128] rounded-lg items-center px-4 sm:min-w-52 sm:w-full w-40 h-auto sm:h-fit shadow-sm hover:shadow-2xl transition duration-300">
-        <div className="border-b border-[#8B98FF] pt-2 pb-1 w-full flex justify-center">
-          <p className="card-title text-tiny sm:text-kindasmall">Offering to Lend</p>
+    <div className={`col-span-1 flex w-full justify-center ${loading ? null : "hover:cursor-pointer"}`}>
+      <div className="flex flex-col bg-[#1A2128] w-full object-cover px-4 4k:px-10 rounded-lg big:rounded-2xl 4k:rounded-3xl items-center shadow-sm hover:shadow-2xl transition duration-300">
+        <div className="border-b border-[#8B98FF] w-full py-2 4k:pt-5 4k:pb-4 flex justify-center">
+          <p className="card-title text-kindasmall desktop:text-base big:text-xl 4k:text-4xl">Offering to Lend</p>
         </div>
         <>
         {
           loading ?
             <>
-                <div className="animate-pulse flex space-x-4 w-full pt-1 flex justify-center">
-                  <div className="py-1 px-4">
-                    <div className="h-2 bg-slate-700 mt-2 sm:mt-4 rounded"></div>
-                    <div className="grid grid-cols-5 gap-4 mt-4">
-                      <div className="h-2 bg-slate-700 rounded col-span-3 mt-2"></div>
-                      <div className="h-2 bg-slate-700 rounded col-span-2 mt-2"></div>
+                <div className="animate-pulse flex justify-center space-x-4 w-full pt-1">
+                  <div className="py-1 px-4 big:px-8 4k:px-12 w-full">
+                    <div className="h-2 4k:h-4 bg-slate-700 mt-2 sm:mt-4 4k:mt-10 rounded 4k:rounded-2xl"></div>
+                    <div className="grid grid-cols-5 gap-4 mt-4 4k:mt-8">
+                      <div className="h-2 4k:h-4 bg-slate-700 rounded 4k:rounded-2xl col-span-3 mt-2 4k:mt-6"></div>
+                      <div className="h-2 4k:h-4 bg-slate-700 rounded 4k:rounded-2xl col-span-2 mt-2 4k:mt-6"></div>
                     </div>
-                    <div className="h-2 bg-slate-700 rounded mt-4 sm:mt-6"></div>
-                    <div className="rounded-full bg-slate-700 h-28 w-28 mt-6 mb-4 sm:w-32 sm:h-32"></div>
+                    <div className="h-2 4k:h-4 rounded 4k:rounded-2xl bg-slate-700 mt-4 sm:mt-6 4k:mt-10"></div>
+                    <div className="p-2 sm:p-4 big:p-10 4k:p-12 w-full h-full">
+                      <div className="rounded-full bg-slate-700 aspect-square mt-2 w-full h-auto"></div>
+                    </div>
                   </div>
                 </div>
             </>
@@ -73,70 +82,73 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
             <>
               { listing.isPartiallyFunded ? 
                 <>
-                  <div className="border-b border-[#8B98FF] flex flex-col w-full">
-                    <div className="pt-1 w-full inline-flex justify-center items-end">
-                        <p className="card-upto text-sm sm:text-tiny">up to</p>
-                        <p className="text-white sm:pl-2 pl-1 text-tiny sm:text-kindasmall">{listing.lending.amount} / {listing.lending.total}</p>
-                        <p className="text-white sm:pl-2 pl-1 text-sm sm:text-tiny">{listing.lending.name}</p>
+                  <div className="border-b border-[#8B98FF] flex flex-col w-full py-1 4k:py-4">
+                    <div className="w-full inline-flex justify-center items-center">
+                        <p className={`card-upto ${classes.gradient}`}>up to</p>
+                        <p className="text-white 4k:pl-3 desktop:pl-2 sm:pl-1 pl-0.5 text-tiny sm:text-kindasmaller desktop:text-kindasmall big:text-xl 4k:text-4xl">{listing.lending.amount} / {listing.lending.total}</p>
+                        <p className={`text-white 4k:pl-3 desktop:pl-2 sm:pl-1 pl-0.5 ${classes.gradient}`}>{listing.lending.name}</p>
                     </div>
                     <div className="flex justify-center">
-                      <div className="w-40 rounded-full h-2.5 mt-1 mb-1 progress-bar-track">
-                          <div className="progress-bar h-2.5 rounded-full" style={{width: `${(1 - (listing.lending.amount / listing.lending.total)) * 100}%`}}></div>
+                      <div className="w-11/12 lg:w-10/12 rounded-full h-2 desktop:h-2.5 big:h-3 4k:h-5 my-1 4k:my-3 progress-bar-track">
+                          <div className="progress-bar h-2 desktop:h-2.5 big:h-3 4k:h-5 rounded-full" style={{width: `${(1 - (listing.lending.amount / listing.lending.total)) * 100}%`}}></div>
                       </div>
                     </div>
-                    <p className="text-sm sm:text-tiny text-white mb-1 justify-center flex">
+                    <p className="text-tiny desktop:text-kindasmaller big:text-lg 4k:text-2xl text-white justify-center flex">
                       for {listing.duration}
                     </p>
                   </div>
                   </>
                   :
                   <>
-                    <div className="border-b border-[#8B98FF] flex flex-col w-full pt-1 pb-2">
-                      <div className="w-full inline-flex justify-center items-end">
-                        <p className="text-white text-tiny sm:text-kindasmall">{listing.lending.amount}</p>
-                        <p className="text-sm text-white pl-1 sm:text-tiny">{listing.lending.name}</p>
-                        <p className="text-gray-400 text-sm pl-1 sm:text-tiny sm:pb-0.5">≈${listing.lending.estimatedValue}</p>
+                    <div className="border-b border-[#8B98FF] flex flex-col w-full py-1 4k:py-4">
+                      <div className="w-full inline-flex justify-center items-center">
+                        <p className={`text-white ${classes.amount}`}>{listing.lending.amount}</p>
+                        <p className={`text-white pl-1 4k:pl-3 sm:pt-0.5 ${classes.gradient}`}>{listing.lending.name}</p>
+                        <p className="text-gray-400 pl-1 4k:pl-3 text-sm desktop:text-tiny big:text-base 4k:text-2xl">≈${listing.lending.estimatedValue}</p>
                       </div>
-                      <p className="text-sm text-white justify-center flex pt-0.5 sm:text-tiny">
+                      <p className="text-white justify-center flex pt-0.5 text-tiny desktop:text-kindasmaller big:text-lg 4k:text-2xl">
                         for {listing.duration}
                       </p>
                     </div>
                   </>
                 }
-                <div className="w-full pt-2 pb-1 inline-flex justify-center items-end">
-                  <p className="card-asking-for text-sm sm:text-tiny">Asking for:</p>
-                  <p className="pl-2 text-[#FF6969] text-tiny sm:text-kindasmaller">+{listing.returnPercentage}% return</p>
+                <div className="w-full pt-2 pb-1 4k:py-4 inline-flex justify-center items-end">
+                  <p className={`card-asking-for ${classes.gradient}`}>Asking for:</p>
+                  <p className="pl-2 4k:pl-4 text-[#FF6969] text-kindasmaller desktop:text-kindasmall big:text-xl 4k:text-4xl">+{listing.returnPercentage}% return</p>
                 </div>
-                <div className="pb-1 inline-flex items-center justify-center whitespace-nowrap">
-                  <p className="card-and text-sm sm:text-tiny">And</p>
+                <div className="pb-1 4k:pb-4 inline-flex items-center justify-center whitespace-nowrap">
+                  <p className={`card-and ${classes.gradient}`}>And</p>
                   { listing.collateral.type === "snip721" ? 
                     <>
-                      <p className="sm:pl-2 pl-1 text-white text-tiny sm:text-kindasmaller">{listing.collateral.amount} {listing.collateral.name}</p>
-                      <p className="sm:pl-2 pl-1 card-collateral text-sm sm:text-tiny">as collateral</p>
+                      <p className="sm:pl-2 pl-1 4k:pl-3 text-white text-tiny sm:text-kindasmaller desktop:text-kindasmall big:text-xl 4k:text-4xl">{listing.collateral.amount} {listing.collateral.name}</p>
+                      <p className={`sm:pl-2 pl-1 4k:pl-3 card-collateral ${classes.gradient}`}>as collateral</p>
                     </>
                     :
                     <>
                       {
                         listing.collateral.amount < 1 ? 
                         <>
-                          <p className="sm:pl-2 pl-1 text-white text-tiny sm:text-kindasmaller">1 {listing.collateral.name}</p>
-                          <p className="sm:pl-2 pl-1 card-collateral text-sm sm:text-tiny">per {collateralPerAmount} {listing.lending.name}</p>
+                          <p className={`sm:pl-2 pl-1 4k:pl-3 text-white ${classes.amount}`}>1 {listing.collateral.name}</p>
+                          <p className={`sm:pl-2 pl-1 4k:pl-3 card-collateral ${classes.gradient}`}>per {collateralPerAmount} {listing.lending.name}</p>
                         </>
                         :
                         <>
-                          <p className="sm:pl-2 pl-1 text-white text-tiny sm:text-kindasmaller">{roundedCollateral === listing.collateral.amount ? `${listing.collateral.amount}` : `~${roundedCollateral}`} {listing.collateral.name}</p>
-                          <p className="sm:pl-2 pl-1 card-collateral text-sm sm:text-tiny">per {collateralPerAmount} {listing.lending.name}</p>
+                          <p className={`sm:pl-2 pl-1 4k:pl-3 text-white ${classes.amount}`}>{roundedCollateral === listing.collateral.amount ? `${listing.collateral.amount}` : `~${roundedCollateral}`} {listing.collateral.name}</p>
+                          <p className={`sm:pl-2 pl-1 4k:pl-3 card-collateral ${classes.gradient}`}>per {collateralPerAmount} {listing.lending.name}</p>
                         </>
                       }
                     </>
                   }
                 </div>
-                <div className={`rounded-full border-8 border-white border-double mb-5 ${listing.isPartiallyFunded ? "mt-2 sm:mt-2" : "mt-2 sm:mt-4"}`}>
-                  <div className="rounded-full bg-white w-10 h-10 -ml-1 absolute -mt-2">
-                    <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full border-white border-2 w-full h-full bg-black" alt={listing.collateral.name} />
+                <div className={`aspect-square 4k:mb-8 ${listing.isPartiallyFunded ? "mt-2 mb-3 max-w-1/2" : "my-4 max-w-1/2l"}`}>
+                  <div className="rounded-full border-8 border-white border-double">
+                    <div className="rounded-full bg-white w-8 h-8 sm:w-10 sm:h-10 desktop:h-12 desktop:w-12 big:w-16 big:h-16 4k:w-28 4k:h-28 -ml-1 absolute -mt-2">
+                      <Image src={`/static/icons/${listing.collateral.name}.svg`} className="rounded-full border-white border-2 w-full h-full bg-black" alt={listing.collateral.name} />
+                    </div>
+                    <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full w-full bg-black border-white border" priority alt={listing.lending.name} />
                   </div>
-                  <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full bg-black border-white border big:h-36 sm:h-32 h-20 w-auto" priority alt={listing.lending.name} />
                 </div>
+               
             </>
           }
         </>
