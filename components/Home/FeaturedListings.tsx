@@ -11,7 +11,7 @@ export const FeaturedListings: FunctionComponent = () => {
         type: "snip20",
         amount: 3600,
         total: 10000,
-        estimatedValue: 3600,
+        estimatedValue: null,
         name: "sATOM"
       },
       collateral: {
@@ -44,7 +44,7 @@ export const FeaturedListings: FunctionComponent = () => {
       lending: {
         type: "snip20",
         amount: 3500,
-        estimatedValue: null,
+        estimatedValue: 3600,
         total: null,
         name: "sSCRT"
       },
@@ -61,7 +61,7 @@ export const FeaturedListings: FunctionComponent = () => {
       lending: {
         type: "snip20",
         amount: 2100,
-        estimatedValue: 2100,
+        estimatedValue: null,
         total: 4000,
         name: "sUSDT"
       },
