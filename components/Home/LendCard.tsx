@@ -27,7 +27,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
 
   return (
     <div className="col-span-1 lg:row-span-1">
-      <div className="flex flex-col bg-[#1A2128] rounded-lg shadow-xl items-center px-4">
+      <div className="flex flex-col bg-[#1A2128] rounded-lg shadow-xl items-center px-4 w-52 h-80">
         <div className="border-b border-[#8B98FF] pt-3 pb-2 w-full flex justify-center">
           <p className="card-title text-sm">Offering to Lend</p>
         </div>
@@ -36,11 +36,13 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
           <div className="border-b border-[#8B98FF] flex flex-col w-full">
             <div className="pt-2 w-full inline-flex justify-center items-end">
                 <p className="card-upto text-xs">up to</p>
-                <p className="text-white text-sm pl-2">{listing.lending.amount} / {listing.lending.total}</p>
-                <p className="text-white text-xs pl-2">{listing.lending.name}</p>
+                <p className="text-white text-xs pl-1">{listing.lending.amount} / {listing.lending.total}</p>
+                <p className="text-white text-xs pl-1">{listing.lending.name}</p>
             </div>
-            <div className="w-full rounded-full h-2.5 mt-2 mb-1 progress-bar-track">
-                <div className="progress-bar h-2.5 rounded-full" style={{width: `${(listing.lending.amount / listing.lending.total) * 100}%`}}></div>
+            <div className="flex justify-center">
+              <div className="w-40 rounded-full h-2.5 mt-2 mb-1 progress-bar-track">
+                  <div className="progress-bar h-2.5 rounded-full" style={{width: `${(listing.lending.amount / listing.lending.total) * 100}%`}}></div>
+              </div>
             </div>
             <p className="text-xs text-white mb-2 justify-center flex">
               {listing.duration}
@@ -55,7 +57,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
                 <p className="text-sm text-white pl-1">{listing.lending.name}</p>
                 <p className="text-gray-400 text-xs pl-1 pb-1">≈${listing.lending.estimatedValue}</p>
               </div>
-              <p className="text-xs text-white mb-2 justify-center flex">
+              <p className="text-xs text-white mb-4 justify-center flex">
                 {listing.duration}
               </p>
             </div>
@@ -80,7 +82,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
           }
 
         </div>
-        <div className="mb-5 mt-3 rounded-full border-8 border-white border-double">
+        <div className="mb-5 mt-5 rounded-full border-8 border-white border-double">
           <div className="rounded-full bg-white w-10 h-10 border-white border-3 -ml-1 absolute -mt-2">
             <Image src={`/static/icons/${listing.lending.name}.svg`} className="rounded-full w-full h-full" alt={listing.lending.name} />
           </div>
