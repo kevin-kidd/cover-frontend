@@ -17,9 +17,9 @@ const SearchBox: FunctionComponent<{ tokenType: string }> = ({ tokenType }) => {
     )
 };
 
-const ImportButton: FunctionComponent<{tokenType: string}> = ({ tokenType }) => {
+export const ImportButton: FunctionComponent<{tokenType: string}> = ({ tokenType }) => {
     return (
-        <button className="button-gradient border border-transparent rounded-xl px-3 flex items-center h-8 sm:ml-4 mb-2 sm:mb-0 w-fit">
+        <button className="button-gradient border border-transparent rounded-xl px-3 flex items-center h-8 sm:ml-4 w-fit">
             <FolderDownloadIcon className="mr-1 p-0.5 h-full text-[#d4d4d4]" />
             <p className="text-[#cccccc] text-xs sm:text-sm">Import a { tokenType === "NFTs" ? "collection" : "token" }</p>
         </button>
@@ -58,9 +58,11 @@ const HideZeroToggle: FunctionComponent = () => {
 export const AssetsFilters: FunctionComponent<{ tokenType: string }> = ({ tokenType }) => {
     return (
         <div className="pt-2 sm:pt-4 sm:px-4 w-full flex justify-between items-end">
-            <div className="flex flex-col-reverse w-full sm:flex-row sm:items-end">
+            <div className="flex w-full flex-row items-end">
                 <SearchBox tokenType={tokenType} />
-                <ImportButton tokenType={tokenType} />
+                <div className="hidden sm:flex">
+                    <ImportButton tokenType={tokenType} />
+                </div>
             </div>
             { tokenType === "Tokens" ? <HideZeroToggle /> : null }
         </div>
