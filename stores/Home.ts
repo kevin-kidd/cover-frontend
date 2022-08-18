@@ -23,6 +23,7 @@ type HomeState = {
 }
 
 const emptyLoanListing = {
+  address: "",
   listingType: "lend",
   isPartiallyFunded: false,
   lending: {
@@ -42,6 +43,7 @@ const emptyLoanListing = {
 };
 
 const emptyBorrowListing = {
+  address: "",
   listingType: "borrow",
   borrowing: {
     tokenType: "",
