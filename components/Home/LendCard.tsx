@@ -74,7 +74,7 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
               </>
               :
               <>
-                <div className="border-b border-[#8B98FF] flex flex-col w-full py-1 4k:py-4">
+                <div className="border-b border-[#8B98FF] flex flex-col w-full py-3 4k:py-5">
                   <div className="w-full inline-flex justify-center items-center">
                     <p className={`text-white ${classes.amount}`}>{listing.lending.amount}</p>
                     <p className={`text-white pl-1 4k:pl-3 sm:pt-0.5 ${classes.gradient}`}>{listing.lending.name}</p>
@@ -118,22 +118,24 @@ export const LendCard: FunctionComponent<LendCardProps> = ({ listing }) => {
         }
         { listing.collateral.image === "" ? 
           null :
-          <div className="my-2 p-1 4k:p-8 w-full max-w-1/2l aspect-square mx-auto block justify-center">
-            <div className="rounded-full block bg-white w-8 h-8 sm:w-10 sm:h-10 desktop:h-12 desktop:w-12 big:w-16 big:h-16 4k:w-28 4k:h-28 -ml-1 absolute -mt-2 z-10 border-2 border-white border-double">
-              <Image 
-                src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + listing.collateral.image} 
-                width="100" height="100" alt={listing.collateral.name} priority={true}
-                className="rounded-full border-white border-2 w-full h-full" layout="responsive" 
-              />
+            <div className="h-full w-full flex items-end big:pb-2 4k:pb-4">
+              <div className={`my-2 p-1 w-full max-w-1/2l aspect-square mx-auto block`}>
+                <div className="rounded-full block bg-white w-8 h-8 sm:w-10 sm:h-10 desktop:h-12 desktop:w-12 big:w-16 big:h-16 4k:w-28 4k:h-28 -ml-1 absolute -mt-2 z-10 border big:border-2 4k:border-4 border-white border-double">
+                  <Image
+                      src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + listing.collateral.image}
+                      width="100" height="100" alt={listing.collateral.name} priority={true}
+                      className="rounded-full border-white border-2 w-full h-full" layout="responsive"
+                  />
+                </div>
+                <div className="rounded-full block w-full h-full border-double border-white border-4 default:border-6 big:border-8 4k:border-12">
+                  <Image
+                      layout="responsive" width="500" height="500" priority={true} className="rounded-full w-full h-full"
+                      onLoadingComplete={() => setLoading(false)} alt={listing.lending.name}
+                      src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + listing.lending.image}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="rounded-full block w-full h-full border-double border-white border-6">
-              <Image 
-                layout="responsive" width="500" height="500" priority={true} className="rounded-full w-full h-full" 
-                onLoadingComplete={() => setLoading(false)} alt={listing.lending.name}
-                src={"https://res.cloudinary.com/drgbtjcgt/image/fetch/" + listing.lending.image}
-              />
-            </div>
-          </div>
         }
       </>
       </div>

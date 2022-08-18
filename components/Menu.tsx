@@ -143,12 +143,12 @@ const Menu: FunctionComponent = () => {
                     alt="Cover" />
                 </div>
                 <div className="row-span-4 flex flex-col justify-center items-center overflow-y-auto">
-                    <nav className="space-y-2 xl:space-y-4 default:space-y-5 4k:space-y-10 w-fit big:w-3/4">
+                    <nav className="space-y-2 xl:space-y-4 default:space-y-5 4k:space-y-10 w-fit">
                         {
                         menuItems.map((item) => (
                           <a href={item.href} key={item.title}
                           className={
-                            `font-medium rounded-3xl flex items-center group text-white
+                            `font-medium rounded-3xl big:rounded-5xl flex items-center group text-white
                             text-kindasmall desktop:text-base default:text-xl big:text-3xl 4k:text-5xl
                             p-3 default:p-5 big:p-6 4k:p-10 group
                             ${item.active ? "bg-[#7BBD75]" : 

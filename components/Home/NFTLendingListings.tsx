@@ -90,12 +90,12 @@ export const NFTLendingListings: FunctionComponent = () => {
 
   return (
     <>
-      <div className="w-11/12 2xl:w-4/5 py-5 sm:pt-6 sm:pb-8 w-full mx-auto">
+      <div className="w-11/12 2xl:w-4/5 sm:pt-4 default:pt-6 big:pt-8 4k:pt-12 border-b border-black w-full mx-auto">
         <div className="flex justify-between items-center">
-          <h1 className="text-md sm:text-lg default:text-xl big:text-2xl 4k:text-4xl font-medium text-white ml-6">
+          <h1 className="text-md sm:text-base default:text-xl big:text-3xl 4k:text-5xl font-medium text-white ml-6">
             NFT Lending Listings
           </h1>
-          <a href="#" className="items-center mr-6 mt-1 font-medium text-red-500 transition duration-150 text-tiny sm:text-kindasmall default:text-base big:text-xl 4k:text-2xl">
+          <a href="#" className="mr-6 mt-1 font-medium text-red-500 transition duration-150 text-tiny sm:text-kindasmaller default:text-base big:text-xl 4k:text-3xl">
             All Listings
           </a>
         </div>
