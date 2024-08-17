@@ -13,12 +13,12 @@ export const wrapSnip20 = async (
 		const response = await client.tx.compute.executeContract(
 			{
 				sender: client.address,
-				contract_address: contract.address,
-				code_hash: contract.codeHash,
+				contractAddress: contract.address,
+				codeHash: contract.codeHash,
 				msg: {
 					deposit: {},
 				},
-				sent_funds: [
+				sentFunds: [
 					{
 						amount: amount,
 						denom: denom,
@@ -60,8 +60,8 @@ export const unwrapSnip20 = async (
 		const response = await client.tx.compute.executeContract(
 			{
 				sender: client.address,
-				contract_address: contract.address,
-				code_hash: contract.codeHash,
+				contractAddress: contract.address,
+				codeHash: contract.codeHash,
 				msg: {
 					redeem: {
 						amount: amount,
