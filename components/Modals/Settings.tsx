@@ -1,11 +1,5 @@
-import {FunctionComponent} from "react";
-
+import type { FunctionComponent } from "react";
 
 export const SettingsModal: FunctionComponent = () => {
-
-    return (
-        <div className="w-full flex flex-col">
-
-        </div>
-    )
+	return <div className="w-full flex flex-col">...</div>;
 };
